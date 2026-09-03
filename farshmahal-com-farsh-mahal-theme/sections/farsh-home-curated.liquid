@@ -1,0 +1,944 @@
+{%- style -%}
+  /* Farsh Mahal Master Homepage Styles */
+  .fm-home-wrapper {
+    background-color: var(--fm-ivory);
+    color: var(--fm-charcoal);
+  }
+
+  /* 1. Hero Section */
+  .fm-master-hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    background-image: url('{{ "fm-hero-lifestyle.jpg" | asset_url }}');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 24px;
+  }
+  .fm-master-hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, rgba(20, 24, 22, 0.75) 0%, rgba(20, 24, 22, 0.45) 50%, rgba(0,0,0,0.15) 100%);
+    z-index: 1;
+  }
+  .fm-master-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+  }
+  .fm-master-hero-title {
+    font-family: var(--fm-font-serif);
+    font-size: clamp(3.6rem, 6vw, 6rem);
+    color: #FFFFFF !important;
+    line-height: 1.08;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+  }
+  .fm-master-hero-sub {
+    font-size: clamp(1.5rem, 1.8vw, 1.75rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+  .fm-hero-btn-white {
+    background-color: #FFFFFF !important;
+    color: var(--fm-forest) !important;
+    border: 1px solid #FFFFFF !important;
+  }
+  .fm-hero-btn-white:hover {
+    background-color: var(--fm-gold) !important;
+    color: #FFFFFF !important;
+    border-color: var(--fm-gold) !important;
+  }
+  .fm-hero-btn-ghost {
+    background-color: transparent !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  }
+  .fm-hero-btn-ghost:hover {
+    background-color: #FFFFFF !important;
+    color: var(--fm-forest) !important;
+  }
+
+  /* 2. Value Statement */
+  .fm-value-split {
+    padding: clamp(60px, 8vw, 100px) 0;
+    background-color: var(--fm-ivory);
+    border-bottom: 1px solid var(--fm-border-light);
+  }
+  .fm-value-split-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .fm-value-accent-quote {
+    font-family: var(--fm-font-serif);
+    font-size: 2.2rem;
+    color: var(--fm-gold);
+    font-style: italic;
+    border-left: 2px solid var(--fm-gold);
+    padding-left: 20px;
+    line-height: 1.4;
+  }
+  .fm-value-split-title {
+    font-family: var(--fm-font-serif);
+    font-size: clamp(2.6rem, 4vw, 4rem);
+    color: var(--fm-forest);
+    line-height: 1.2;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+  }
+  .fm-value-split-title em {
+    color: var(--fm-gold);
+    font-style: italic;
+  }
+
+  /* 3. Collections Grid */
+  .fm-curated-section {
+    padding: clamp(60px, 8vw, 100px) 0;
+    background-color: var(--fm-ivory);
+  }
+  .fm-curated-grid-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .fm-curated-grid-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .fm-curated-card {
+    position: relative;
+    height: 380px;
+    background-color: #E6E0D6;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--fm-border);
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+    transition: var(--fm-transition);
+  }
+  .fm-curated-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(27, 67, 50, 0.12);
+    border-color: var(--fm-gold);
+  }
+  .fm-curated-card-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(20, 24, 22, 0.85) 100%);
+    z-index: 1;
+    transition: var(--fm-transition);
+  }
+  .fm-curated-card:hover .fm-curated-card-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 20%, rgba(20, 24, 22, 0.92) 100%);
+  }
+  .fm-curated-card-content {
+    position: relative;
+    z-index: 2;
+  }
+  .fm-curated-card-title {
+    font-family: var(--fm-font-serif);
+    font-size: 2.6rem;
+    color: #FFFFFF !important;
+    margin: 0 0 6px 0;
+    font-weight: 500;
+  }
+  .fm-curated-card-sub {
+    font-size: 1.4rem;
+    color: rgba(247, 242, 237, 0.85) !important;
+    margin: 0;
+  }
+
+  /* 4. Trust Bar */
+  .fm-trust-bar {
+    padding: 36px 0;
+    background-color: #FFFFFF;
+    border-top: 1px solid var(--fm-border);
+    border-bottom: 1px solid var(--fm-border);
+  }
+  .fm-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .fm-trust-item {
+    font-size: 1.35rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fm-forest);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .fm-trust-dot {
+    color: var(--fm-gold);
+    font-size: 1.6rem;
+  }
+
+  /* 5. Product Grid */
+  .fm-arrivals-section {
+    padding: clamp(60px, 8vw, 100px) 0;
+    background-color: var(--fm-ivory);
+  }
+  .fm-arrivals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .fm-product-grid-8 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .fm-rug-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--fm-border);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: var(--fm-transition);
+  }
+  .fm-rug-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--fm-gold);
+    box-shadow: 0 12px 30px rgba(27, 67, 50, 0.08);
+  }
+  .fm-rug-badge-new {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: var(--fm-gold);
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 4px 8px;
+    z-index: 2;
+  }
+  .fm-rug-img-wrap {
+    padding: 24px;
+    background-color: var(--fm-ivory-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+  }
+  .fm-rug-img-wrap img, .fm-rug-img-wrap svg {
+    max-height: 240px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+  }
+  .fm-rug-card:hover .fm-rug-img-wrap img,
+  .fm-rug-card:hover .fm-rug-img-wrap svg {
+    transform: scale(1.04);
+  }
+  .fm-rug-card-info {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--fm-border-light);
+  }
+  .fm-rug-name {
+    font-family: var(--fm-font-serif);
+    font-size: 2rem;
+    color: var(--fm-forest);
+    margin: 0 0 4px 0;
+  }
+  .fm-rug-series {
+    font-size: 1.3rem;
+    color: #777;
+    margin: 0;
+  }
+  .fm-rug-price {
+    font-family: var(--fm-font-sans);
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--fm-forest);
+  }
+
+  /* 6. Size Selector Grid */
+  .fm-sizes-section {
+    padding: clamp(60px, 8vw, 90px) 0;
+    background-color: var(--fm-ivory-light);
+    border-top: 1px solid var(--fm-border);
+    border-bottom: 1px solid var(--fm-border);
+    text-align: center;
+  }
+  .fm-sizes-tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+    margin-top: 36px;
+  }
+  .fm-size-tile {
+    background: #FFFFFF;
+    border: 1px solid var(--fm-border);
+    padding: 18px 12px;
+    text-decoration: none;
+    transition: var(--fm-transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .fm-size-tile:hover {
+    background: var(--fm-forest);
+    border-color: var(--fm-forest);
+    transform: translateY(-3px);
+  }
+  .fm-size-tile-name {
+    font-family: var(--fm-font-serif);
+    font-size: 1.9rem;
+    color: var(--fm-forest);
+    font-weight: 500;
+    margin-bottom: 4px;
+    transition: var(--fm-transition);
+  }
+  .fm-size-tile-desc {
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    color: #888;
+    transition: var(--fm-transition);
+  }
+  .fm-size-tile:hover .fm-size-tile-name {
+    color: var(--fm-gold) !important;
+  }
+  .fm-size-tile:hover .fm-size-tile-desc {
+    color: var(--fm-ivory) !important;
+  }
+
+  /* 7. Craftsmanship Section */
+  .fm-master-craft {
+    background-color: var(--fm-forest);
+    color: var(--fm-ivory);
+    padding: clamp(70px, 9vw, 110px) 0;
+  }
+  .fm-master-craft-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .fm-craft-stats-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 36px;
+    border-top: 1px solid rgba(201, 162, 77, 0.3);
+    padding-top: 28px;
+    margin: 36px 0;
+  }
+
+  /* 8. Dual Feature Large Cards */
+  .fm-dual-large-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    padding: clamp(60px, 8vw, 90px) 0;
+  }
+  .fm-dual-large-card {
+    height: 480px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--fm-border);
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(32px, 5vw, 48px);
+    transition: var(--fm-transition);
+  }
+  .fm-dual-large-card:hover {
+    border-color: var(--fm-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+
+  /* 9. Journal Section */
+  .fm-journal-section {
+    padding: clamp(60px, 8vw, 100px) 0;
+    background-color: var(--fm-ivory);
+  }
+  .fm-journal-3-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 24px;
+  }
+  .fm-journal-story-card {
+    background: #FFFFFF;
+    border: 1px solid var(--fm-border);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: var(--fm-transition);
+  }
+  .fm-journal-story-card:hover {
+    border-color: var(--fm-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(27, 67, 50, 0.08);
+  }
+  .fm-journal-story-img {
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+  }
+  .fm-journal-story-info {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Responsive Queries */
+  @media screen and (max-width: 1024px) {
+    .fm-product-grid-8 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .fm-sizes-tiles-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .fm-trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .fm-journal-3-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .fm-value-split-grid,
+    .fm-curated-grid-top,
+    .fm-curated-grid-bottom,
+    .fm-master-craft-grid,
+    .fm-dual-large-grid {
+      grid-template-columns: 1fr;
+    }
+    .fm-sizes-tiles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .fm-trust-grid {
+      grid-template-columns: 1fr;
+    }
+    .fm-curated-card {
+      height: 300px;
+    }
+    .fm-dual-large-card {
+      height: 380px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="fm-home-wrapper">
+  <!-- 1. Hero Banner -->
+  <section class="fm-master-hero">
+    <div class="fm-master-hero-overlay"></div>
+    <div class="fm-container" style="width: 100%;">
+      <div class="fm-master-hero-content">
+        <h1 class="fm-master-hero-title">One rug.<br>One story.<br>Yours.</h1>
+        <p class="fm-master-hero-sub">Hand-tufted rugs created with patience, precision, and artistry. Designed for considered interiors.</p>
+        <div class="fm-hero-btn-group">
+          <a href="/collections/all" class="button fm-hero-btn-white">
+            Explore Collection <span style="font-size: 1.4rem;">&rarr;</span>
+          </a>
+          <a href="/pages/custom-rugs" class="button fm-hero-btn-ghost">
+            Custom Rug <span style="font-size: 1.4rem;">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Value Statement -->
+  <section class="fm-value-split">
+    <div class="fm-container">
+      <div class="fm-value-split-grid">
+        <div>
+          <div class="fm-value-accent-quote">
+            "We believe what lies beneath should tell a story of patient craftsmanship."
+          </div>
+        </div>
+        <div>
+          <h2 class="fm-value-split-title">
+            More than a rug —<br><em>the foundation of home.</em>
+          </h2>
+          <p style="font-size: 1.6rem; line-height: 1.8; color: #55524E; margin-bottom: 16px;">
+            Every space tells a story. At Farsh Mahal, we believe what lies beneath it should too.
+          </p>
+          <p style="font-size: 1.55rem; line-height: 1.8; color: #6B6864; margin: 0;">
+            Our rugs blend heritage hand-tufted craftsmanship with contemporary aesthetics, creating pieces that feel timeless, refined, and effortlessly at home in modern spaces.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Curated Series Showcase -->
+  <section class="fm-curated-section">
+    <div class="fm-container">
+      <div style="margin-bottom: 36px;">
+        <span class="fm-value-tagline">CURATED SERIES</span>
+        <h2 style="font-family: var(--fm-font-serif); font-size: clamp(2.6rem, 4vw, 4rem); color: var(--fm-forest); margin: 0;">Designed around different ways of living.</h2>
+      </div>
+
+      <div class="fm-curated-grid-top">
+        <!-- Card 1: Organic Terrain (Wide) -->
+        <a href="/collections/all" class="fm-curated-card" style="background-image: url('{{ 'rug-organic-terrain.svg' | asset_url }}');">
+          <div class="fm-curated-card-overlay"></div>
+          <div class="fm-curated-card-content">
+            <h3 class="fm-curated-card-title">Organic Terrain</h3>
+            <p class="fm-curated-card-sub">Fluid curves & earthy textures reflecting natural topography.</p>
+          </div>
+        </a>
+
+        <!-- Card 2: Modern Grid -->
+        <a href="/collections/all" class="fm-curated-card" style="background-image: url('{{ 'rug-modern-grid.svg' | asset_url }}');">
+          <div class="fm-curated-card-overlay"></div>
+          <div class="fm-curated-card-content">
+            <h3 class="fm-curated-card-title">Modern Grid</h3>
+            <p class="fm-curated-card-sub">Architectural balance & geometry.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="fm-curated-grid-bottom">
+        <!-- Card 3: Retro Geometry -->
+        <a href="/collections/all" class="fm-curated-card" style="background-image: url('{{ 'rug-retro-geometry.svg' | asset_url }}');">
+          <div class="fm-curated-card-overlay"></div>
+          <div class="fm-curated-card-content">
+            <h3 class="fm-curated-card-title">Retro Geometry</h3>
+            <p class="fm-curated-card-sub">Mid-century arches & warmth.</p>
+          </div>
+        </a>
+
+        <!-- Card 4: Nordic Calm -->
+        <a href="/collections/all" class="fm-curated-card" style="background-image: url('{{ 'rug-nordic-calm.svg' | asset_url }}');">
+          <div class="fm-curated-card-overlay"></div>
+          <div class="fm-curated-card-content">
+            <h3 class="fm-curated-card-title">Nordic Calm</h3>
+            <p class="fm-curated-card-sub">Quiet minimalism & soft ivory.</p>
+          </div>
+        </a>
+
+        <!-- Card 5: Texture Max -->
+        <a href="/collections/all" class="fm-curated-card" style="background-image: url('{{ 'rug-texture-max.svg' | asset_url }}');">
+          <div class="fm-curated-card-overlay"></div>
+          <div class="fm-curated-card-content">
+            <h3 class="fm-curated-card-title">Texture Max</h3>
+            <p class="fm-curated-card-sub">Sculpted high-low pile depth.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Trust Pillars Bar -->
+  <section class="fm-trust-bar">
+    <div class="fm-container">
+      <div class="fm-trust-grid">
+        <div class="fm-trust-item">
+          <span class="fm-trust-dot">&#9670;</span> Free Worldwide Insured Shipping
+        </div>
+        <div class="fm-trust-item">
+          <span class="fm-trust-dot">&#9670;</span> 100% Pure Natural Wool
+        </div>
+        <div class="fm-trust-item">
+          <span class="fm-trust-dot">&#9670;</span> Master Hand-Tufted in India
+        </div>
+        <div class="fm-trust-item">
+          <span class="fm-trust-dot">&#9670;</span> Custom Sizing & Shapes
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. New Arrivals (8 Product Cards) -->
+  <section class="fm-arrivals-section">
+    <div class="fm-container">
+      <div class="fm-arrivals-header">
+        <div>
+          <span class="fm-value-tagline">RECENTLY RELEASED</span>
+          <h2 style="font-family: var(--fm-font-serif); font-size: clamp(2.6rem, 4vw, 4rem); color: var(--fm-forest); margin: 0;">New arrivals to live with.</h2>
+        </div>
+        <div>
+          <a href="/collections/all" style="font-size: 1.35rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fm-forest); font-weight: 600; text-decoration: none;">
+            Shop all rugs <span style="color: var(--fm-gold);">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="fm-product-grid-8">
+        <!-- 1. Terra Hush -->
+        <a href="/collections/all" class="fm-rug-card">
+          <span class="fm-rug-badge-new">NEW</span>
+          <div class="fm-rug-img-wrap">
+            <img src="{{ 'rug-nordic-calm.svg' | asset_url }}" alt="Terra Hush" loading="lazy">
+          </div>
+          <div class="fm-rug-card-info">
+            <div>
+              <h3 class="fm-rug-name">Terra Hush</h3>
+              <p class="fm-rug-series">Nordic Calm Series</p>
+            </div>
+            <div class="fm-rug-price">&euro;1,678</div>
+          </div>
+        </a>
+
+        <!-- 2. Dune Movement -->
+        <a href="/collections/all" class="fm-rug-card">
+          <div class="fm-rug-img-wrap">
+            <img src="{{ 'rug-organic-terrain.svg' | asset_url }}" alt="Dune Movement" loading="lazy">
+          </div>
+          <div class="fm-rug-card-info">
+            <div>
+              <h3 class="fm-rug-name">Dune Movement</h3>
+              <p class="fm-rug-series">Organic Terrain</p>
+            </div>
+            <div class="fm-rug-price">&euro;1,819</div>
+          </div>
+        </a>
+
+        <!-- 3. Organic Silence -->
+        <a href="/collections/all" class="fm-rug-card">
+          <div class="fm-rug-img-wrap">
+            <img src="{{ 'rug-texture-max.svg' | asset_url }}" alt="Organic Silence" loading="lazy">
+          </div>
+          <div class="fm-rug-card-info">
+            <div>
+              <h3 class="fm-rug-name">Organic Silence</h3>
+              <p class="fm-rug-series">Nordic Calm Series</p>
+            </div>
+            <div class="fm-rug-price">&euro;1,622</div>
+          </div>
+        </a>
+
+        <!-- 4. Canyon Layers -->
+        <a href="/collections/all" class="fm-rug-card">
+          <div class="fm-rug-img-wrap">
+            <img src="{{ 'rug-canyon-layers.svg' | asset_url }}" alt="Canyon Layers" loading="lazy">
+          </div>
+          <div class="fm-rug-card-info">
+            <div>
+              <h3 class="fm-rug-name">Canyon Layers</h3>
+              <p class="fm-rug-series">Organic Terrain</p>
+            </div>
+            <div class="fm-rug-price">&euro;1,844</div>
+          </div>
+        </a>
+
+        <!-- 5. Desert Contours -->
+        <a href="/collections/all" class="fm-rug-card">
+          <div class="fm-rug-img-wrap">
+            <img src="{{ 'rug-retro-geometry.svg' | asset_url }}" alt="Desert Contours" loading="lazy">
+          </div>
+          <div class="fm-rug-card-info">
+            <div>
+              <h3 class="fm-rug-name">Desert Contours</h3>
+              <p class="fm-rug-series">Retro Geometry</p>
+            </div>
+            <div class="fm-rug-price">&euro;1,750</div>
+          </div>
+        </a>
+
+        <!-- 6. Linear Calm -->
+        <a href="/collections/all" class="fm-rug-card">
+          <div class="fm-rug-img-wrap">
+            <img src="{{ 'rug-modern-grid.svg' | asset_url }}" alt="Linear Calm" loading="lazy">
+          </div>
+          <div class="fm-rug-card-info">
+            <div>
+              <h3 class="fm-rug-name">Linear Calm</h3>
+              <p class="fm-rug-series">Modern Grid</p>
+            </div>
+            <div class="fm-rug-price">&euro;1,490</div>
+          </div>
+        </a>
+
+        <!-- 7. Mist Topography -->
+        <a href="/collections/all" class="fm-rug-card">
+          <div class="fm-rug-img-wrap">
+            <img src="{{ 'rug-texture-max.svg' | asset_url }}" alt="Mist Topography" loading="lazy">
+          </div>
+          <div class="fm-rug-card-info">
+            <div>
+              <h3 class="fm-rug-name">Mist Topography</h3>
+              <p class="fm-rug-series">Texture Max Series</p>
+            </div>
+            <div class="fm-rug-price">&euro;1,680</div>
+          </div>
+        </a>
+
+        <!-- 8. Botanical Relief -->
+        <a href="/collections/all" class="fm-rug-card">
+          <div class="fm-rug-img-wrap">
+            <img src="{{ 'rug-organic-terrain.svg' | asset_url }}" alt="Botanical Relief" loading="lazy">
+          </div>
+          <div class="fm-rug-card-info">
+            <div>
+              <h3 class="fm-rug-name">Botanical Relief</h3>
+              <p class="fm-rug-series">Organic Terrain</p>
+            </div>
+            <div class="fm-rug-price">&euro;1,920</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Sizing Tiles Grid -->
+  <section class="fm-sizes-section">
+    <div class="fm-container">
+      <span class="fm-value-tagline">SPATIAL HARMONY</span>
+      <h2 style="font-family: var(--fm-font-serif); font-size: clamp(2.6rem, 4vw, 3.8rem); color: var(--fm-forest); margin: 0 0 8px 0;">Find your perfect fit.</h2>
+      <p style="color: #666; font-size: 1.5rem; margin: 0;">Standard dimensions ready to ship, or bespoke sizes tailored to your room.</p>
+
+      <div class="fm-sizes-tiles-grid">
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">2' x 3'</div>
+          <div class="fm-size-tile-desc">Accent / Entry</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">4' x 6'</div>
+          <div class="fm-size-tile-desc">Bedside / Study</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">5' x 8'</div>
+          <div class="fm-size-tile-desc">Living / Bed</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">6' x 9'</div>
+          <div class="fm-size-tile-desc">Dining / Living</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">8' x 10'</div>
+          <div class="fm-size-tile-desc">Large Living</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">9' x 12'</div>
+          <div class="fm-size-tile-desc">Master Suite</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">10' x 14'</div>
+          <div class="fm-size-tile-desc">Estate Sizing</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">Round 6'</div>
+          <div class="fm-size-tile-desc">Dining / Nook</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">Round 8'</div>
+          <div class="fm-size-tile-desc">Foyer / Salon</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">Runner 2.5'x8'</div>
+          <div class="fm-size-tile-desc">Hallway / Entry</div>
+        </a>
+        <a href="/collections/all" class="fm-size-tile">
+          <div class="fm-size-tile-name">Runner 2.5'x12'</div>
+          <div class="fm-size-tile-desc">Long Gallery</div>
+        </a>
+        <a href="/pages/custom-rugs" class="fm-size-tile" style="border-color: var(--fm-gold); background: #FAF7F2;">
+          <div class="fm-size-tile-name" style="color: var(--fm-gold);">Custom Size</div>
+          <div class="fm-size-tile-desc" style="color: var(--fm-forest); font-weight: 600;">Tailored to Space</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Craftsmanship Section (Forest Green) -->
+  <section class="fm-master-craft">
+    <div class="fm-container">
+      <div class="fm-master-craft-grid">
+        <div>
+          <span class="fm-craft-tagline">THE CRAFT</span>
+          <h2 style="font-family: var(--fm-font-serif); font-size: clamp(2.8rem, 4.5vw, 4.6rem); color: var(--fm-ivory); margin: 0 0 20px 0; line-height: 1.15;">
+            Crafted by <em style="color: var(--fm-gold); font-style: italic;">skilled hands.</em>
+          </h2>
+          <p style="font-size: 1.6rem; line-height: 1.8; color: rgba(247, 242, 237, 0.85); margin: 0;">
+            Every Farsh Mahal piece is handcrafted by skilled master artisans in India. From wool carding to precision hand-tufting and sculpt carving, true quality is earned — never rushed.
+          </p>
+
+          <div class="fm-craft-stats-2x2">
+            <div>
+              <div class="fm-craft-stat-num">4 Gen</div>
+              <div class="fm-craft-stat-label">Artisan Heritage</div>
+            </div>
+            <div>
+              <div class="fm-craft-stat-num">8-12 Wk</div>
+              <div class="fm-craft-stat-label">Meticulous Creation</div>
+            </div>
+            <div>
+              <div class="fm-craft-stat-num">100%</div>
+              <div class="fm-craft-stat-label">Pure Natural Wool</div>
+            </div>
+            <div>
+              <div class="fm-craft-stat-num">0%</div>
+              <div class="fm-craft-stat-label">Machine Automation</div>
+            </div>
+          </div>
+
+          <a href="/pages/story" class="button" style="background-color: var(--fm-gold) !important; color: #FFFFFF !important; border-color: var(--fm-gold) !important;">
+            Read Our Story <span style="font-size: 1.4rem;">&rarr;</span>
+          </a>
+        </div>
+
+        <div style="position: relative; border: 1px solid rgba(201, 162, 77, 0.3); overflow: hidden; height: 500px;">
+          <img src="{{ 'fm-artisan-loom.jpg' | asset_url }}" alt="Artisan weaving at loom" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Dual Feature Cards -->
+  <section class="fm-container">
+    <div class="fm-dual-large-grid">
+      <!-- Bespoke Card -->
+      <a href="/pages/custom-rugs" class="fm-dual-large-card" style="background-image: url('{{ 'fm-artisan-carving.jpg' | asset_url }}');">
+        <div class="fm-curated-card-overlay"></div>
+        <div class="fm-curated-card-content">
+          <span class="fm-dual-tag" style="color: var(--fm-gold);">BESPOKE</span>
+          <h3 style="font-family: var(--fm-font-serif); font-size: clamp(2.4rem, 3vw, 3.4rem); color: #FFFFFF; margin: 0 0 12px 0;">Designed around your vision.</h3>
+          <span style="color: var(--fm-ivory); font-size: 1.3rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+            Start Custom Project <span style="color: var(--fm-gold);">&rarr;</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Trade Card -->
+      <a href="/pages/trade" class="fm-dual-large-card" style="background-image: url('{{ 'fm-hero-lifestyle.jpg' | asset_url }}');">
+        <div class="fm-curated-card-overlay"></div>
+        <div class="fm-curated-card-content">
+          <span class="fm-dual-tag" style="color: var(--fm-gold);">TRADE PROGRAMME</span>
+          <h3 style="font-family: var(--fm-font-serif); font-size: clamp(2.4rem, 3vw, 3.4rem); color: #FFFFFF; margin: 0 0 12px 0;">For designers, architects & firms.</h3>
+          <span style="color: var(--fm-ivory); font-size: 1.3rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+            Join Trade Programme <span style="color: var(--fm-gold);">&rarr;</span>
+          </span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 9. Journal Stories -->
+  <section class="fm-journal-section">
+    <div class="fm-container">
+      <div class="fm-arrivals-header">
+        <div>
+          <span class="fm-value-tagline">JOURNAL</span>
+          <h2 style="font-family: var(--fm-font-serif); font-size: clamp(2.6rem, 4vw, 4rem); color: var(--fm-forest); margin: 0;">Ideas & inspiration for thoughtful interiors.</h2>
+        </div>
+        <div>
+          <a href="/blogs/news" style="font-size: 1.35rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fm-forest); font-weight: 600; text-decoration: none;">
+            View all stories <span style="color: var(--fm-gold);">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="fm-journal-3-grid">
+        <!-- Story 1 (Wide) -->
+        <a href="/blogs/news" class="fm-journal-story-card">
+          <div class="fm-journal-story-img" style="background-image: url('{{ 'fm-hero-lifestyle.jpg' | asset_url }}');"></div>
+          <div class="fm-journal-story-info">
+            <div>
+              <span style="font-size: 1.15rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fm-gold); font-weight: 600; display: block; margin-bottom: 8px;">BUYING GUIDE</span>
+              <h3 style="font-family: var(--fm-font-serif); font-size: 2.2rem; color: var(--fm-forest); margin: 0 0 8px 0; line-height: 1.3;">How to Choose the Perfect Rug Size for Every Room</h3>
+              <p style="font-size: 1.4rem; color: #666; line-height: 1.6; margin: 0;">Proportion, furniture anchoring, and spatial balance advice from interior architects.</p>
+            </div>
+            <span style="font-size: 1.25rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fm-forest); font-weight: 600; margin-top: 16px; display: inline-block;">
+              Read Article &rarr;
+            </span>
+          </div>
+        </a>
+
+        <!-- Story 2 -->
+        <a href="/blogs/news" class="fm-journal-story-card">
+          <div class="fm-journal-story-img" style="background-image: url('{{ 'fm-artisan-loom.jpg' | asset_url }}');"></div>
+          <div class="fm-journal-story-info">
+            <div>
+              <span style="font-size: 1.15rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fm-gold); font-weight: 600; display: block; margin-bottom: 8px;">BEHIND THE CRAFT</span>
+              <h3 style="font-family: var(--fm-font-serif); font-size: 2.1rem; color: var(--fm-forest); margin: 0 0 8px 0; line-height: 1.3;">Understanding Hand-Tufted Craftsmanship</h3>
+              <p style="font-size: 1.4rem; color: #666; line-height: 1.6; margin: 0;">The generational lineage, raw wool selection, and high-low relief sculpting.</p>
+            </div>
+            <span style="font-size: 1.25rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fm-forest); font-weight: 600; margin-top: 16px; display: inline-block;">
+              Read Article &rarr;
+            </span>
+          </div>
+        </a>
+
+        <!-- Story 3 -->
+        <a href="/blogs/news" class="fm-journal-story-card">
+          <div class="fm-journal-story-img" style="background-image: url('{{ 'fm-artisan-carving.jpg' | asset_url }}');"></div>
+          <div class="fm-journal-story-info">
+            <div>
+              <span style="font-size: 1.15rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fm-gold); font-weight: 600; display: block; margin-bottom: 8px;">DESIGN SECRETS</span>
+              <h3 style="font-family: var(--fm-font-serif); font-size: 2.1rem; color: var(--fm-forest); margin: 0 0 8px 0; line-height: 1.3;">Layering Rugs Like an Interior Designer</h3>
+              <p style="font-size: 1.4rem; color: #666; line-height: 1.6; margin: 0;">How to combine textures, neutrals, and organic forms for elevated tactile richness.</p>
+            </div>
+            <span style="font-size: 1.25rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fm-forest); font-weight: 600; margin-top: 16px; display: inline-block;">
+              Read Article &rarr;
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Newsletter Banner -->
+  <section style="background-color: var(--fm-forest); color: var(--fm-ivory); padding: clamp(60px, 8vw, 90px) 24px; text-align: center; border-top: 1px solid rgba(201, 162, 77, 0.25);">
+    <div style="max-width: 650px; margin: 0 auto;">
+      <h2 style="font-family: var(--fm-font-serif); font-size: clamp(2.4rem, 4vw, 3.8rem); color: var(--fm-ivory); margin: 0 0 16px 0;">Receive new articles, collection launches, and design inspiration.</h2>
+      <p style="font-size: 1.55rem; color: rgba(247, 242, 237, 0.85); margin-bottom: 36px;">Join our inner circle for quiet reflections on craftsmanship, architectural rug placement, and exclusive previews.</p>
+
+      {% form 'customer', class: 'fm-newsletter-form-center' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input
+          type="email"
+          name="contact[email]"
+          value="{{ form.email }}"
+          placeholder="Your email address"
+          aria-label="Email Address for Newsletter"
+          autocorrect="off"
+          autocapitalize="off"
+          required
+        >
+        <button type="submit" aria-label="Subscribe">
+          &rarr;
+        </button>
+      {% endform %}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "FM Master Homepage",
+  "tag": "section",
+  "class": "section-fm-master-homepage",
+  "settings": [],
+  "presets": [
+    {
+      "name": "FM Master Homepage"
+    }
+  ]
+}
+{% endschema %}

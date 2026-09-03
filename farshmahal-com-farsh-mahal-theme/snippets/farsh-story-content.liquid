@@ -1,0 +1,741 @@
+<!-- Load Google Fonts for Story Page -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-story-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ----------------------------------------------------
+     1. HERO SECTION
+  ---------------------------------------------------- */
+  .fm-story-hero-wrap {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: #FBF8F4;
+  }
+
+  .fm-story-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .fm-story-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: fmStoryKenBurns 20s ease-out infinite alternate;
+  }
+
+  @keyframes fmStoryKenBurns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+  }
+
+  .fm-story-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(251, 248, 244, 1) 0%, rgba(251, 248, 244, 0.45) 45%, rgba(251, 248, 244, 0.1) 80%, transparent 100%);
+    z-index: 2;
+  }
+
+  .fm-story-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 140px 24px 64px 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-story-hero-content {
+      padding: 180px 40px 96px 40px;
+    }
+  }
+
+  .fm-story-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-story-hero-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 44px !important;
+    line-height: 1.0 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 0 24px 0 !important;
+    font-weight: 400 !important;
+    max-width: 900px;
+  }
+  @media (min-width: 768px) {
+    .fm-story-hero-title {
+      font-size: 88px !important;
+    }
+  }
+
+  .fm-story-hero-title span,
+  .fm-story-hero-title span.italic-part,
+  .fm-story-hero-title .font-display,
+  .fm-story-hero-title .italic {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 1.02em !important;
+    line-height: inherit !important;
+    color: inherit !important;
+    font-weight: 400 !important;
+    display: inline !important;
+    vertical-align: baseline !important;
+  }
+
+  .fm-story-hero-sub {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(27, 67, 50, 0.80) !important;
+    max-width: 580px !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  /* ----------------------------------------------------
+     2. OUR BEGINNING SECTION
+  ---------------------------------------------------- */
+  .fm-story-beginning-sec {
+    padding: 96px 0;
+    background-color: #FBF8F4;
+  }
+  @media (min-width: 768px) {
+    .fm-story-beginning-sec {
+      padding: 144px 0;
+    }
+  }
+
+  .fm-story-container-narrow {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-story-container-narrow {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-story-beginning-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .fm-story-beginning-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 48px;
+    }
+    .fm-story-beg-left {
+      grid-column: span 4;
+    }
+    .fm-story-beg-right {
+      grid-column: span 8;
+    }
+  }
+
+  .fm-story-divider-line {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(27, 67, 50, 0.15);
+    margin: 16px 0 24px 0;
+  }
+
+  .fm-story-regions-tag {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 13px !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: rgba(27, 67, 50, 0.60) !important;
+    margin: 0 !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+  }
+
+  .fm-story-lead-quote {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 24px !important;
+    line-height: 1.25 !important;
+    color: #1B4332 !important;
+    margin: 0 0 32px 0 !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.015em !important;
+  }
+  @media (min-width: 768px) {
+    .fm-story-lead-quote {
+      font-size: 36px !important;
+    }
+  }
+
+  .fm-story-lead-quote em,
+  .fm-story-lead-quote em.italic-gold,
+  .fm-story-lead-quote span.italic-gold {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    color: #C9A24D !important;
+    font-weight: 400 !important;
+    font-size: 1em !important;
+    display: inline !important;
+  }
+
+  .fm-story-body-text {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    margin: 0 !important;
+    max-width: 680px !important;
+    font-weight: 400 !important;
+  }
+
+  /* ----------------------------------------------------
+     3. BHADOHI & RAJASTHAN SECTION
+  ---------------------------------------------------- */
+  .fm-story-regions-sec {
+    background-color: #F7F4EE;
+    padding: 96px 0;
+  }
+  @media (min-width: 768px) {
+    .fm-story-regions-sec {
+      padding: 128px 0;
+    }
+  }
+
+  .fm-story-container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-story-container-wide {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-story-regions-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .fm-story-regions-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 48px;
+    }
+    .fm-story-reg-text {
+      grid-column: span 6;
+      order: 1;
+      padding-right: 24px;
+    }
+    .fm-story-reg-img-col {
+      grid-column: span 6;
+      order: 2;
+    }
+  }
+
+  .fm-story-sec-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 32px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 16px 0 24px 0 !important;
+    font-weight: 400 !important;
+    display: block !important;
+  }
+  @media (min-width: 768px) {
+    .fm-story-sec-title {
+      font-size: 52px !important;
+    }
+  }
+
+  .fm-story-sec-title span,
+  .fm-story-sec-title span.italic-part,
+  .fm-story-sec-title .font-display,
+  .fm-story-sec-title .italic {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 1.02em !important;
+    line-height: inherit !important;
+    color: inherit !important;
+    font-weight: 400 !important;
+    display: inline !important;
+  }
+
+  .fm-story-reg-img-wrap {
+    aspect-ratio: 4 / 5;
+    background-color: #EDE8DE;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .fm-story-reg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fm-story-reg-img-wrap:hover .fm-story-reg-img {
+    transform: scale(1.04);
+  }
+
+  /* ----------------------------------------------------
+     4. WHAT WE STAND FOR: 4 PILLARS
+  ---------------------------------------------------- */
+  .fm-story-pillars-sec {
+    padding: 96px 0;
+    background-color: #FBF8F4;
+  }
+  @media (min-width: 768px) {
+    .fm-story-pillars-sec {
+      padding: 144px 0;
+    }
+  }
+
+  .fm-story-pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 56px;
+  }
+  @media (min-width: 640px) {
+    .fm-story-pillars-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .fm-story-pillars-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+  }
+
+  .fm-story-pillar-item {
+    border-top: 1px solid #1B4332;
+    padding-top: 24px;
+  }
+  @media (min-width: 768px) {
+    .fm-story-pillar-item {
+      padding-top: 32px;
+    }
+  }
+
+  .fm-story-pillar-num {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 15px !important;
+    color: #C9A24D !important;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .fm-story-pillar-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 24px !important;
+    color: #1B4332 !important;
+    margin: 0 0 16px 0 !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-story-pillar-title {
+      font-size: 28px !important;
+    }
+  }
+
+  .fm-story-pillar-desc {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(27, 67, 50, 0.70) !important;
+    margin: 0;
+  }
+
+  /* ----------------------------------------------------
+     5. THE CRAFT - ATELIER SECTION (DARK FOREST GREEN)
+  ---------------------------------------------------- */
+  .fm-story-craft-sec {
+    background-color: #1B4332;
+    color: #FBF8F4;
+    padding: 96px 0;
+  }
+  @media (min-width: 768px) {
+    .fm-story-craft-sec {
+      padding: 144px 0;
+    }
+  }
+
+  .fm-story-craft-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .fm-story-craft-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+    }
+    .fm-story-craft-top-img {
+      grid-column: span 7;
+    }
+    .fm-story-craft-top-text {
+      grid-column: span 5;
+      padding-left: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .fm-story-craft-bot-img {
+      grid-column: 8 / span 5;
+      margin-top: 24px;
+    }
+  }
+
+  .fm-story-craft-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #D9BB7A !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-story-craft-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 30px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #FBF8F4 !important;
+    margin: 0 0 20px 0 !important;
+    font-weight: 400 !important;
+    display: block !important;
+  }
+  @media (min-width: 768px) {
+    .fm-story-craft-title {
+      font-size: 46px !important;
+    }
+  }
+
+  .fm-story-craft-title span,
+  .fm-story-craft-title span.italic-part,
+  .fm-story-craft-title .font-display,
+  .fm-story-craft-title .italic {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 1.02em !important;
+    line-height: inherit !important;
+    color: inherit !important;
+    font-weight: 400 !important;
+    display: inline !important;
+  }
+
+  .fm-story-craft-desc {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    color: rgba(251, 248, 244, 0.80) !important;
+    margin: 0 !important;
+  }
+
+  .fm-story-craft-img1 {
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+    background-color: #123023;
+  }
+  .fm-story-craft-img1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fm-story-craft-img1:hover img {
+    transform: scale(1.04);
+  }
+
+  .fm-story-craft-img2 {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #123023;
+  }
+  .fm-story-craft-img2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fm-story-craft-img2:hover img {
+    transform: scale(1.04);
+  }
+
+  /* ----------------------------------------------------
+     6. CLOSING PHILOSOPHY QUOTE
+  ---------------------------------------------------- */
+  .fm-story-closing-sec {
+    padding: 96px 24px;
+    background-color: #FBF8F4;
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .fm-story-closing-sec {
+      padding: 144px 24px;
+    }
+  }
+
+  .fm-story-closing-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .fm-story-closing-text {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.015em !important;
+    color: #1B4332 !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+    display: block !important;
+  }
+  @media (min-width: 768px) {
+    .fm-story-closing-text {
+      font-size: 42px !important;
+    }
+  }
+
+  .fm-story-closing-text span,
+  .fm-story-closing-text span.italic-part,
+  .fm-story-closing-text .font-display,
+  .fm-story-closing-text .italic {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 1.02em !important;
+    line-height: inherit !important;
+    color: inherit !important;
+    font-weight: 400 !important;
+    display: inline !important;
+  }
+{%- endstyle -%}
+
+<div class="fm-story-root" id="FarshStoryPage" data-testid="story-page">
+
+  <!-- 1. HERO SECTION -->
+  <section class="fm-story-hero-wrap">
+    <div class="fm-story-hero-bg">
+      <img
+        src="https://images.unsplash.com/photo-1638310533874-6c124c012e1d?crop=entropy&cs=srgb&fm=jpg&w=2000&q=85"
+        alt="Artisan hand-tufting a rug"
+        class="fm-story-hero-img"
+        loading="eager"
+        width="2000"
+        height="1333"
+      >
+      <div class="fm-story-hero-overlay"></div>
+    </div>
+
+    <div class="fm-story-hero-content">
+      <span class="fm-story-eyebrow">Our Story</span>
+      <h1 class="fm-story-hero-title">
+        Rooted in India.<br>
+        <span class="italic-part">Made by hand.</span>
+      </h1>
+      <p class="fm-story-hero-sub">
+        Farsh Mahal is a rug house built on the weaving traditions of Bhadohi and Rajasthan — two of the most respected craft regions in India.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. OUR BEGINNING -->
+  <section class="fm-story-beginning-sec">
+    <div class="fm-story-container-narrow">
+      <div class="fm-story-beginning-grid">
+        <div class="fm-story-beg-left">
+          <span class="fm-story-eyebrow">Our Beginning</span>
+          <div class="fm-story-divider-line"></div>
+          <p class="fm-story-regions-tag">India · Bhadohi · Rajasthan</p>
+        </div>
+
+        <div class="fm-story-beg-right">
+          <p class="fm-story-lead-quote">
+            Farsh Mahal was founded to bring the finest hand-made rugs of India to homes that value craft.
+            <em class="italic-gold"> One rug, one pair of hands, at a time.</em>
+          </p>
+          <p class="fm-story-body-text">
+            For generations, families in Bhadohi and Rajasthan have practised the same techniques — hand-knotted, hand-tufted, and hand-finished. Our role is to work alongside them and bring their work to a wider audience without shortcuts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. BHADOHI & RAJASTHAN -->
+  <section class="fm-story-regions-sec">
+    <div class="fm-story-container-wide">
+      <div class="fm-story-regions-grid">
+        <div class="fm-story-reg-text">
+          <span class="fm-story-eyebrow">Bhadohi & Rajasthan</span>
+          <h2 class="fm-story-sec-title">
+            Two regions,<br>
+            <span class="italic-part">one lineage.</span>
+          </h2>
+          <p class="fm-story-body-text">
+            Bhadohi is often called the carpet city of India — a place where weaving has been the everyday work of families for centuries. Rajasthan is home to hand-tufting artisans and the natural fibres and dyes that give our rugs their depth.
+          </p>
+          <p class="fm-story-body-text" style="margin-top: 16px !important;">
+            Every Farsh Mahal rug is made in one of these two regions, by artisans whose skill is inherited and refined over years — not weeks.
+          </p>
+        </div>
+
+        <div class="fm-story-reg-img-col">
+          <div class="fm-story-reg-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=85"
+              alt="Rug in a modern interior"
+              class="fm-story-reg-img"
+              loading="lazy"
+              width="1600"
+              height="2000"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHAT WE STAND FOR: 4 PILLARS -->
+  <section class="fm-story-pillars-sec">
+    <div class="fm-story-container-wide">
+      <span class="fm-story-eyebrow">What we stand for</span>
+      <h2 class="fm-story-sec-title">
+        A quiet kind of <span class="italic-part">luxury.</span>
+      </h2>
+
+      <div class="fm-story-pillars-grid">
+        <!-- Pillar 1 -->
+        <div class="fm-story-pillar-item">
+          <span class="fm-story-pillar-num">01</span>
+          <h3 class="fm-story-pillar-title">Craft</h3>
+          <p class="fm-story-pillar-desc">
+            Every rug is hand-tufted, one at a time, by artisans practising a craft passed down through their families.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="fm-story-pillar-item">
+          <span class="fm-story-pillar-num">02</span>
+          <h3 class="fm-story-pillar-title">Materials</h3>
+          <p class="fm-story-pillar-desc">
+            Wool, viscose, and cotton — sourced with care and finished by hand.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="fm-story-pillar-item">
+          <span class="fm-story-pillar-num">03</span>
+          <h3 class="fm-story-pillar-title">Roots</h3>
+          <p class="fm-story-pillar-desc">
+            Made in the weaving belts of Bhadohi and Rajasthan, in the heart of India.
+          </p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="fm-story-pillar-item">
+          <span class="fm-story-pillar-num">04</span>
+          <h3 class="fm-story-pillar-title">Longevity</h3>
+          <p class="fm-story-pillar-desc">
+            Built to be lived on: pieces that age well and stay in the family.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. THE CRAFT: ATELIER SECTION -->
+  <section class="fm-story-craft-sec">
+    <div class="fm-story-container-wide">
+      <div class="fm-story-craft-grid">
+        <!-- Top Left: Workshop Image -->
+        <div class="fm-story-craft-top-img">
+          <div class="fm-story-craft-img1">
+            <img
+              src="https://images.unsplash.com/photo-1524314010015-136ee8ae1ab3?crop=entropy&cs=srgb&fm=jpg&w=1600&q=85"
+              alt="Hands at work in the atelier"
+              loading="lazy"
+              width="1600"
+              height="1100"
+            >
+          </div>
+        </div>
+
+        <!-- Top Right: Text Content -->
+        <div class="fm-story-craft-top-text">
+          <span class="fm-story-craft-eyebrow">The Craft</span>
+          <h2 class="fm-story-craft-title">
+            Every knot,<br>
+            <span class="italic-part">every tuft.</span>
+          </h2>
+          <p class="fm-story-craft-desc">
+            From spinning the yarn and drawing the cartoon to tufting, shearing, and washing — every step is done by hand. It's slower this way. It's meant to be.
+          </p>
+        </div>
+
+        <!-- Bottom Right: Detailed Weave Close-up -->
+        <div class="fm-story-craft-bot-img">
+          <div class="fm-story-craft-img2">
+            <img
+              src="https://images.unsplash.com/photo-1677285193302-3d088cd0a342?crop=entropy&cs=srgb&fm=jpg&w=1600&q=85"
+              alt="Close-up of hand-tufted pile"
+              loading="lazy"
+              width="1600"
+              height="1200"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CLOSING PHILOSOPHY QUOTE -->
+  <section class="fm-story-closing-sec">
+    <div class="fm-story-closing-inner">
+      <p class="fm-story-closing-text">
+        A rug is more than an object.<br>
+        <span class="italic-part">It's a piece of India, made to live with you.</span>
+      </p>
+    </div>
+  </section>
+
+</div>

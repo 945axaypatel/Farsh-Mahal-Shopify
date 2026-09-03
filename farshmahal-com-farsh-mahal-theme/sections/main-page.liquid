@@ -1,0 +1,116 @@
+{%- comment -%}
+  Farsh Mahal Intelligent Dynamic Page Router
+  Automatically connects every Shopify Admin Page handle to its luxury design component
+{%- endcomment -%}
+
+{%- case page.handle -%}
+  {%- when 'shop', 'all-rugs', 'catalog' -%}
+    {% section 'farsh-shop-collection' %}
+
+  {%- when 'custom-rugs', 'custom' -%}
+    {% render 'farsh-custom-rug-content' %}
+
+  {%- when 'story', 'our-story', 'about', 'about-us' -%}
+    {% render 'farsh-story-content' %}
+
+  {%- when 'trade', 'trade-program', 'trade-inquiry' -%}
+    {% render 'farsh-trade-content' %}
+
+  {%- when 'contact', 'contact-us', 'concierge' -%}
+    {% render 'farsh-contact-content' %}
+
+  {%- when 'faq', 'faqs', 'help' -%}
+    {% render 'farsh-faq-content' %}
+
+  {%- when 'anti-slip-guide', 'anti-slip', 'rug-pad-guide' -%}
+    {% render 'farsh-guide-anti-slip-content' %}
+
+  {%- when 'rug-care-selection-guide', 'care-selection-guide', 'rug-care-guide', 'care-guide', 'care' -%}
+    {% render 'farsh-guide-rug-care-content' %}
+
+  {%- when 'shipping-policy', 'shipping', 'delivery' -%}
+    {% render 'farsh-policy-shipping-content' %}
+
+  {%- when 'return-policy', 'returns', 'refund-policy' -%}
+    {% render 'farsh-policy-return-content' %}
+
+  {%- when 'privacy-policy', 'privacy' -%}
+    {% render 'farsh-policy-privacy-content' %}
+
+  {%- when 'terms-conditions', 'terms', 'terms-of-service' -%}
+    {% render 'farsh-policy-terms-content' %}
+
+  {%- when 'journal', 'journal-essays' -%}
+    {% render 'farsh-journal-content' %}
+
+  {%- when 'rug-size-guide', 'how-to-choose-the-perfect-rug-size-for-every-room' -%}
+    {% render 'farsh-article-content', article_handle: 'rug-size-guide' %}
+
+  {%- when 'hand-tufted-explained', 'understanding-hand-tufted-rugs' -%}
+    {% render 'farsh-article-content', article_handle: 'hand-tufted-explained' %}
+
+  {%- when 'layering-rugs', 'layering-rugs-like-an-interior-designer' -%}
+    {% render 'farsh-article-content', article_handle: 'layering-rugs' %}
+
+  {%- when 'color-trends', 'color-trends-for-modern-interiors' -%}
+    {% render 'farsh-article-content', article_handle: 'color-trends' %}
+
+  {%- when 'beauty-of-texture', 'the-beauty-of-texture-in-interior-design' -%}
+    {% render 'farsh-article-content', article_handle: 'beauty-of-texture' %}
+
+  {%- else -%}
+    {{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+    {%- style -%}
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+      }
+
+      @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+      }
+    {%- endstyle -%}
+
+    <div class="page-width page-width--narrow section-{{ section.id }}-padding" style="max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px;">
+      <h1 class="main-page-title page-title h0" style="font-family: 'Playfair Display', serif; color: #1B4332; margin-bottom: 24px;">
+        {{ page.title | escape }}
+      </h1>
+      <div class="rte" style="font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 1.7; color: rgba(27, 67, 50, 0.85);">
+        {{ page.content }}
+      </div>
+    </div>
+{%- endcase -%}
+
+{% schema %}
+{
+  "name": "Farsh Mahal Main Page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 48
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.15" flood-color="#1B4332" />
+    </filter>
+  </defs>
+  <!-- Background rug -->
+  <path d="M 100 60 Q 300 30 500 60 Q 550 300 520 620 Q 300 720 80 620 Q 50 300 100 60 Z" fill="#EAE4DA" filter="url(#shadow)" />
+  
+  <!-- Mid-century Arches & Geometrics -->
+  <path d="M 120 100 Q 300 80 480 100 Q 500 280 450 400 Q 300 480 150 400 Q 100 280 120 100 Z" fill="#D5CABA" />
+  <path d="M 160 160 Q 300 140 440 160 Q 420 320 380 420 Q 300 480 220 420 Q 180 320 160 160 Z" fill="#5C4533" />
+  <path d="M 200 220 Q 300 200 400 220 Q 380 320 300 380 Q 220 320 200 220 Z" fill="#C9A24D" opacity="0.9" />
+
+  <!-- Concentric Carved Arch Grooves -->
+  <path d="M 140 480 Q 300 380 460 480" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M 130 520 Q 300 420 470 520" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M 120 560 Q 300 460 480 560" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.4"/>
+  <path d="M 110 600 Q 300 500 490 600" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.3"/>
+</svg>

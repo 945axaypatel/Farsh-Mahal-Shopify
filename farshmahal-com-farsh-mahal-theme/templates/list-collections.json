@@ -1,0 +1,82 @@
+{
+  "sections": {
+    "showcase": {
+      "type": "farsh-collections-showcase",
+      "blocks": {
+        "col_1": {
+          "type": "collection_feature",
+          "settings": {
+            "collection": "organic-terrain",
+            "eyebrow": "Collection \u00b7 01",
+            "title": "Organic Terrain",
+            "subtitle": "Nature, Reimagined.",
+            "description": "Flowing lines, earthy palettes, and layered textures inspired by landscapes shaped over time. Perfect for modern organic interiors seeking warmth and calm.",
+            "fallback_image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-05DuneMovement_2.png?v=1786358947"
+          }
+        },
+        "col_2": {
+          "type": "collection_feature",
+          "settings": {
+            "collection": "modern-grid",
+            "eyebrow": "Collection \u00b7 02",
+            "title": "Modern Grid",
+            "subtitle": "Structure Meets Simplicity.",
+            "description": "Architectural forms balanced with understated elegance. Designed for contemporary spaces where clean lines create quiet sophistication.",
+            "fallback_image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-09ShadowGrid_4.png?v=1786360812"
+          }
+        },
+        "col_3": {
+          "type": "collection_feature",
+          "settings": {
+            "collection": "retro-geometry",
+            "eyebrow": "Collection \u00b7 03",
+            "title": "Retro Geometry",
+            "subtitle": "Bold Shapes. Timeless Character.",
+            "description": "Graphic patterns inspired by iconic mid-century design. Confident enough to stand out, refined enough to remain timeless.",
+            "fallback_image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-10GalleryAbstract_3.png?v=1786364485"
+          }
+        },
+        "col_4": {
+          "type": "collection_feature",
+          "settings": {
+            "collection": "nordic-calm",
+            "eyebrow": "Collection \u00b7 04",
+            "title": "Nordic Calm",
+            "subtitle": "Quiet Luxury.",
+            "description": "Soft neutrals, subtle textures, and Scandinavian-inspired simplicity. Designed to create peaceful, inviting spaces.",
+            "fallback_image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence1_2.png?v=1786365949"
+          }
+        },
+        "col_5": {
+          "type": "collection_feature",
+          "settings": {
+            "collection": "texture-max",
+            "eyebrow": "Collection \u00b7 05",
+            "title": "Texture Max",
+            "subtitle": "Texture as Design.",
+            "description": "Layered surfaces, sculpted piles, and dimensional craftsmanship create rugs that engage every sense.",
+            "fallback_image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-10LuxeBasketTexture_1.png?v=1786362520"
+          }
+        }
+      },
+      "block_order": [
+        "col_1",
+        "col_2",
+        "col_3",
+        "col_4",
+        "col_5"
+      ],
+      "settings": {
+        "eyebrow": "OUR COLLECTIONS",
+        "heading": "Every collection",
+        "heading_italic": "begins with inspiration.",
+        "subtext": "Each rug is thoughtfully designed to create a distinct atmosphere while sharing the same commitment to craftsmanship and quality.",
+        "philosophy_line1": "One philosophy.",
+        "philosophy_line2": "Beautiful design made for everyday living."
+      }
+    }
+  },
+  "order": [
+    "showcase"
+  ]
+}

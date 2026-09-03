@@ -1,0 +1,474 @@
+<!-- Farsh Mahal - Featured Arrivals / Editor's Selection Section -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-arrivals-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | default: 96 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 120 }}px;
+    background-color: {{ section.settings.bg_color | default: '#FAF7F2' }};
+  }
+  .fm-arrivals-container-{{ section.id }} {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-arrivals-container-{{ section.id }} {
+      padding: 0 48px;
+    }
+  }
+
+  .fm-arrivals-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    gap: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-arrivals-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      gap: 24px;
+    }
+  }
+
+  .fm-arrivals-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C1914E !important;
+    margin: 0 0 14px 0 !important;
+    display: block !important;
+    line-height: 1.4 !important;
+  }
+  .fm-arrivals-heading {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(28px, 3.8vw, 46px) !important;
+    font-weight: 400 !important;
+    color: #1B4332 !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 !important;
+  }
+  .fm-arrivals-heading span.italic,
+  .fm-arrivals-heading .fm-arrivals-italic {
+    font-style: italic !important;
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 1em !important;
+    font-weight: 400 !important;
+    color: #1B4332 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .fm-arrivals-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    color: #1B4332 !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+  }
+  .fm-arrivals-link span {
+    color: #1B4332 !important;
+  }
+  .fm-arrivals-link svg {
+    color: #1B4332 !important;
+    stroke: #1B4332 !important;
+  }
+  .fm-arrivals-link:hover {
+    color: #C1914E !important;
+    gap: 12px !important;
+  }
+  .fm-arrivals-link:hover span {
+    color: #C1914E !important;
+  }
+  .fm-arrivals-link:hover svg {
+    color: #C1914E !important;
+    stroke: #C1914E !important;
+  }
+
+  .fm-arrivals-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-arrivals-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .fm-arrivals-grid {
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 32px;
+      row-gap: 48px;
+    }
+  }
+
+  .fm-prod-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+    color: inherit;
+    position: relative;
+  }
+  .fm-prod-media {
+    aspect-ratio: 4 / 5;
+    background-color: #F4F0E8;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 14px;
+  }
+  .fm-prod-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fm-prod-card:hover .fm-prod-img {
+    transform: scale(1.05);
+  }
+  .fm-prod-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #1B4332;
+    color: #F7F2ED;
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.20em;
+    padding: 3px 7px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .fm-prod-meta {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .fm-prod-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .fm-prod-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    color: #1B4332 !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+  }
+  .fm-prod-series {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 13px !important;
+    color: #C1914E !important;
+    line-height: 1.2 !important;
+  }
+  .fm-prod-price {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #1B4332 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .fm-prod-compare-price {
+    color: rgba(27, 67, 50, 0.45);
+    text-decoration: line-through;
+    font-size: 11px;
+  }
+{%- endstyle -%}
+
+<section class="fm-arrivals-section-{{ section.id }}" aria-label="Featured Collection Arrivals">
+  <div class="fm-arrivals-container-{{ section.id }}">
+    <div class="fm-arrivals-header">
+      <div>
+        <span class="fm-arrivals-eyebrow">{{ section.settings.eyebrow | default: "EDITOR'S SELECTION" }}</span>
+        <h2 class="fm-arrivals-heading">
+          {{ section.settings.heading | default: 'New arrivals to' }} <span class="fm-arrivals-italic">live</span><br>
+          <span class="fm-arrivals-italic">with.</span>
+        </h2>
+      </div>
+      <div>
+        <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="fm-arrivals-link">
+          <span>{{ section.settings.button_label | default: 'SHOP ALL' }}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="fm-arrivals-grid">
+      {%- assign featured_collection = section.settings.collection | default: collections['all'] -%}
+      {%- if featured_collection != blank and featured_collection.products_count > 0 -%}
+        {%- for product in featured_collection.products limit: section.settings.products_to_show -%}
+          <a href="{{ product.url }}" class="fm-prod-card" data-testid="product-card-{{ product.handle }}">
+            <div class="fm-prod-media">
+              {%- if product.featured_image != blank -%}
+                <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+              {%- elsif product.images.first != blank -%}
+                <img src="{{ product.images.first | image_url: width: 800 }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+              {%- else -%}
+                {%- assign fallback_idx = forloop.index0 | modulo: 8 | plus: 1 -%}
+                {%- case fallback_idx -%}
+                  {%- when 1 -%}<img src="{{ 'rug-terra-hush.svg' | asset_url }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+                  {%- when 2 -%}<img src="{{ 'rug-stonewash-bloom.svg' | asset_url }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+                  {%- when 3 -%}<img src="{{ 'rug-dune-movement.svg' | asset_url }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+                  {%- when 4 -%}<img src="{{ 'rug-canyon-layers.svg' | asset_url }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+                  {%- when 5 -%}<img src="{{ 'rug-organic-silence.svg' | asset_url }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+                  {%- when 6 -%}<img src="{{ 'rug-nordic-grid.svg' | asset_url }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+                  {%- when 7 -%}<img src="{{ 'rug-winter-light.svg' | asset_url }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+                  {%- when 8 -%}<img src="{{ 'rug-layered-calm.svg' | asset_url }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+                {%- endcase -%}
+              {%- endif -%}
+              {%- if product.tags contains 'new' or forloop.first -%}
+                <span class="fm-prod-badge">NEW</span>
+              {%- endif -%}
+            </div>
+            <div class="fm-prod-meta">
+              <div class="fm-prod-title-wrap">
+                <h3 class="fm-prod-title">{{ product.title }}</h3>
+              </div>
+              <div class="fm-prod-price">
+                {%- if product.compare_at_price > product.price -%}
+                  <span class="fm-prod-compare-price">{% render 'farsh-price-formatted', price: product.compare_at_price %}</span>
+                {%- endif -%}
+                <span>{% render 'farsh-price-formatted', price: product.price %}</span>
+              </div>
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- elsif section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- assign prod = block.settings.product -%}
+          {%- if prod != blank -%}
+            <a href="{{ prod.url }}" class="fm-prod-card" {{ block.shopify_attributes }}>
+              <div class="fm-prod-media">
+                {%- if prod.featured_image != blank -%}
+                  <img src="{{ prod.featured_image | image_url: width: 800 }}" alt="{{ prod.title | escape }}" class="fm-prod-img" loading="lazy">
+                {%- endif -%}
+                {%- if block.settings.is_new or prod.tags contains 'new' or forloop.first -%}
+                  <span class="fm-prod-badge">NEW</span>
+                {%- endif -%}
+              </div>
+              <div class="fm-prod-meta">
+                <div class="fm-prod-title-wrap">
+                  <h3 class="fm-prod-title">{{ prod.title }}</h3>
+                </div>
+                <div class="fm-prod-price">
+                  {%- if prod.compare_at_price > prod.price -%}
+                    <span class="fm-prod-compare-price">{% render 'farsh-price-formatted', price: prod.compare_at_price %}</span>
+                  {%- endif -%}
+                  <span>{% render 'farsh-price-formatted', price: prod.price %}</span>
+                </div>
+              </div>
+            </a>
+          {%- else -%}
+            {%- assign block_title = block.settings.title | default: 'Terra Hush' -%}
+            {%- assign block_link = block.settings.link | default: '/collections/all' -%}
+            <a href="{{ block_link }}" class="fm-prod-card" {{ block.shopify_attributes }}>
+              <div class="fm-prod-media">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block_title | escape }}" class="fm-prod-img" loading="lazy">
+                {%- elsif block.settings.asset_image != blank -%}
+                  <img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block_title | escape }}" class="fm-prod-img" loading="lazy">
+                {%- else -%}
+                  <img src="{{ 'rug-nordic-calm.svg' | asset_url }}" alt="{{ block_title | escape }}" class="fm-prod-img" loading="lazy">
+                {%- endif -%}
+                {%- if block.settings.is_new or forloop.first -%}
+                  <span class="fm-prod-badge">NEW</span>
+                {%- endif -%}
+              </div>
+              <div class="fm-prod-meta">
+                <div class="fm-prod-title-wrap">
+                  <h3 class="fm-prod-title">{{ block_title }}</h3>
+                </div>
+                <div class="fm-prod-price">
+                  <span>{{ block.settings.price | default: '€1,678' }}</span>
+                </div>
+              </div>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for product in collections.all.products limit: section.settings.products_to_show -%}
+          <a href="{{ product.url }}" class="fm-prod-card">
+            <div class="fm-prod-media">
+              {%- if product.featured_image != blank -%}
+                <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}" class="fm-prod-img" loading="lazy">
+              {%- endif -%}
+              {%- if product.tags contains 'new' or forloop.first -%}
+                <span class="fm-prod-badge">NEW</span>
+              {%- endif -%}
+            </div>
+            <div class="fm-prod-meta">
+              <div class="fm-prod-title-wrap">
+                <h3 class="fm-prod-title">{{ product.title }}</h3>
+              </div>
+              <div class="fm-prod-price">
+                {%- if product.compare_at_price > product.price -%}
+                  <span class="fm-prod-compare-price">{% render 'farsh-price-formatted', price: product.compare_at_price %}</span>
+                {%- endif -%}
+                <span>{% render 'farsh-price-formatted', price: product.price %}</span>
+              </div>
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FM Featured Arrivals",
+  "tag": "section",
+  "class": "section-fm-featured-arrivals",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "EDITOR'S SELECTION"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "New arrivals to"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading (Italic)",
+      "default": "live with."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Shopify Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 16,
+      "step": 2,
+      "label": "Products to Show",
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "VIEW ALL RUGS"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF7F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "custom_product",
+      "name": "Product Item",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Shopify Product"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title"
+        },
+        {
+          "type": "text",
+          "id": "series",
+          "label": "Series / Collection"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Custom Price"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Asset SVG/JPG Name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Product Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_new",
+          "label": "Show NEW Badge",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Featured Arrivals"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,247 @@
+<!-- Load exact Google Fonts for Care & Selection Guide Page -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-care-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    padding-top: 40px;
+    padding-bottom: 96px;
+    min-height: 70vh;
+  }
+  @media (min-width: 768px) {
+    .fm-care-root {
+      padding-top: 60px;
+      padding-bottom: 128px;
+    }
+  }
+
+  .fm-care-header {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+  @media (min-width: 768px) {
+    .fm-care-header {
+      padding-top: 48px;
+      padding-bottom: 56px;
+    }
+  }
+
+  .fm-care-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-care-header-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-care-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-care-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 38px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 0 16px 0 !important;
+    font-weight: 400 !important;
+    max-width: 800px;
+  }
+  @media (min-width: 768px) {
+    .fm-care-title {
+      font-size: 64px !important;
+    }
+  }
+
+  .fm-care-subtitle {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    max-width: 640px !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .fm-care-body-sec {
+    padding: 56px 0;
+  }
+  @media (min-width: 768px) {
+    .fm-care-body-sec {
+      padding: 80px 0;
+    }
+  }
+
+  .fm-care-body-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-care-body-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-care-h2 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 26px !important;
+    line-height: 1.18 !important;
+    color: #1B4332 !important;
+    margin-top: 56px !important;
+    margin-bottom: 20px !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .fm-care-h2:first-child {
+    margin-top: 0 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-care-h2 {
+      font-size: 34px !important;
+    }
+  }
+
+  .fm-care-h3 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+    color: #1B4332 !important;
+    margin-top: 36px !important;
+    margin-bottom: 14px !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-care-h3 {
+      font-size: 22px !important;
+    }
+  }
+
+  .fm-care-p {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.80) !important;
+    margin: 0 0 18px 0 !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-care-p {
+      font-size: 16px !important;
+    }
+  }
+
+  .fm-care-ul {
+    list-style: disc !important;
+    padding-left: 24px !important;
+    margin: 0 0 24px 0 !important;
+    color: rgba(27, 67, 50, 0.80) !important;
+    line-height: 1.8 !important;
+    font-size: 15px !important;
+  }
+  @media (min-width: 768px) {
+    .fm-care-ul {
+      font-size: 16px !important;
+    }
+  }
+  .fm-care-ul li {
+    margin-bottom: 10px !important;
+  }
+  .fm-care-ul li::marker {
+    color: #C9A24D !important;
+  }
+{%- endstyle -%}
+
+<div class="fm-care-root" data-testid="content-page-rug-care-selection-guide">
+  <!-- Header Banner -->
+  <header class="fm-care-header">
+    <div class="fm-care-header-inner">
+      <span class="fm-care-eyebrow">Guide</span>
+      <h1 class="fm-care-title">Rug Care & Selection Guide</h1>
+      <p class="fm-care-subtitle">Everything you need to look after your rug — and choose the right size for your room.</p>
+    </div>
+  </header>
+
+  <!-- Body Content -->
+  <section class="fm-care-body-sec">
+    <div class="fm-care-body-inner">
+
+      <!-- 1. General care -->
+      <h2 class="fm-care-h2">General care</h2>
+      <ul class="fm-care-ul">
+        <li><strong>Sunlight:</strong> Limit continuous and direct exposure to sunlight.</li>
+        <li><strong>Rotation:</strong> Rotate your rug periodically for even wear.</li>
+        <li><strong>Loose threads:</strong> Trim loose threads carefully with scissors — never pull.</li>
+        <li><strong>Furniture protectors:</strong> Use protectors under heavy furniture legs to prevent pile from flattening.</li>
+        <li><strong>Shedding:</strong> Expect natural shedding for the first few months, up to about six. It reduces over time.</li>
+        <li><strong>Professional cleaning:</strong> Have your rug professionally cleaned every 2–3 years by trusted experts. Ask for a pre-cleaning inspection and a written receipt with a work guarantee.</li>
+        <li><strong>Spills:</strong> Address spills immediately by blotting with a clean, absorbent cloth. Rinse and dry thoroughly to prevent staining.</li>
+        <li><strong>Ventilation:</strong> To freshen a rug, turn it upside down and beat it gently in an open space to remove loose yarn and dust.</li>
+      </ul>
+
+      <!-- 2. Vacuuming -->
+      <h2 class="fm-care-h2">Vacuuming</h2>
+      <p class="fm-care-p">Vacuum regularly to remove surface dirt and prevent discoloration.</p>
+      <ul class="fm-care-ul">
+        <li>Use a low-power setting and avoid a beater brush.</li>
+        <li>Canister vacuums, brooms, and hand-held attachments are best.</li>
+        <li>Strong-suction vacuums can pull fibres from the base — not recommended.</li>
+        <li>Avoid repeated vacuuming across edges and fringes to prevent damage.</li>
+      </ul>
+
+      <!-- 3. Storing rugs safely -->
+      <h2 class="fm-care-h2">Storing rugs safely</h2>
+      <ul class="fm-care-ul">
+        <li><strong>Wrap:</strong> Before storing, wrap the rug in plastic or fabric.</li>
+        <li><strong>Roll, don't fold:</strong> Roll the rug with the front side facing outwards, then cover with cloth.</li>
+        <li><strong>Environment:</strong> Keep the rolled rug in a dry area with good air circulation; clean the space regularly to deter pests.</li>
+        <li><strong>Don't pile items on it:</strong> Weight on a stored rug can damage the pile permanently.</li>
+      </ul>
+
+      <!-- 4. Sizing — how to pick the right rug -->
+      <h2 class="fm-care-h2">Sizing — how to pick the right rug</h2>
+      <ul class="fm-care-ul">
+        <li><strong>Measure first:</strong> Note your room's dimensions and any limitations like doorways.</li>
+        <li><strong>Go a size larger:</strong> A larger rug tends to unify a room and make it feel more cohesive.</li>
+        <li><strong>The 18-inch rule:</strong> Aim for roughly 18 inches of exposed floor around the perimeter — adjust based on room size and layout.</li>
+        <li><strong>Trust your eye:</strong> These are guidelines. Experiment until it feels right.</li>
+      </ul>
+
+      <!-- 5. Measuring an abstract-shaped rug -->
+      <h3 class="fm-care-h3">Measuring an abstract-shaped rug</h3>
+      <ul class="fm-care-ul">
+        <li><strong>Consider the useable area:</strong> Irregular shapes may not cover the floor uniformly — plan for how it will actually sit.</li>
+        <li><strong>Outline the area:</strong> Use painter's tape to mark the area you want covered; it helps you visualise footprint and flow.</li>
+        <li><strong>Measure length and width:</strong> Within the outlined space, take the maximum length and width to arrive at the largest possible dimensions.</li>
+      </ul>
+
+      <!-- 6. How to measure the rug itself -->
+      <h3 class="fm-care-h3">How to measure the rug itself</h3>
+      <ul class="fm-care-ul">
+        <li>Stretch the tape from the longest point to the opposite end for maximum length.</li>
+        <li>Repeat at the widest part for the width. The two measurements may not be directly opposite each other.</li>
+        <li>Think about how the shape complements or contrasts with existing furniture in the room.</li>
+      </ul>
+
+    </div>
+  </section>
+</div>

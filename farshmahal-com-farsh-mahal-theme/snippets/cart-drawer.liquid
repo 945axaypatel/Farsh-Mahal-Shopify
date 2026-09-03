@@ -1,0 +1,636 @@
+{% comment %}
+  Renders Farsh Mahal luxury cart drawer exactly matching design
+  Usage:
+  {% render 'cart-drawer' %}
+{% endcomment %}
+
+{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .drawer {
+    visibility: hidden;
+  }
+  .drawer__inner {
+    width: 440px !important;
+    max-width: calc(100vw - 16px) !important;
+    background-color: #FBF8F4 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+  cart-drawer.is-empty .drawer__inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    grid-template-rows: none !important;
+  }
+  .drawer__inner-empty {
+    flex: 1 1 auto !important;
+    height: auto !important;
+    background-color: #FBF8F4 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 48px 32px !important;
+  }
+  cart-drawer-items {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    display: block !important;
+    min-height: 0 !important;
+  }
+  .cart-drawer__form {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100% !important;
+    flex: 1 1 auto !important;
+  }
+  .fm-cart-drawer-root {
+    background-color: #FBF8F4 !important;
+    color: #1B4332 !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  }
+  .fm-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px 18px 28px;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.08);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    background-color: #FBF8F4;
+    z-index: 10;
+  }
+  .fm-drawer-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    color: #1B4332 !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .fm-drawer-close-btn {
+    background: transparent !important;
+    border: none !important;
+    color: #1B4332 !important;
+    cursor: pointer;
+    padding: 6px;
+    margin: -6px -6px -6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .fm-drawer-close-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+  .fm-drawer-close-btn:hover {
+    color: #C1914E !important;
+    transform: scale(1.05);
+  }
+  .fm-drawer-close-btn:hover svg {
+    stroke: #C1914E !important;
+  }
+  .fm-drawer-items-wrap {
+    padding: 0 !important;
+    overflow-y: auto !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+  }
+  .fm-drawer-item {
+    display: flex;
+    gap: 16px;
+    padding: 18px 24px;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.08);
+    align-items: flex-start;
+  }
+  .fm-drawer-item-img-wrap {
+    width: 76px;
+    height: 95px;
+    flex-shrink: 0;
+    background-color: #F7F2ED;
+    overflow: hidden;
+    position: relative;
+  }
+  .fm-drawer-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .fm-drawer-item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 95px;
+  }
+  .fm-drawer-item-info {
+    margin-bottom: 8px;
+  }
+  .fm-drawer-item-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 17px !important;
+    font-weight: 400 !important;
+    color: #1B4332 !important;
+    text-decoration: none !important;
+    line-height: 1.2 !important;
+    margin: 0 0 3px 0 !important;
+    display: block;
+  }
+  .fm-drawer-item-title:hover {
+    color: #C1914E !important;
+  }
+  .fm-drawer-item-variant {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 9.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #8B8074 !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+  }
+  .fm-drawer-item-actions-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+  }
+  .fm-drawer-qty-box.quantity:after,
+  .fm-drawer-qty-box.quantity:before {
+    display: none !important;
+    content: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .fm-drawer-qty-box {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border: 1px solid #D6CFC7 !important;
+    background-color: #FBF8F4 !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    width: 96px !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .fm-drawer-qty-box .quantity__button {
+    width: 28px !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #1B4332 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    transition: color 0.2s ease !important;
+  }
+  .fm-drawer-qty-box .quantity__button:hover {
+    color: #C1914E !important;
+  }
+  .fm-drawer-qty-box .quantity__button svg {
+    stroke: currentColor !important;
+    transition: stroke 0.2s ease !important;
+  }
+  .fm-drawer-qty-box .quantity__input {
+    width: 40px !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #1B4332 !important;
+    font-family: 'Manrope', -apple-system, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    -moz-appearance: textfield !important;
+    display: block !important;
+  }
+  .fm-drawer-qty-box .quantity__input:focus,
+  .fm-drawer-qty-box .quantity__input:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .fm-drawer-qty-box .quantity__input::-webkit-outer-spin-button,
+  .fm-drawer-qty-box .quantity__input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+  }
+  .fm-drawer-item-price-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .fm-drawer-item-price {
+    font-family: 'Manrope', -apple-system, sans-serif !important;
+    font-size: 15.5px !important;
+    font-weight: 500 !important;
+    color: #1B4332 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 4px !important;
+  }
+  .fm-drawer-remove-btn {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #8E877E !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    transition: color 0.2s ease;
+  }
+  .fm-drawer-remove-btn:hover {
+    color: #C1914E !important;
+  }
+  .fm-drawer-footer {
+    padding: 18px 24px 22px 24px !important;
+    border-top: 1px solid rgba(27, 67, 50, 0.08) !important;
+    background-color: #FBF8F4 !important;
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+  }
+  .fm-drawer-subtotal-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .fm-drawer-subtotal-label {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.25em !important;
+    text-transform: uppercase !important;
+    color: #C1914E !important;
+  }
+  .fm-drawer-subtotal-val {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 26px !important;
+    color: #1B4332 !important;
+    font-weight: 400 !important;
+    line-height: 1;
+  }
+  .fm-drawer-checkout-btn,
+  .cart__checkout-button,
+  #CartDrawer-Checkout,
+  button#CartDrawer-Checkout {
+    width: 100% !important;
+    background-color: #1B4332 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #1B4332 !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.20em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    padding: 14px 22px !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    cursor: pointer;
+    transition: all 0.3s ease !important;
+  }
+  .fm-drawer-checkout-btn span,
+  .fm-drawer-checkout-btn *,
+  #CartDrawer-Checkout span,
+  #CartDrawer-Checkout * {
+    color: #FFFFFF !important;
+    fill: none !important;
+  }
+  .fm-drawer-checkout-btn svg,
+  #CartDrawer-Checkout svg {
+    stroke: #FFFFFF !important;
+    color: #FFFFFF !important;
+  }
+  .fm-drawer-checkout-btn:hover,
+  .fm-drawer-checkout-btn:focus,
+  .fm-drawer-checkout-btn:active,
+  #CartDrawer-Checkout:hover,
+  #CartDrawer-Checkout:focus,
+  #CartDrawer-Checkout:active {
+    background-color: #1B4332 !important;
+    border-color: #1B4332 !important;
+    color: #FFFFFF !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .fm-drawer-checkout-btn:hover span,
+  .fm-drawer-checkout-btn:hover *,
+  #CartDrawer-Checkout:hover span,
+  #CartDrawer-Checkout:hover * {
+    color: #FFFFFF !important;
+  }
+  .fm-drawer-continue-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    background: transparent !important;
+    border: none !important;
+    color: rgba(27, 67, 50, 0.65) !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .fm-drawer-continue-btn:hover {
+    color: #1B4332 !important;
+  }
+</style>
+
+<script>
+  window.fmIsCartUpdating = false;
+  window.fmUpdateCartQty = function(line, qty, btn) {
+    if (window.fmIsCartUpdating) return;
+    window.fmIsCartUpdating = true;
+    var drawer = document.querySelector('cart-drawer');
+    var itemsWrap = document.querySelector('.fm-drawer-items-wrap');
+    if (itemsWrap) itemsWrap.style.opacity = '0.5';
+
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        line: line,
+        quantity: qty,
+        sections: ['cart-drawer', 'cart-icon-bubble'],
+        sections_url: window.location.pathname
+      })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(state) {
+      window.fmIsCartUpdating = false;
+      if (itemsWrap) itemsWrap.style.opacity = '1';
+      if (state.sections && state.sections['cart-drawer']) {
+        var doc = new DOMParser().parseFromString(state.sections['cart-drawer'], 'text/html');
+        var newInner = doc.querySelector('.drawer__inner');
+        var curInner = document.querySelector('.drawer__inner');
+        if (newInner && curInner) {
+          curInner.innerHTML = newInner.innerHTML;
+        }
+      }
+      if (state.sections && state.sections['cart-icon-bubble']) {
+        var iconSec = document.querySelector('#cart-icon-bubble');
+        var doc2 = new DOMParser().parseFromString(state.sections['cart-icon-bubble'], 'text/html');
+        var newIcon = doc2.querySelector('#cart-icon-bubble') || doc2.querySelector('.shopify-section');
+        if (iconSec && newIcon) iconSec.innerHTML = newIcon.innerHTML;
+      }
+      if (drawer) {
+        if (state.item_count === 0) {
+          drawer.classList.add('is-empty');
+        } else {
+          drawer.classList.remove('is-empty');
+        }
+        if (typeof drawer.open === 'function') drawer.open();
+      }
+    })
+    .catch(function(err) {
+      console.error('Cart update error:', err);
+      window.fmIsCartUpdating = false;
+      if (itemsWrap) itemsWrap.style.opacity = '1';
+    });
+  };
+</script>
+
+<cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
+  <div id="CartDrawer" class="cart-drawer">
+    <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
+    <div
+      class="drawer__inner gradient fm-cart-drawer-root"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Your Cart"
+      tabindex="-1"
+    >
+      <!-- Header: "Your Cart" + Close button -->
+      <div class="fm-drawer-header">
+        <h2 class="fm-drawer-title">Your Cart</h2>
+        <button
+          class="fm-drawer-close-btn"
+          type="button"
+          onclick="this.closest('cart-drawer').close()"
+          aria-label="Close"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      {%- if cart == empty -%}
+        <!-- Clean Empty State Matching Image 1 -->
+        <div class="drawer__inner-empty">
+          <h2 class="cart__empty-text" style="font-family: 'Playfair Display', Georgia, serif !important; font-size: 26px !important; color: #1B4332 !important; margin: 0 0 12px 0 !important; font-weight: 400 !important; line-height: 1.2 !important; letter-spacing: -0.01em !important;">
+            Your cart is empty
+          </h2>
+          <p style="font-family: 'Manrope', -apple-system, sans-serif !important; font-size: 14px !important; color: rgba(27, 67, 50, 0.70) !important; margin: 0 0 28px 0 !important; max-width: 320px !important; line-height: 1.55 !important; font-weight: 400 !important;">
+            Discover a rug that becomes part of your story.
+          </p>
+          <a href="{{ routes.all_products_collection_url }}" class="button fm-drawer-checkout-btn" style="display: inline-flex !important; width: auto !important; padding: 14px 34px !important; font-size: 11px !important; font-weight: 600 !important; letter-spacing: 0.24em !important; text-transform: uppercase !important; background-color: #1B4332 !important; color: #FFFFFF !important; border: 1px solid #1B4332 !important; border-radius: 0 !important; text-decoration: none !important; cursor: pointer !important;" onclick="this.closest('cart-drawer').close()">
+            CONTINUE SHOPPING
+          </a>
+        </div>
+      {%- else -%}
+        <!-- Non-Empty State: Items + Footer -->
+
+        <cart-drawer-items
+          view-event-payload="{{ cart | standard_event_data: 'view', context: 'dialog' | escape }}"
+          view-event-trigger="manual"
+        >
+          <form
+            action="{{ routes.cart_url }}"
+            id="CartDrawer-Form"
+            class="cart__contents cart-drawer__form"
+            method="post"
+          >
+            <div id="CartDrawer-CartItems" class="drawer__contents js-contents fm-drawer-items-wrap">
+              <div class="drawer__cart-items-wrapper">
+                {%- for item in cart.items -%}
+                  <div
+                    id="CartDrawer-Item-{{ forloop.index }}"
+                    class="fm-drawer-item cart-item"
+                  >
+                    <!-- 1. Thumbnail -->
+                    <div class="fm-drawer-item-img-wrap cart-item__media">
+                      {% if item.image %}
+                        <a href="{{ item.url }}" tabindex="-1">
+                          <img
+                            class="fm-drawer-img cart-item__image"
+                            src="{{ item.image | image_url: width: 280 }}"
+                            alt="{{ item.image.alt | escape }}"
+                            loading="lazy"
+                            width="84"
+                            height="105"
+                          >
+                        </a>
+                      {% endif %}
+                    </div>
+
+                    <!-- 2. Main Details Column -->
+                    <div class="fm-drawer-item-content cart-item__details">
+                      
+                      <!-- Top: Title & Variant -->
+                      <div class="fm-drawer-item-info">
+                        <a href="{{ item.url }}" class="fm-drawer-item-title">{{ item.product.title | escape }}</a>
+                        {%- if item.product.has_only_default_variant == false -%}
+                          <div class="fm-drawer-item-variant">
+                            {%- for option in item.options_with_values -%}
+                              <span>{{ option.value | upcase }}</span>{%- unless forloop.last %} • {% endunless -%}
+                            {%- endfor -%}
+                          </div>
+                        {%- endif -%}
+                      </div>
+
+                      <!-- Bottom Row: Qty Box on Left, Price & REMOVE on Right -->
+                      <div class="fm-drawer-item-actions-row">
+                        
+                        <quantity-popover>
+                          <quantity-input class="quantity cart-quantity fm-drawer-qty-box">
+                            <button
+                              class="quantity__button"
+                              name="minus"
+                              type="button"
+                              aria-label="Decrease"
+                              onclick="event.preventDefault(); event.stopPropagation(); var inp = document.getElementById('Drawer-quantity-{{ forloop.index }}'); var val = Math.max(0, parseInt(inp.value || 1) - 1); window.fmUpdateCartQty({{ forloop.index }}, val, this);"
+                            >
+                              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                                <line x1="1" y1="1" x2="9" y2="1"></line>
+                              </svg>
+                            </button>
+                            <input
+                              class="quantity__input"
+                              type="number"
+                              data-quantity-variant-id="{{ item.variant.id }}"
+                              data-quantity-line-key="{{ item.key }}"
+                              name="updates[]"
+                              value="{{ item.quantity }}"
+                              min="0"
+                              step="1"
+                              data-min="0"
+                              id="Drawer-quantity-{{ forloop.index }}"
+                              data-index="{{ forloop.index }}"
+                              aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                            >
+                            <button
+                              class="quantity__button"
+                              name="plus"
+                              type="button"
+                              aria-label="Increase"
+                              onclick="event.preventDefault(); event.stopPropagation(); var inp = document.getElementById('Drawer-quantity-{{ forloop.index }}'); var val = parseInt(inp.value || 0) + 1; window.fmUpdateCartQty({{ forloop.index }}, val, this);"
+                            >
+                              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                                <line x1="5" y1="1" x2="5" y2="9"></line>
+                                <line x1="1" y1="5" x2="9" y2="5"></line>
+                              </svg>
+                            </button>
+                          </quantity-input>
+                          <div id="CartDrawer-LineItemError-{{ forloop.index }}" class="cart-item__error" role="alert">
+                            <small class="cart-item__error-text"></small>
+                          </div>
+                        </quantity-popover>
+
+                        <div class="fm-drawer-item-price-col cart-item__totals">
+                          <span class="fm-drawer-item-price price price--end">
+                            {% render 'farsh-price-formatted', price: item.final_line_price %}
+                          </span>
+                          <button
+                            type="button"
+                            class="fm-drawer-remove-btn"
+                            data-variant-id="{{ item.variant.id }}"
+                            aria-label="Remove {{ item.title | escape }}"
+                            onclick="event.preventDefault(); event.stopPropagation(); window.fmUpdateCartQty({{ forloop.index }}, 0, this);"
+                          >
+                            REMOVE
+                          </button>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                {%- endfor -%}
+              </div>
+              <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
+              <p id="CartDrawer-LineItemStatus" class="visually-hidden" aria-hidden="true" role="status">
+                {{ 'accessibility.loading' | t }}
+              </p>
+            </div>
+            <div id="CartDrawer-CartErrors" role="alert"></div>
+          </form>
+        </cart-drawer-items>
+
+        <div class="drawer__footer fm-drawer-footer">
+          <!-- Subtotal -->
+          <div class="cart-drawer__footer">
+            <div class="fm-drawer-subtotal-row">
+              <span class="fm-drawer-subtotal-label">SUBTOTAL</span>
+              <span class="fm-drawer-subtotal-val">{% render 'farsh-price-formatted', price: cart.total_price %}</span>
+            </div>
+          </div>
+
+          <!-- Checkout Button -->
+          <div class="cart__ctas">
+            <button
+              type="submit"
+              id="CartDrawer-Checkout"
+              class="cart__checkout-button button fm-drawer-checkout-btn"
+              name="checkout"
+              form="CartDrawer-Form"
+              onclick="window.location.href='/checkout'"
+            >
+              <span>CHECKOUT</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</cart-drawer>

@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "fm-page-anti-slip",
+      "settings": {
+        "eyebrow": "Guide",
+        "title": "Anti-Slip Guide",
+        "subtitle": "Underneath it all: what rug pads do, why they matter, and how to choose the right one."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

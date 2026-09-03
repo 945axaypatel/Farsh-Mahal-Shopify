@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "farsh-contact-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

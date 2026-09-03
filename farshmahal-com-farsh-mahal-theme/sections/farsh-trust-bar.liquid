@@ -1,0 +1,325 @@
+<!-- Farsh Mahal - Trust Bar / Brand Commitments (4 Pillars) Section -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-trust-bar-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color | default: '#FAF7F2' }};
+    padding-top: {{ section.settings.padding_top | default: 56 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 56 }}px;
+    border-top: 1px solid rgba(27, 67, 50, 0.12);
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+
+  .fm-trust-bar-container-{{ section.id }} {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 32px;
+    column-gap: 24px;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-trust-bar-container-{{ section.id }} {
+      padding: 0 48px;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 32px;
+      row-gap: 0;
+    }
+  }
+
+  .fm-trust-item-{{ section.id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .fm-trust-icon-wrap-{{ section.id }} {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #C1914E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fm-trust-icon-wrap-{{ section.id }} svg {
+    width: 22px;
+    height: 22px;
+    stroke: #C1914E;
+    stroke-width: 1.3px;
+  }
+
+  .fm-trust-text-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fm-trust-title-{{ section.id }} {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #1B4332 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    line-height: 1.25 !important;
+    margin: 0 0 4px 0 !important;
+  }
+
+  .fm-trust-desc-{{ section.id }} {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 12px !important;
+    color: rgba(27, 67, 50, 0.70) !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+  }
+{%- endstyle -%}
+
+<section class="fm-trust-bar-section-{{ section.id }}" aria-label="Brand Commitments">
+  <div class="fm-trust-bar-container-{{ section.id }}">
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        <div class="fm-trust-item-{{ section.id }}" {{ block.shopify_attributes }}>
+          <div class="fm-trust-icon-wrap-{{ section.id }}">
+            {%- if block.settings.custom_icon != blank -%}
+              <img src="{{ block.settings.custom_icon | image_url: width: 48 }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="22" height="22">
+            {%- else -%}
+              {%- case block.settings.icon -%}
+                {%- when 'truck', 'shipping', 'free_shipping', 'globe' -%}
+                  <!-- Truck Icon matching farshmahal.com -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+                    <path d="M15 18H9"></path>
+                    <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+                    <circle cx="17" cy="18" r="2"></circle>
+                    <circle cx="7" cy="18" r="2"></circle>
+                  </svg>
+                {%- when 'award', 'medal', 'ribbon', 'hand_tufted', 'sparkles', 'handcrafted' -%}
+                  <!-- Award Ribbon Icon matching farshmahal.com -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="6"></circle>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                  </svg>
+                {%- when 'shield', 'care', 'care_guidance' -%}
+                  <!-- Shield Icon matching farshmahal.com -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                {%- when 'users', 'trade', 'to_the_trade', 'message' -%}
+                  <!-- Users Silhouette Icon matching farshmahal.com -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+              {%- endcase -%}
+            {%- endif -%}
+          </div>
+          <div class="fm-trust-text-wrap">
+            <h3 class="fm-trust-title-{{ section.id }}">{{ block.settings.title }}</h3>
+            <p class="fm-trust-desc-{{ section.id }}">{{ block.settings.description | default: block.settings.subtitle }}</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Default 4 Pillars -->
+      <div class="fm-trust-item-{{ section.id }}">
+        <div class="fm-trust-icon-wrap-{{ section.id }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+            <path d="M15 18H9"></path>
+            <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+            <circle cx="17" cy="18" r="2"></circle>
+            <circle cx="7" cy="18" r="2"></circle>
+          </svg>
+        </div>
+        <div class="fm-trust-text-wrap">
+          <h3 class="fm-trust-title-{{ section.id }}">Free Shipping</h3>
+          <p class="fm-trust-desc-{{ section.id }}">On every order</p>
+        </div>
+      </div>
+      <div class="fm-trust-item-{{ section.id }}">
+        <div class="fm-trust-icon-wrap-{{ section.id }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"></circle>
+            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+          </svg>
+        </div>
+        <div class="fm-trust-text-wrap">
+          <h3 class="fm-trust-title-{{ section.id }}">Hand-Tufted</h3>
+          <p class="fm-trust-desc-{{ section.id }}">One rug at a time</p>
+        </div>
+      </div>
+      <div class="fm-trust-item-{{ section.id }}">
+        <div class="fm-trust-icon-wrap-{{ section.id }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div class="fm-trust-text-wrap">
+          <h3 class="fm-trust-title-{{ section.id }}">Care Guidance</h3>
+          <p class="fm-trust-desc-{{ section.id }}">Support after purchase</p>
+        </div>
+      </div>
+      <div class="fm-trust-item-{{ section.id }}">
+        <div class="fm-trust-icon-wrap-{{ section.id }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div class="fm-trust-text-wrap">
+          <h3 class="fm-trust-title-{{ section.id }}">To-the-Trade</h3>
+          <p class="fm-trust-desc-{{ section.id }}">Designer benefits</p>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FM Trust Bar",
+  "tag": "section",
+  "class": "section-fm-trust-bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF7F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 24,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 24,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Trust Pillar",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Truck / Free Shipping"
+            },
+            {
+              "value": "award",
+              "label": "Award / Hand-Tufted"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / Care Guidance"
+            },
+            {
+              "value": "users",
+              "label": "Users / To-The-Trade"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "On every order"
+        }
+      ]
+    },
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Truck / Free Shipping"
+            },
+            {
+              "value": "award",
+              "label": "Award / Hand-Tufted"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / Care Guidance"
+            },
+            {
+              "value": "users",
+              "label": "Users / To-The-Trade"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "On every order"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Trust Bar"
+    }
+  ]
+}
+{% endschema %}

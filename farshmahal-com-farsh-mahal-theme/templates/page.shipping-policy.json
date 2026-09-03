@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "fm-page-shipping-policy",
+      "settings": {
+        "eyebrow": "Policy",
+        "title": "Shipping Policy",
+        "subtitle": "Delivery timelines, charges, and how we handle shipments \u2014 domestic and international."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

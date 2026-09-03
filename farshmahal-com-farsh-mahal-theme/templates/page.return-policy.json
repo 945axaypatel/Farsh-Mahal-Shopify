@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "fm-page-return-policy",
+      "settings": {
+        "eyebrow": "Policy",
+        "title": "Return Policy",
+        "subtitle": "How returns, exchanges, and refunds work at Farsh Mahal."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

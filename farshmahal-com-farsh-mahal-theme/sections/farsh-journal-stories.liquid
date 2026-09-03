@@ -1,0 +1,487 @@
+<!-- Load exact Google Fonts for Journal Section -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-journal-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile | default: 48 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | default: 56 }}px;
+    background-color: {{ section.settings.bg_color | default: '#FBF8F4' }};
+  }
+  @media screen and (min-width: 768px) {
+    .fm-journal-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | default: 80 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | default: 88 }}px;
+    }
+  }
+
+  .fm-journal-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-journal-container {
+      padding: 0 48px;
+    }
+  }
+
+  /* Header */
+  .fm-journal-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    gap: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-journal-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      gap: 24px;
+    }
+  }
+
+  .fm-journal-eyebrow {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C1914E !important;
+    margin: 0 0 14px 0 !important;
+    display: block !important;
+    line-height: 1.4 !important;
+  }
+
+  .fm-journal-heading {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(34px, 4.8vw, 56px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+  }
+
+  .fm-journal-head-italic {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    font-size: 1em !important;
+    color: #1B4332 !important;
+    letter-spacing: -0.02em !important;
+    display: inline !important;
+    text-transform: none !important;
+  }
+
+  /* Read the Journal Link matching screenshot */
+  .fm-journal-view-all {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    color: #1B4332 !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    padding-bottom: 2px !important;
+    transition: color 0.3s ease !important;
+    white-space: nowrap !important;
+  }
+  .fm-journal-view-all span {
+    color: #1B4332 !important;
+    transition: color 0.3s ease;
+  }
+  .fm-journal-view-all svg {
+    color: #1B4332 !important;
+    stroke: #1B4332 !important;
+    transition: transform 0.3s ease, stroke 0.3s ease, color 0.3s ease;
+  }
+  .fm-journal-view-all:hover {
+    color: #C1914E !important;
+  }
+  .fm-journal-view-all:hover span {
+    color: #C1914E !important;
+  }
+  .fm-journal-view-all:hover svg {
+    color: #C1914E !important;
+    stroke: #C1914E !important;
+    transform: translateX(4px);
+  }
+
+  /* Journal Grid: 12-Column (Card 1: 6 cols 4:3, Card 2: 3 cols 4:5, Card 3: 3 cols 4:5) */
+  .fm-journal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-journal-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+    }
+  }
+
+  /* Card Sizing */
+  .fm-journal-card-col-0 {
+    grid-column: span 12;
+  }
+  .fm-journal-card-col-1 {
+    grid-column: span 12;
+  }
+  .fm-journal-card-col-2 {
+    grid-column: span 12;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-journal-card-col-0 {
+      grid-column: span 6;
+    }
+    .fm-journal-card-col-1 {
+      grid-column: span 3;
+    }
+    .fm-journal-card-col-2 {
+      grid-column: span 3;
+    }
+  }
+
+  .fm-journal-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #EFE9E1;
+    text-decoration: none !important;
+    box-sizing: border-box;
+  }
+  .fm-journal-aspect-0 {
+    aspect-ratio: 4 / 3;
+  }
+  .fm-journal-aspect-1 {
+    aspect-ratio: 4 / 5;
+  }
+  .fm-journal-aspect-2 {
+    aspect-ratio: 4 / 5;
+  }
+  @media screen and (max-width: 767px) {
+    .fm-journal-aspect-0,
+    .fm-journal-aspect-1,
+    .fm-journal-aspect-2 {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  .fm-journal-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1400ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .fm-journal-card:hover .fm-journal-img {
+    transform: scale(1.05);
+  }
+
+  /* Overlay */
+  .fm-journal-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(15, 26, 20, 0.40) 65%, rgba(15, 26, 20, 0.85) 100%);
+    z-index: 2;
+    pointer-events: none;
+    transition: background 0.4s ease;
+  }
+  .fm-journal-card:hover .fm-journal-overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 25%, rgba(15, 26, 20, 0.45) 60%, rgba(15, 26, 20, 0.90) 100%);
+  }
+
+  /* Card Content */
+  .fm-journal-content {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 3;
+    color: #F7F2ED;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-journal-content {
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+    }
+  }
+
+  .fm-journal-cat {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.24em !important;
+    text-transform: uppercase !important;
+    color: #D9BB7A !important;
+    margin: 0 0 8px 0;
+    display: block;
+    line-height: 1.2;
+  }
+
+  .fm-journal-title {
+    font-family: 'Playfair Display', ui-serif, Georgia, Cambria, serif !important;
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+    color: #FFFFFF !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+    transition: color 0.3s ease;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-journal-aspect-0 .fm-journal-title {
+      font-size: 24px !important;
+    }
+    .fm-journal-aspect-1 .fm-journal-title,
+    .fm-journal-aspect-2 .fm-journal-title {
+      font-size: 20px !important;
+    }
+  }
+  .fm-journal-card:hover .fm-journal-title {
+    color: #D9BB7A !important;
+  }
+{%- endstyle -%}
+
+<section class="fm-journal-section-{{ section.id }}">
+  <div class="fm-journal-container">
+    <!-- Header -->
+    <div class="fm-journal-header">
+      <div>
+        <span class="fm-journal-eyebrow">{{ section.settings.tagline | default: 'THE JOURNAL' }}</span>
+        <h2 class="fm-journal-heading">
+          Ideas & inspiration<br>
+          for <span class="fm-journal-head-italic">thoughtful interiors.</span>
+        </h2>
+      </div>
+
+      {%- if section.settings.show_view_all -%}
+        <a href="{{ section.settings.view_all_link | default: '/blogs/news' }}" class="fm-journal-view-all">
+          <span>{{ section.settings.view_all_label | default: 'READ THE JOURNAL' }}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <!-- 12-Column Grid (6 cols / 3 cols / 3 cols) -->
+    <div class="fm-journal-grid">
+      {%- assign selected_blog = section.settings.blog -%}
+      {%- if selected_blog != blank and selected_blog.articles_count > 0 -%}
+        {%- for article in selected_blog.articles limit: 3 -%}
+          {%- assign idx = forloop.index0 -%}
+          <div class="fm-journal-card-col-{{ idx }}">
+            <a href="{{ article.url }}" class="fm-journal-card fm-journal-aspect-{{ idx }}">
+              {%- if article.image != blank -%}
+                <img src="{{ article.image | image_url: width: 1600 }}" alt="{{ article.title | escape }}" class="fm-journal-img" loading="lazy">
+              {%- else -%}
+                <img src="https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="{{ article.title | escape }}" class="fm-journal-img" loading="lazy">
+              {%- endif -%}
+              <div class="fm-journal-overlay"></div>
+              <div class="fm-journal-content">
+                <span class="fm-journal-cat">{{ article.tags.first | default: 'THE JOURNAL' }}</span>
+                <h3 class="fm-journal-title">{{ article.title }}</h3>
+              </div>
+            </a>
+          </div>
+        {%- endfor -%}
+      {%- elsif section.blocks.size > 0 -%}
+        {%- for block in section.blocks limit: 3 -%}
+          {%- assign idx = forloop.index0 -%}
+          {%- assign article_item = block.settings.article -%}
+          <div class="fm-journal-card-col-{{ idx }}" {{ block.shopify_attributes }}>
+            <a
+              href="{% if article_item != blank %}{{ article_item.url }}{% else %}{{ block.settings.link | default: '/blogs/news' }}{% endif %}"
+              class="fm-journal-card fm-journal-aspect-{{ idx }}"
+            >
+              {%- if article_item != blank and article_item.image != blank -%}
+                <img src="{{ article_item.image | image_url: width: 1600 }}" alt="{{ article_item.title | escape }}" class="fm-journal-img" loading="lazy">
+              {%- elsif block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 1600 }}" alt="{{ block.settings.title | escape }}" class="fm-journal-img" loading="lazy">
+              {%- elsif block.settings.fallback_image_url != blank -%}
+                <img src="{{ block.settings.fallback_image_url }}" alt="{{ block.settings.title | escape }}" class="fm-journal-img" loading="lazy">
+              {%- else -%}
+                <img src="https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="{{ block.settings.title | escape }}" class="fm-journal-img" loading="lazy">
+              {%- endif -%}
+              <div class="fm-journal-overlay"></div>
+              <div class="fm-journal-content">
+                <span class="fm-journal-cat">{% if article_item != blank %}{{ article_item.tags.first | default: block.settings.category | default: 'JOURNAL' }}{% else %}{{ block.settings.category | default: 'BUYING GUIDE' | escape }}{% endif %}</span>
+                <h3 class="fm-journal-title">{% if article_item != blank %}{{ article_item.title }}{% else %}{{ block.settings.title | escape }}{% endif %}</h3>
+              </div>
+            </a>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FM Journal Stories",
+  "tag": "section",
+  "class": "section-fm-journal-stories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Eyebrow Tagline",
+      "default": "THE JOURNAL"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Line 1",
+      "default": "Ideas & inspiration"
+    },
+    {
+      "type": "text",
+      "id": "heading_prefix",
+      "label": "Heading Line 2 Prefix",
+      "default": "for"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading Line 2 Italic",
+      "default": "thoughtful interiors."
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Shopify Blog"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show View All Link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View All Button Label",
+      "default": "READ THE JOURNAL"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All URL"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FBF8F4"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop Padding Top (px)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop Padding Bottom (px)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 140
+    }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Journal Story",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Shopify Article"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category Label",
+          "default": "BUYING GUIDE"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Article Title",
+          "default": "How to Choose the Perfect Rug Size"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Article URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Story Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image_url",
+          "label": "Or Image URL",
+          "default": "https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Journal Stories",
+      "blocks": [
+        {
+          "type": "story",
+          "settings": {
+            "category": "BUYING GUIDE",
+            "title": "How to Choose the Perfect Rug Size",
+            "fallback_image_url": "https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80"
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "category": "CRAFT",
+            "title": "Understanding Hand-Tufted Construction",
+            "fallback_image_url": "https://images.unsplash.com/photo-1638310533874-6c124c012e1d?crop=entropy&cs=srgb&fm=jpg&w=1200&q=80"
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "category": "STYLING",
+            "title": "Layering Rugs Like a Designer",
+            "fallback_image_url": "https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=srgb&fm=jpg&w=1200&q=80"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

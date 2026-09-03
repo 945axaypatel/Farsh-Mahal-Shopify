@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-stone" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.12" flood-color="#1B4332" />
+    </filter>
+  </defs>
+  <rect width="600" height="750" fill="#F7F4EE"/>
+  <!-- Rectangular Arch Rug Base -->
+  <rect x="70" y="60" width="460" height="630" rx="20" fill="#EDE7DD" filter="url(#shadow-stone)"/>
+  <!-- Top Round Shapes -->
+  <path d="M 70 200 C 70 90, 250 60, 320 160 C 370 230, 310 320, 240 330 C 140 340, 70 280, 70 200 Z" fill="#D6CEBF"/>
+  <path d="M 280 60 C 380 60, 530 110, 530 240 C 460 250, 380 220, 340 160 C 300 110, 290 70, 280 60 Z" fill="#C4BCAB"/>
+  <!-- Bottom Left Arch -->
+  <path d="M 80 680 L 80 440 C 80 340, 260 340, 260 440 L 260 680 Z" fill="#A89E8D"/>
+  <!-- Bottom Right Ribbed Vertical Stripe Panel -->
+  <rect x="290" y="360" width="230" height="320" fill="#DCD5C8"/>
+  <line x1="320" y1="360" x2="320" y2="680" stroke="#FAF7F2" stroke-width="4"/>
+  <line x1="350" y1="360" x2="350" y2="680" stroke="#FAF7F2" stroke-width="4"/>
+  <line x1="380" y1="360" x2="380" y2="680" stroke="#FAF7F2" stroke-width="4"/>
+  <line x1="410" y1="360" x2="410" y2="680" stroke="#FAF7F2" stroke-width="4"/>
+  <line x1="440" y1="360" x2="440" y2="680" stroke="#FAF7F2" stroke-width="4"/>
+  <line x1="470" y1="360" x2="470" y2="680" stroke="#FAF7F2" stroke-width="4"/>
+  <line x1="500" y1="360" x2="500" y2="680" stroke="#FAF7F2" stroke-width="4"/>
+  <!-- Center Accent Shield -->
+  <path d="M 120 480 C 120 410, 220 410, 220 480 L 220 640 L 120 640 Z" fill="#6A6255"/>
+  <polygon points="170,510 140,570 200,570" fill="#C1914E"/>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.15" flood-color="#1B4332" />
+    </filter>
+  </defs>
+  <rect x="50" y="50" width="500" height="650" rx="4" fill="#E8E2D8" filter="url(#shadow)"/>
+  
+  <!-- Architectural Color Blocks -->
+  <rect x="50" y="50" width="250" height="220" fill="#D2C7B6"/>
+  <rect x="300" y="50" width="250" height="320" fill="#7A6855"/>
+  <rect x="380" y="160" width="170" height="210" fill="#423428"/>
+  <rect x="50" y="270" width="180" height="260" fill="#BFB3A1"/>
+  <rect x="230" y="270" width="150" height="180" fill="#998774"/>
+  <rect x="50" y="530" width="280" height="170" fill="#DCD3C5"/>
+  <rect x="330" y="450" width="220" height="250" fill="#5E4E3F"/>
+  <rect x="230" y="450" width="100" height="180" fill="#B0A08D"/>
+
+  <!-- Subtle Tufted Weave Grid Lines -->
+  <line x1="50" y1="270" x2="550" y2="270" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="2"/>
+  <line x1="50" y1="450" x2="550" y2="450" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="2"/>
+  <line x1="300" y1="50" x2="300" y2="700" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="2"/>
+</svg>

@@ -1,0 +1,301 @@
+<!-- Load exact Google Fonts for Terms & Conditions Page -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-terms-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    padding-top: 40px;
+    padding-bottom: 96px;
+    min-height: 70vh;
+  }
+  @media (min-width: 768px) {
+    .fm-terms-root {
+      padding-top: 60px;
+      padding-bottom: 128px;
+    }
+  }
+
+  .fm-terms-header {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+  @media (min-width: 768px) {
+    .fm-terms-header {
+      padding-top: 48px;
+      padding-bottom: 56px;
+    }
+  }
+
+  .fm-terms-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-terms-header-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-terms-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-terms-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 38px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 0 16px 0 !important;
+    font-weight: 400 !important;
+    max-width: 800px;
+  }
+  @media (min-width: 768px) {
+    .fm-terms-title {
+      font-size: 64px !important;
+    }
+  }
+
+  .fm-terms-subtitle {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    max-width: 640px !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .fm-terms-body-sec {
+    padding: 56px 0;
+  }
+  @media (min-width: 768px) {
+    .fm-terms-body-sec {
+      padding: 80px 0;
+    }
+  }
+
+  .fm-terms-body-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-terms-body-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-terms-h2 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 26px !important;
+    line-height: 1.18 !important;
+    color: #1B4332 !important;
+    margin-top: 56px !important;
+    margin-bottom: 20px !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .fm-terms-h2:first-child {
+    margin-top: 0 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-terms-h2 {
+      font-size: 34px !important;
+    }
+  }
+
+  .fm-terms-p {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.85) !important;
+    margin: 0 0 18px 0 !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-terms-p {
+      font-size: 16px !important;
+    }
+  }
+
+  .fm-terms-ul {
+    list-style: disc !important;
+    padding-left: 24px !important;
+    margin: 0 0 24px 0 !important;
+    color: #1B4332 !important;
+    line-height: 1.8 !important;
+    font-size: 15px !important;
+  }
+  @media (min-width: 768px) {
+    .fm-terms-ul {
+      font-size: 16px !important;
+    }
+  }
+  .fm-terms-ul li {
+    margin-bottom: 10px !important;
+    color: #1B4332 !important;
+  }
+  .fm-terms-ul li::marker {
+    color: #1B4332 !important;
+  }
+
+  .link-underline {
+    color: #1B4332 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    transition: color 0.2s ease;
+  }
+  .link-underline:hover {
+    color: #C9A24D !important;
+  }
+{%- endstyle -%}
+
+<div class="fm-terms-root" data-testid="content-page-terms-conditions">
+  <!-- Header Banner -->
+  <header class="fm-terms-header">
+    <div class="fm-terms-header-inner">
+      <span class="fm-terms-eyebrow">Legal</span>
+      <h1 class="fm-terms-title">Terms & Conditions</h1>
+      <p class="fm-terms-subtitle">Please read these terms carefully — using our services means you accept them.</p>
+    </div>
+  </header>
+
+  <!-- Body Content -->
+  <section class="fm-terms-body-sec">
+    <div class="fm-terms-body-inner">
+
+      <!-- 1. Introduction -->
+      <h2 class="fm-terms-h2">Introduction</h2>
+      <p class="fm-terms-p">
+        By visiting, subscribing to, or using any of our services, you confirm you've read, understood, and are bound by these Terms & Conditions. If you do not want to be bound by these Terms, do not visit, subscribe to, or use our services. In these Terms, "you", "your", "customer", and "user" refer to the end user accessing the website and using the services offered. "Service Providers" refers to independent third parties such as logistic partners and payment gateways. "We", "us", and "our" refer to Farsh Mahal and its affiliates.
+      </p>
+
+      <!-- 2. General conditions -->
+      <h2 class="fm-terms-h2">General conditions</h2>
+      <p class="fm-terms-p">
+        The content on this website is for your general information and use only. It's subject to change without notice. Use of any information or materials on this website is entirely at your own risk. It is your responsibility to ensure that any products, services, or information available meets your specific requirements. During specific sale days (Festive Sale, Season Sale, etc.), order quantities may be limited per customer, and orders may be cancelled if items go out of stock.
+      </p>
+
+      <!-- 3. User account, password and security -->
+      <h2 class="fm-terms-h2">User account, password and security</h2>
+      <p class="fm-terms-p">
+        You can place orders as a guest or by creating an account (Name, Email, Password). You are solely responsible for the confidentiality of your account credentials and all activity under your account. You agree to notify Farsh Mahal at <a href="mailto:farshmahal@gmail.com" class="link-underline">farshmahal@gmail.com</a> of any unauthorised use or breach of security, and to log out at the end of each session. Farsh Mahal is not liable for loss or damage from failure to comply with these Terms.
+      </p>
+
+      <!-- 4. Accuracy of billing and other account information -->
+      <h2 class="fm-terms-h2">Accuracy of billing and other account information</h2>
+      <p class="fm-terms-p">
+        Provide current, complete, and accurate billing and other account information for all purchases. Update your account promptly if information changes, so that we can complete your transactions and contact you as needed. If billing information (including phone number) is incomplete or false, your order may be cancelled without refund and your account restricted from future transactions.
+      </p>
+
+      <!-- 5. Order cancellation or limitation of quantities -->
+      <h2 class="fm-terms-h2">Order cancellation or limitation of quantities</h2>
+      <p class="fm-terms-p">
+        We will make every effort to fulfil orders promptly, but reserve the right to refuse any order. Circumstances that may lead to cancellation include quantity limits, product or pricing inaccuracies, issues flagged by our payment gateway, and delivery-address unavailability. We may, at our discretion, limit or cancel quantities per person, per account, or per order — including those from the same account, email, or billing/shipping address. We'll attempt to contact you by email or phone when changes occur. Refunds for cancelled or modified prepaid orders are made via UPI or bank transfer. We reserve the right to limit or prohibit orders that appear to come from dealers, resellers, or distributors. Our liability is limited to the cost of the merchandise purchased, if found genuine.
+      </p>
+
+      <!-- 6. Order cancellation by customers -->
+      <h2 class="fm-terms-h2">Order cancellation by customers</h2>
+      <p class="fm-terms-p">
+        We operate on a made-to-order model. Order cancellation or modification is not possible once the order has been sent for processing — that is, 24 hours after it was placed.
+      </p>
+
+      <!-- 7. User comments, feedback, and submissions -->
+      <h2 class="fm-terms-h2">User comments, feedback, and submissions</h2>
+      <p class="fm-terms-p">
+        If you send us submissions, blog posts, product ratings, testimonials, or other comments (by request or otherwise), you agree we may edit, copy, publish, distribute, translate, and otherwise use those submissions in any medium, without restriction. We are under no obligation (1) to keep any comments confidential; (2) to compensate you for them; or (3) to respond.
+      </p>
+      <p class="fm-terms-p">
+        We may, but are not obligated to, monitor, edit, or remove content that we determine — in our sole discretion — to be unlawful, offensive, threatening, libellous, defamatory, obscene, or otherwise objectionable, or that violates any party's intellectual property or these Terms. You are solely responsible for your comments and their accuracy.
+      </p>
+
+      <!-- 8. Prohibited uses -->
+      <h2 class="fm-terms-h2">Prohibited uses</h2>
+      <ul class="fm-terms-ul">
+        <li>For any unlawful purpose.</li>
+        <li>To solicit others to perform or participate in any unlawful acts.</li>
+        <li>To violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances.</li>
+        <li>To infringe on our intellectual property rights or those of others.</li>
+        <li>To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate.</li>
+        <li>To submit false or misleading information.</li>
+        <li>To upload or transmit viruses or any other malicious code.</li>
+        <li>To collect or track the personal information of others.</li>
+        <li>To spam, phish, harm, pretext, spider, crawl, or scrape.</li>
+        <li>For any obscene or immoral purpose.</li>
+        <li>To interfere with or circumvent security features of the service or any related site.</li>
+      </ul>
+      <p class="fm-terms-p">
+        We reserve the right to terminate your use of the service for violations. Report any abuse or violation to <a href="mailto:farshmahal@gmail.com" class="link-underline">farshmahal@gmail.com</a>.
+      </p>
+
+      <!-- 9. Termination of service -->
+      <h2 class="fm-terms-h2">Termination of service</h2>
+      <p class="fm-terms-p">
+        Farsh Mahal may suspend or terminate your use of the website or any service if we believe, in our sole discretion, that you have breached, violated, abused, manipulated, or exploited these Terms — or otherwise acted unethically.
+      </p>
+
+      <!-- 10. Product & pricing -->
+      <h2 class="fm-terms-h2">Product & pricing</h2>
+      <p class="fm-terms-p">
+        Products and prices are as described on our website and incorporated into these Terms by reference. All prices are shown in the applicable regional currency. Prices, products, and related services may change without prior notice at our discretion. Farsh Mahal will not be liable to any user or third party for any price change, modification, or suspension of a product or service. Colours and designs on your device's screen may vary slightly from the delivered rug due to screen and lighting differences.
+      </p>
+
+      <!-- 11. Intellectual property -->
+      <h2 class="fm-terms-h2">Intellectual property</h2>
+      <p class="fm-terms-p">
+        This website contains materials owned by or licensed to us — including design, layout, appearance, and graphics. You agree not to use, reproduce, or distribute any content without our authorisation. Unauthorised use may lead to a claim for damages or be a criminal offence. Your use of this website and any dispute arising from it is subject to the laws of India. Attribution to original design owners is provided where applicable.
+      </p>
+
+      <!-- 12. Additional / optional tools -->
+      <h2 class="fm-terms-h2">Additional / optional tools</h2>
+      <p class="fm-terms-p">
+        We may provide access to third-party tools which we do not monitor or control. Such tools are provided without warranties or endorsement, and we have no liability arising from your use. Use them at your own risk and review the third party's terms.
+      </p>
+
+      <!-- 13. Third-party links -->
+      <h2 class="fm-terms-h2">Third-party links</h2>
+      <p class="fm-terms-p">
+        Certain content, products, or services on our website may include materials from third parties. Third-party links may direct you to sites not affiliated with us. We are not responsible for examining or evaluating their content or accuracy, and are not liable for any transactions or purchases made on those sites. Review third-party policies carefully before engaging.
+      </p>
+
+      <!-- 14. Errors, inaccuracies & omissions -->
+      <h2 class="fm-terms-h2">Errors, inaccuracies & omissions</h2>
+      <p class="fm-terms-p">
+        Occasionally there may be typographical errors, inaccuracies, or omissions on our website relating to product descriptions, pricing, promotions, offers, shipping charges, transit times, and availability. We reserve the right to correct these and to change or update information — or cancel orders — if information is inaccurate at any time without prior notice.
+      </p>
+
+      <!-- 15. Periodical updates -->
+      <h2 class="fm-terms-h2">Periodical updates</h2>
+      <p class="fm-terms-p">
+        We reserve the right to update, change, or replace any part of these Terms by posting updates on our website. It is your responsibility to check this page periodically. Continued use of the website following changes constitutes acceptance of those changes.
+      </p>
+
+      <!-- 16. Contact information -->
+      <h2 class="fm-terms-h2">Contact information</h2>
+      <p class="fm-terms-p">
+        Brand Name: Farsh Mahal<br>
+        Address: 34, Krushnam Gokulam Society, B/H Avsar Party Plot Road, Mehsana, Gujarat, India 384002<br>
+        Phone: +91 6351043735<br>
+        Email: <a href="mailto:farshmahal@gmail.com" class="link-underline">farshmahal@gmail.com</a>
+      </p>
+
+    </div>
+  </section>
+</div>

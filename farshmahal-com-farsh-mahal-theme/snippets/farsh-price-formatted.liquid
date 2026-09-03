@@ -1,0 +1,42 @@
+{%- comment -%}
+  Renders formatted price with comma thousands separator and conditional decimals
+  Usage:
+  {% render 'farsh-price-formatted', price: product.price %}
+  Or:
+  {% render 'farsh-price-formatted', price: variant.price %}
+{%- endcomment -%}
+{%- liquid
+  assign raw_price = price | default: 0
+  assign dollars = raw_price | divided_by: 100
+  assign cents = raw_price | modulo: 100
+
+  assign dollars_str = dollars | append: ''
+  assign d_len = dollars_str | size
+  if d_len > 3
+    assign start_idx = d_len | minus: 3
+    assign thousands = dollars_str | slice: 0, start_idx
+    assign hundreds = dollars_str | slice: start_idx, 3
+    if start_idx > 3
+      assign m_start = start_idx | minus: 3
+      assign millions = thousands | slice: 0, m_start
+      assign thousands = thousands | slice: m_start, 3
+      assign formatted_dollars = millions | append: ',' | append: thousands | append: ',' | append: hundreds
+    else
+      assign formatted_dollars = thousands | append: ',' | append: hundreds
+    endif
+  else
+    assign formatted_dollars = dollars_str
+  endif
+
+  if cents > 0
+    if cents < 10
+      assign cents_str = '0' | append: cents
+    else
+      assign cents_str = cents | append: ''
+    endif
+    assign final_formatted_price = '€' | append: formatted_dollars | append: '.' | append: cents_str
+  else
+    assign final_formatted_price = '€' | append: formatted_dollars
+  endif
+-%}
+{{- final_formatted_price -}}

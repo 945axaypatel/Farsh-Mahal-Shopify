@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "farsh-policy-shipping",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

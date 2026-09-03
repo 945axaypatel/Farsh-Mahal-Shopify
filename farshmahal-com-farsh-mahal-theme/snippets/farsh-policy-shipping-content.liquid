@@ -1,0 +1,254 @@
+<!-- Load exact Google Fonts for Shipping Policy Page -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-shipping-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    padding-top: 40px;
+    padding-bottom: 96px;
+    min-height: 70vh;
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-root {
+      padding-top: 60px;
+      padding-bottom: 128px;
+    }
+  }
+
+  .fm-shipping-header {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-header {
+      padding-top: 48px;
+      padding-bottom: 56px;
+    }
+  }
+
+  .fm-shipping-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-header-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-shipping-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-shipping-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 38px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 0 16px 0 !important;
+    font-weight: 400 !important;
+    max-width: 800px;
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-title {
+      font-size: 64px !important;
+    }
+  }
+
+  .fm-shipping-subtitle {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    max-width: 640px !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .fm-shipping-body-sec {
+    padding: 56px 0;
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-body-sec {
+      padding: 80px 0;
+    }
+  }
+
+  .fm-shipping-body-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-body-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-shipping-h2 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 26px !important;
+    line-height: 1.18 !important;
+    color: #1B4332 !important;
+    margin-top: 56px !important;
+    margin-bottom: 20px !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .fm-shipping-h2:first-child {
+    margin-top: 0 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-h2 {
+      font-size: 34px !important;
+    }
+  }
+
+  .fm-shipping-h3 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+    color: #1B4332 !important;
+    margin-top: 36px !important;
+    margin-bottom: 14px !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-h3 {
+      font-size: 22px !important;
+    }
+  }
+
+  .fm-shipping-p {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.85) !important;
+    margin: 0 0 18px 0 !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-p {
+      font-size: 16px !important;
+    }
+  }
+
+  .fm-shipping-ul {
+    list-style: disc !important;
+    padding-left: 24px !important;
+    margin: 0 0 24px 0 !important;
+    color: #1B4332 !important;
+    line-height: 1.8 !important;
+    font-size: 15px !important;
+  }
+  @media (min-width: 768px) {
+    .fm-shipping-ul {
+      font-size: 16px !important;
+    }
+  }
+  .fm-shipping-ul li {
+    margin-bottom: 10px !important;
+    color: #1B4332 !important;
+  }
+  .fm-shipping-ul li strong {
+    color: #1B4332 !important;
+    font-weight: 600 !important;
+  }
+  .fm-shipping-ul li::marker {
+    color: #1B4332 !important;
+  }
+
+  .link-underline {
+    color: #1B4332 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    transition: color 0.2s ease;
+  }
+  .link-underline:hover {
+    color: #C9A24D !important;
+  }
+{%- endstyle -%}
+
+<div class="fm-shipping-root" data-testid="content-page-shipping-policy">
+  <!-- Header Banner -->
+  <header class="fm-shipping-header">
+    <div class="fm-shipping-header-inner">
+      <span class="fm-shipping-eyebrow">Policy</span>
+      <h1 class="fm-shipping-title">Shipping Policy</h1>
+      <p class="fm-shipping-subtitle">Delivery timelines, charges, and how we handle shipments — domestic and international.</p>
+    </div>
+  </header>
+
+  <!-- Body Content -->
+  <section class="fm-shipping-body-sec">
+    <div class="fm-shipping-body-inner">
+
+      <!-- 1. Shipping charges -->
+      <h2 class="fm-shipping-h2">Shipping charges</h2>
+      <ul class="fm-shipping-ul">
+        <li>Free shipping on all orders placed through our website.</li>
+        <li>For international orders, customs duties, local taxes, and other import charges (if applicable) are not included in the product price and are paid by the customer per the destination country's regulations.</li>
+      </ul>
+
+      <!-- 2. Order processing & delivery timeline -->
+      <h2 class="fm-shipping-h2">Order processing & delivery timeline</h2>
+      <ul class="fm-shipping-ul">
+        <li>Delivery times vary by product and destination. Most orders are delivered within 3–10 business days within India and 6–12 business days for international orders, calculated from the date of order placement.</li>
+        <li>The estimated delivery timeline is shown on each product's detail page.</li>
+        <li>During sale periods, festive seasons, or other high-volume events, delivery may be delayed by an additional 5–7 business days.</li>
+        <li>Production and shipment time starts from the date of receipt of payment confirmed against your order.</li>
+        <li>Farsh Mahal is not liable for any delay or non-delivery caused by flood, fire, wars, acts of God, or any cause beyond our control. Winter dispatch on custom orders may be slightly delayed as the dyeing and drying process depends on weather.</li>
+        <li>Please provide authentic and accurate information at checkout to avoid delays or loss of merchandise. Farsh Mahal reserves the right to confirm and validate the information provided; if found untrue, we may reject the registration and restrict use of the site without prior notice.</li>
+      </ul>
+
+      <!-- 3. Additional costs & policies -->
+      <h2 class="fm-shipping-h2">Additional costs & policies</h2>
+      <ul class="fm-shipping-ul">
+        <li>Listed prices are exclusive of duties and taxes outside of domestic standard terms.</li>
+        <li>Where a non-delivery occurs due to incorrect customer information (name, address, or contact number), any extra cost for re-delivery is charged to the customer.</li>
+        <li>Return shipping costs are borne by the customer where a return is accepted outside our stated policy.</li>
+      </ul>
+
+      <!-- 4. If a shipment is lost in transit -->
+      <h2 class="fm-shipping-h2">If a shipment is lost in transit</h2>
+      <p class="fm-shipping-p">
+        In the unlikely event a shipment is lost in transit, email us at <a href="mailto:farshmahal@gmail.com" class="link-underline">farshmahal@gmail.com</a>. Once we receive confirmation from our courier partner, we'll ship a replacement. As we rely on third-party logistics providers, any disputes related to damage or delivery must be raised within 48 hours of delivery or attempted delivery; cases raised after 48 hours cannot be entertained.
+      </p>
+
+      <!-- 5. International FAQs -->
+      <h2 class="fm-shipping-h2">International FAQs</h2>
+
+      <h3 class="fm-shipping-h3">Can I return an international order?</h3>
+      <p class="fm-shipping-p">No. Products delivered outside India are not eligible for return or refund.</p>
+
+      <h3 class="fm-shipping-h3">Who pays the shipping and other charges for an international exchange?</h3>
+      <p class="fm-shipping-p">The customer is responsible for pickup charges, return shipping, freight, customs duties, taxes, and any other applicable charges related to the exchange. Farsh Mahal covers the shipping cost of the replacement product, excluding customs duties, taxes, and other applicable charges.</p>
+
+      <h3 class="fm-shipping-h3">What if the replacement rug costs more or less than my original purchase?</h3>
+      <p class="fm-shipping-p">If the replacement is higher in value, you'll pay the difference before dispatch. If it's lower in value, we'll issue a credit note for the balance, redeemable on our website within six months of issue.</p>
+
+      <h3 class="fm-shipping-h3">What if I receive a rug with a manufacturing defect?</h3>
+      <p class="fm-shipping-p">
+        Notify our Customer Support team within 48 hours of delivery by emailing <a href="mailto:farshmahal@gmail.com" class="link-underline">farshmahal@gmail.com</a>. We may request photos for verification. Once the defect is confirmed and the returned rug passes quality inspection, the exchange process will begin.
+      </p>
+
+    </div>
+  </section>
+</div>

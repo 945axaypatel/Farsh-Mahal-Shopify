@@ -1,0 +1,1323 @@
+<!-- Load Google Fonts for Journal -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-jnl-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ----------------------------------------------------
+     MAIN JOURNAL VIEW
+  ---------------------------------------------------- */
+  .fm-jnl-main-view {
+    padding-top: clamp(60px, 8vw, 100px);
+  }
+
+  /* Header Section */
+  .fm-jnl-header-sec {
+    padding-top: clamp(40px, 6vw, 64px);
+    padding-bottom: clamp(36px, 5vw, 56px);
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+
+  .fm-jnl-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-jnl-container {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-jnl-eyebrow {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 20px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-jnl-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: clamp(40px, 6.2vw, 80px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 !important;
+    max-width: 900px !important;
+    font-weight: 400 !important;
+    display: block !important;
+  }
+
+  .fm-jnl-title span.italic-part {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 1.06em !important;
+    line-height: 1.04 !important;
+    color: #1B4332 !important;
+    font-weight: 400 !important;
+    display: inline !important;
+  }
+
+  /* Category Filter Tabs Bar */
+  .fm-jnl-tabs-sec {
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+    background-color: #FBF8F4;
+    position: sticky;
+    top: 76px;
+    z-index: 20;
+  }
+
+  .fm-jnl-tabs-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    padding: 20px 0;
+  }
+
+  .fm-jnl-tab-btn {
+    padding: 8px 16px;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+    background: transparent;
+    border: none;
+    color: #1B4332;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0;
+    line-height: 1.2;
+  }
+
+  .fm-jnl-tab-btn:hover {
+    color: #C9A24D;
+  }
+
+  .fm-jnl-tab-btn.active {
+    background-color: #1B4332 !important;
+    color: #F7F2ED !important;
+  }
+
+  /* Featured Lead Story */
+  .fm-jnl-featured-sec {
+    padding: clamp(48px, 6vw, 96px) 0;
+  }
+
+  .fm-jnl-featured-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .fm-jnl-featured-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 48px;
+    }
+    .fm-jnl-featured-img-col {
+      grid-column: span 8;
+    }
+    .fm-jnl-featured-content-col {
+      grid-column: span 4;
+      padding-left: 16px;
+    }
+  }
+
+  .fm-jnl-featured-img-link {
+    display: block;
+    aspect-ratio: 16 / 10;
+    background-color: #F7F2ED;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .fm-jnl-featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fm-jnl-featured-img-link:hover .fm-jnl-featured-img {
+    transform: scale(1.05);
+  }
+
+  .fm-jnl-featured-heading {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(28px, 3.2vw, 42px) !important;
+    line-height: 1.1 !important;
+    color: #1B4332 !important;
+    margin: 16px 0 0 0 !important;
+    font-weight: 400 !important;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .fm-jnl-featured-heading:hover {
+    color: #C9A24D !important;
+  }
+
+  .fm-jnl-featured-excerpt {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(27, 67, 50, 0.75);
+    margin: 18px 0 0 0;
+  }
+
+  .fm-jnl-read-link {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.24em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    color: #1B4332 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #1B4332;
+    padding-bottom: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .fm-jnl-read-link:hover {
+    color: #C9A24D !important;
+    border-bottom-color: #C9A24D !important;
+  }
+
+  .fm-jnl-read-link svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    transition: transform 0.2s ease;
+  }
+
+  .fm-jnl-read-link:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Stories Grid (3 Columns) */
+  .fm-jnl-grid-sec {
+    padding-bottom: clamp(64px, 8vw, 140px);
+  }
+
+  .fm-jnl-stories-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 640px) {
+    .fm-jnl-stories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .fm-jnl-stories-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+  }
+
+  .fm-jnl-card {
+    display: block;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .fm-jnl-card-img-wrap {
+    aspect-ratio: 4 / 5;
+    background-color: #F7F2ED;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .fm-jnl-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fm-jnl-card:hover .fm-jnl-card-img {
+    transform: scale(1.05);
+  }
+
+  .fm-jnl-card-cat {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .fm-jnl-card-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(22px, 2vw, 26px) !important;
+    line-height: 1.2 !important;
+    color: #1B4332 !important;
+    margin: 0 0 12px 0 !important;
+    font-weight: 400 !important;
+    transition: color 0.2s ease;
+  }
+
+  .fm-jnl-card:hover .fm-jnl-card-title {
+    color: #C9A24D !important;
+  }
+
+  .fm-jnl-card-excerpt {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(27, 67, 50, 0.70);
+    margin: 0;
+  }
+
+  /* Callout Banner */
+  .fm-jnl-banner-sec {
+    background-color: #1B4332;
+    color: #F7F2ED;
+    padding: clamp(80px, 10vw, 140px) 24px;
+    text-align: center;
+  }
+
+  .fm-jnl-banner-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .fm-jnl-banner-eyebrow {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #D9BB7A !important;
+    display: block !important;
+    margin-bottom: 20px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-jnl-banner-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: clamp(32px, 4.4vw, 56px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+    color: #F7F2ED !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+    display: block !important;
+  }
+
+  .fm-jnl-banner-title span.italic-part {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 1.05em !important;
+    line-height: 1.1 !important;
+    color: #F7F2ED !important;
+    font-weight: 400 !important;
+    display: inline !important;
+  }
+
+  /* ----------------------------------------------------
+     ARTICLE DETAIL SUB-PAGE VIEW
+  ---------------------------------------------------- */
+  .fm-art-view {
+    display: none;
+  }
+
+  .fm-art-hero-wrap {
+    position: relative;
+    min-height: 75vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: #1B4332;
+  }
+
+  .fm-art-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .fm-art-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: fm-art-kenburns 26s ease-out infinite alternate;
+  }
+
+  @keyframes fm-art-kenburns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+  }
+
+  .fm-art-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 26, 20, 0.85) 0%, rgba(15, 26, 20, 0.40) 50%, rgba(15, 26, 20, 0.20) 100%);
+  }
+
+  .fm-art-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: clamp(140px, 16vw, 180px) 24px clamp(60px, 8vw, 100px) 24px;
+    box-sizing: border-box;
+    color: #F7F2ED;
+  }
+  @media (min-width: 768px) {
+    .fm-art-hero-content {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+  }
+
+  .fm-art-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    color: rgba(247, 242, 237, 0.85) !important;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-bottom: 32px;
+    transition: color 0.2s ease;
+  }
+
+  .fm-art-back-btn:hover {
+    color: #D9BB7A !important;
+  }
+
+  .fm-art-back-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    transition: transform 0.2s ease;
+  }
+  .fm-art-back-btn:hover svg {
+    transform: translateX(-4px);
+  }
+
+  .fm-art-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #D9BB7A !important;
+    display: block !important;
+    margin-bottom: 20px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-art-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(36px, 5.5vw, 72px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.02em !important;
+    color: #F7F2ED !important;
+    margin: 0 0 28px 0 !important;
+    font-weight: 400 !important;
+    max-width: 960px;
+  }
+
+  .fm-art-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 18px;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(247, 242, 237, 0.80);
+  }
+
+  .fm-art-meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(247, 242, 237, 0.45);
+    display: inline-block;
+  }
+
+  .fm-art-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .fm-art-meta-item svg {
+    width: 13px;
+    height: 13px;
+    stroke: currentColor;
+    stroke-width: 1.4;
+  }
+
+  /* Editorial Body */
+  .fm-art-body-sec {
+    padding: clamp(64px, 8vw, 120px) 24px;
+    background-color: #FBF8F4;
+  }
+
+  .fm-art-body-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .fm-art-body-inner p {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(17px, 1.4vw, 19px);
+    line-height: 1.8;
+    color: rgba(27, 67, 50, 0.88);
+    margin: 0 0 28px 0;
+    font-weight: 400;
+  }
+
+  .fm-art-body-inner h2 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(28px, 3.2vw, 38px) !important;
+    line-height: 1.15 !important;
+    color: #1B4332 !important;
+    margin: 56px 0 20px 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .fm-art-quote {
+    margin: 48px 0;
+    border-left: 2px solid #C9A24D;
+    padding: 12px 0 12px 32px;
+    background: transparent;
+  }
+
+  .fm-art-quote p {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: clamp(23px, 2.6vw, 30px) !important;
+    line-height: 1.35 !important;
+    color: #1B4332 !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  /* Continue Reading Section */
+  .fm-art-more-sec {
+    border-top: 1px solid rgba(27, 67, 50, 0.12);
+    background-color: #F7F2ED;
+    padding: clamp(64px, 8vw, 120px) 24px;
+  }
+
+  .fm-art-more-container {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .fm-art-more-container {
+      padding: 0 24px;
+    }
+  }
+
+  .fm-art-more-header {
+    margin-bottom: 56px;
+  }
+
+  .fm-art-more-eyebrow {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-art-more-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: clamp(34px, 4.4vw, 54px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+    display: block !important;
+  }
+
+  .fm-art-more-title span.italic-part {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 1.05em !important;
+    line-height: inherit !important;
+    color: #1B4332 !important;
+    font-weight: 400 !important;
+    display: inline !important;
+  }
+
+  .fm-art-more-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 640px) {
+    .fm-art-more-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .fm-art-more-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+  }
+
+  .fm-art-more-card {
+    display: block;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  .fm-art-more-img-wrap {
+    aspect-ratio: 4 / 5;
+    background-color: #FBF8F4;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .fm-art-more-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fm-art-more-card:hover .fm-art-more-img {
+    transform: scale(1.05);
+  }
+
+  .fm-art-more-cat {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #C9A24D;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .fm-art-more-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(21px, 2vw, 24px);
+    line-height: 1.2;
+    color: #1B4332;
+    margin: 0 0 14px 0;
+    font-weight: 400;
+    transition: color 0.2s ease;
+  }
+
+  .fm-art-more-card:hover .fm-art-more-heading {
+    color: #C9A24D;
+  }
+
+  .fm-art-more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #1B4332;
+    border-bottom: 1px solid #1B4332;
+    padding-bottom: 2px;
+    transition: all 0.2s ease;
+  }
+
+  .fm-art-more-card:hover .fm-art-more-link {
+    color: #C9A24D;
+    border-bottom-color: #C9A24D;
+  }
+
+  .fm-art-more-link svg {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+{%- endstyle -%}
+
+<div class="fm-jnl-root" id="FarshJournalRoot">
+
+  <!-- ==========================================
+       1. MAIN JOURNAL VIEW
+  =========================================== -->
+  <div class="fm-jnl-main-view" id="FarshJournalMainView">
+
+    <!-- Header Section -->
+    <section class="fm-jnl-header-sec">
+      <div class="fm-jnl-container">
+        <span class="fm-jnl-eyebrow">JOURNAL</span>
+        <h1 class="fm-jnl-title">
+          Ideas, inspiration, and<br>
+          stories<br>
+          <span class="italic-part">from the world of</span><br>
+          <span class="italic-part">thoughtful interiors.</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- Category Filter Tabs Bar -->
+    <section class="fm-jnl-tabs-sec">
+      <div class="fm-jnl-container">
+        <div class="fm-jnl-tabs-wrap" id="FarshJournalTabs">
+          <button type="button" class="fm-jnl-tab-btn active" data-filter="all">All</button>
+          <button type="button" class="fm-jnl-tab-btn" data-filter="interior-styling">Interior Styling</button>
+          <button type="button" class="fm-jnl-tab-btn" data-filter="buying-guides">Buying Guides</button>
+          <button type="button" class="fm-jnl-tab-btn" data-filter="material-education">Material Education</button>
+          <button type="button" class="fm-jnl-tab-btn" data-filter="design-trends">Design Trends</button>
+          <button type="button" class="fm-jnl-tab-btn" data-filter="behind-the-craft">Behind the Craft</button>
+          <button type="button" class="fm-jnl-tab-btn" data-filter="designer-stories">Designer Stories</button>
+          <button type="button" class="fm-jnl-tab-btn" data-filter="project-features">Project Features</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Lead Story (Card 1: Rug Size Guide) -->
+    <section class="fm-jnl-featured-sec" id="JournalFeaturedStory" data-category="buying-guides">
+      <div class="fm-jnl-container">
+        <div class="fm-jnl-featured-grid">
+          <div class="fm-jnl-featured-img-col">
+            <div class="fm-jnl-featured-img-link" onclick="window.fmShowArticle('rug-size-guide')">
+              <img
+                src="https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80"
+                alt="How to Choose the Perfect Rug Size for Every Room"
+                class="fm-jnl-featured-img"
+                loading="eager"
+                width="1600"
+                height="1000"
+              >
+            </div>
+          </div>
+          <div class="fm-jnl-featured-content-col">
+            <span class="fm-jnl-eyebrow">Buying Guides</span>
+            <div class="fm-jnl-featured-heading" onclick="window.fmShowArticle('rug-size-guide')">
+              How to Choose the Perfect Rug Size for Every Room
+            </div>
+            <p class="fm-jnl-featured-excerpt">
+              Learn how proportions influence comfort and visual balance.
+            </p>
+            <div class="fm-jnl-read-link" onclick="window.fmShowArticle('rug-size-guide')">
+              <span>Read Article</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stories Grid (3 Columns) -->
+    <section class="fm-jnl-grid-sec">
+      <div class="fm-jnl-container">
+        <div class="fm-jnl-stories-grid" id="FarshJournalGrid">
+
+          <!-- Story 2: Hand-Tufted Explained -->
+          <div class="fm-jnl-card-item" data-category="material-education behind-the-craft">
+            <div class="fm-jnl-card" onclick="window.fmShowArticle('hand-tufted-explained')">
+              <div class="fm-jnl-card-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1638310533874-6c124c012e1d?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80"
+                  alt="Understanding Hand-Tufted Rugs"
+                  class="fm-jnl-card-img"
+                  loading="lazy"
+                  width="800"
+                  height="1000"
+                >
+              </div>
+              <span class="fm-jnl-card-cat">Material Education</span>
+              <h3 class="fm-jnl-card-title">Understanding Hand-Tufted Rugs</h3>
+              <p class="fm-jnl-card-excerpt">
+                Discover the craftsmanship behind one of the world's most versatile rug constructions.
+              </p>
+            </div>
+          </div>
+
+          <!-- Story 3: Layering Rugs -->
+          <div class="fm-jnl-card-item" data-category="interior-styling">
+            <div class="fm-jnl-card" onclick="window.fmShowArticle('layering-rugs')">
+              <div class="fm-jnl-card-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80"
+                  alt="Layering Rugs Like an Interior Designer"
+                  class="fm-jnl-card-img"
+                  loading="lazy"
+                  width="800"
+                  height="1000"
+                >
+              </div>
+              <span class="fm-jnl-card-cat">Interior Styling</span>
+              <h3 class="fm-jnl-card-title">Layering Rugs Like an Interior Designer</h3>
+              <p class="fm-jnl-card-excerpt">
+                Create depth and warmth through thoughtful layering techniques.
+              </p>
+            </div>
+          </div>
+
+          <!-- Story 4: Color Trends -->
+          <div class="fm-jnl-card-item" data-category="design-trends">
+            <div class="fm-jnl-card" onclick="window.fmShowArticle('color-trends')">
+              <div class="fm-jnl-card-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1557374669-d1f478dc92c4?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80"
+                  alt="Color Trends for Modern Interiors"
+                  class="fm-jnl-card-img"
+                  loading="lazy"
+                  width="800"
+                  height="1000"
+                >
+              </div>
+              <span class="fm-jnl-card-cat">Design Trends</span>
+              <h3 class="fm-jnl-card-title">Color Trends for Modern Interiors</h3>
+              <p class="fm-jnl-card-excerpt">
+                Explore timeless palettes designed to complement contemporary living.
+              </p>
+            </div>
+          </div>
+
+          <!-- Story 5: Beauty of Texture -->
+          <div class="fm-jnl-card-item" data-category="design-trends material-education">
+            <div class="fm-jnl-card" onclick="window.fmShowArticle('beauty-of-texture')">
+              <div class="fm-jnl-card-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1745589720030-c32f81367a57?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80"
+                  alt="The Beauty of Texture in Interior Design"
+                  class="fm-jnl-card-img"
+                  loading="lazy"
+                  width="800"
+                  height="1000"
+                >
+              </div>
+              <span class="fm-jnl-card-cat">Design Trends</span>
+              <h3 class="fm-jnl-card-title">The Beauty of Texture in Interior Design</h3>
+              <p class="fm-jnl-card-excerpt">
+                Why texture often matters more than pattern.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Callout Banner -->
+    <section class="fm-jnl-banner-sec">
+      <div class="fm-jnl-banner-inner">
+        <span class="fm-jnl-banner-eyebrow">NEVER MISS A STORY</span>
+        <h2 class="fm-jnl-banner-title">
+          Receive new articles, collection<br>
+          launches,<br>
+          <span class="italic-part">and design inspiration.</span>
+        </h2>
+      </div>
+    </section>
+
+  </div>
+
+
+  <!-- ==========================================
+       2. ARTICLE DETAIL SUB-PAGES
+  =========================================== -->
+
+  <!-- Article 1: Rug Size Guide -->
+  <div class="fm-art-view" id="ArtView-rug-size-guide">
+    <section class="fm-art-hero-wrap">
+      <div class="fm-art-hero-bg">
+        <img src="https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=2400&q=85" alt="How to Choose the Perfect Rug Size for Every Room" class="fm-art-hero-img" loading="eager">
+        <div class="fm-art-hero-overlay"></div>
+      </div>
+      <div class="fm-art-hero-content">
+        <button type="button" class="fm-art-back-btn" onclick="window.fmShowJournalMain()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>The Journal</span>
+        </button>
+        <span class="fm-art-eyebrow">Buying Guide</span>
+        <h1 class="fm-art-title">How to Choose the Perfect Rug Size for Every Room</h1>
+        <div class="fm-art-meta-bar">
+          <span>The Farsh Mahal Team</span>
+          <span class="fm-art-meta-dot"></span>
+          <span class="fm-art-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>January 12, 2026</span>
+          </span>
+          <span class="fm-art-meta-dot"></span>
+          <span>6 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-art-body-sec">
+      <article class="fm-art-body-inner">
+        <p>The right rug doesn't merely fill a space — it defines it. Choosing the correct size is one of the most important design decisions you'll make for a room, and one that too often gets overlooked. Below, our design team walks you through the guidelines we use with clients across the country.</p>
+
+        <h2>Living rooms</h2>
+        <p>In the living room, aim for a rug large enough to sit under the front legs of all seating pieces at a minimum. For a more grounded, generous feel, choose a rug that fits all four legs of every piece — this is our preferred approach in most American homes.</p>
+
+        <blockquote class="fm-art-quote">
+          <p>“A rug that's too small floats. A rug that's the right size grounds the entire room and makes it feel considered.”</p>
+        </blockquote>
+
+        <h2>Dining rooms</h2>
+        <p>Under a dining table, allow at least 24 inches of rug to extend past each edge. This ensures the back legs of chairs remain on the rug even when pulled out — a small detail that changes how the room feels every day.</p>
+
+        <h2>Bedrooms</h2>
+        <p>For a king or queen bed, we love the softness of a 9 × 12 or 10 × 14 rug centered under the bed, with 2–3 feet extending on either side. That first warm step in the morning is worth the investment.</p>
+
+        <h2>Halls and entryways</h2>
+        <p>Runners work beautifully in hallways longer than six feet, leaving 4–6 inches of floor visible on each side. Round rugs are unexpectedly wonderful in circular foyers or beneath round tables — they soften the geometry of a room instantly.</p>
+        <p>When in doubt, size up. A slightly larger rug will almost always feel more considered than one that sits awkwardly small in the middle of the room.</p>
+      </article>
+    </section>
+
+    <section class="fm-art-more-sec">
+      <div class="fm-art-more-container">
+        <div class="fm-art-more-header">
+          <span class="fm-art-more-eyebrow">Continue Reading</span>
+          <h2 class="fm-art-more-title">More from <span class="italic-part">the Journal.</span></h2>
+        </div>
+        <div class="fm-art-more-grid">
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('hand-tufted-explained')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1638310533874-6c124c012e1d?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Understanding Hand-Tufted Rugs" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Craft</span>
+            <h3 class="fm-art-more-heading">Understanding Hand-Tufted Rugs</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('layering-rugs')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Layering Rugs Like an Interior Designer" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Styling</span>
+            <h3 class="fm-art-more-heading">Layering Rugs Like an Interior Designer</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('color-trends')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1557374669-d1f478dc92c4?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Color Trends for Modern Interiors" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Design Trends</span>
+            <h3 class="fm-art-more-heading">Color Trends for Modern Interiors</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Article 2: Hand-Tufted Explained -->
+  <div class="fm-art-view" id="ArtView-hand-tufted-explained">
+    <section class="fm-art-hero-wrap">
+      <div class="fm-art-hero-bg">
+        <img src="https://images.unsplash.com/photo-1638310533874-6c124c012e1d?crop=entropy&cs=srgb&fm=jpg&w=2400&q=85" alt="Understanding Hand-Tufted Rugs" class="fm-art-hero-img" loading="eager">
+        <div class="fm-art-hero-overlay"></div>
+      </div>
+      <div class="fm-art-hero-content">
+        <button type="button" class="fm-art-back-btn" onclick="window.fmShowJournalMain()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>The Journal</span>
+        </button>
+        <span class="fm-art-eyebrow">Craft</span>
+        <h1 class="fm-art-title">Understanding Hand-Tufted Rugs</h1>
+        <div class="fm-art-meta-bar">
+          <span>Priya Sharma</span>
+          <span class="fm-art-meta-dot"></span>
+          <span class="fm-art-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>December 28, 2025</span>
+          </span>
+          <span class="fm-art-meta-dot"></span>
+          <span>8 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-art-body-sec">
+      <article class="fm-art-body-inner">
+        <p>Hand-tufting is one of the most versatile, characterful, and painterly rug-making techniques in the world. Unlike hand-knotting — which is beautiful but rigidly geometric — hand-tufting allows artisans to work with brush-like freedom, sculpting depth, color and form with remarkable precision.</p>
+
+        <h2>How a Farsh Mahal rug is made</h2>
+        <p>Each rug begins with a full-scale drawing on cotton canvas stretched across a wooden frame. Skilled artisans use a hand-held tufting gun to punch wool yarn through the canvas, following the design line by line, color by color.</p>
+        <p>Once the tufting is complete, a layer of latex is applied to the back to hold the tufts in place. A cotton backing is then affixed by hand, and the pile is sheared, carved, and finished — sometimes in high-low sculpted textures, sometimes flat and even.</p>
+
+        <blockquote class="fm-art-quote">
+          <p>“Between 120 and 220 hours of hand craftsmanship go into each Farsh Mahal rug.”</p>
+        </blockquote>
+
+        <h2>Why it matters</h2>
+        <p>Hand-tufting gives rugs a richness and depth that machine-made pieces can't replicate. It also allows for a much broader range of design — from painterly abstract landscapes to crisp modernist grids.</p>
+      </article>
+    </section>
+
+    <section class="fm-art-more-sec">
+      <div class="fm-art-more-container">
+        <div class="fm-art-more-header">
+          <span class="fm-art-more-eyebrow">Continue Reading</span>
+          <h2 class="fm-art-more-title">More from <span class="italic-part">the Journal.</span></h2>
+        </div>
+        <div class="fm-art-more-grid">
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('rug-size-guide')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="How to Choose the Perfect Rug Size" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Buying Guide</span>
+            <h3 class="fm-art-more-heading">How to Choose the Perfect Rug Size for Every Room</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('layering-rugs')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Layering Rugs Like an Interior Designer" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Styling</span>
+            <h3 class="fm-art-more-heading">Layering Rugs Like an Interior Designer</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('color-trends')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1557374669-d1f478dc92c4?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Color Trends for Modern Interiors" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Design Trends</span>
+            <h3 class="fm-art-more-heading">Color Trends for Modern Interiors</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Article 3: Layering Rugs -->
+  <div class="fm-art-view" id="ArtView-layering-rugs">
+    <section class="fm-art-hero-wrap">
+      <div class="fm-art-hero-bg">
+        <img src="https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=srgb&fm=jpg&w=2400&q=85" alt="Layering Rugs Like an Interior Designer" class="fm-art-hero-img" loading="eager">
+        <div class="fm-art-hero-overlay"></div>
+      </div>
+      <div class="fm-art-hero-content">
+        <button type="button" class="fm-art-back-btn" onclick="window.fmShowJournalMain()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>The Journal</span>
+        </button>
+        <span class="fm-art-eyebrow">Styling</span>
+        <h1 class="fm-art-title">Layering Rugs Like an Interior Designer</h1>
+        <div class="fm-art-meta-bar">
+          <span>Marcus Levine</span>
+          <span class="fm-art-meta-dot"></span>
+          <span class="fm-art-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>December 15, 2025</span>
+          </span>
+          <span class="fm-art-meta-dot"></span>
+          <span>5 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-art-body-sec">
+      <article class="fm-art-body-inner">
+        <p>Rug layering is one of the interior design world's best-kept secrets — a way to add depth, warmth, and personality to a room without buying new furniture.</p>
+
+        <h2>The basics</h2>
+        <p>The rule of thumb: pair a larger, neutral base rug (usually a flat or low-pile natural fiber like jute or wool) with a smaller, more decorative rug placed on top and off-center.</p>
+
+        <blockquote class="fm-art-quote">
+          <p>“Layering rugs is like layering clothing — it's about texture, proportion, and letting each piece do its own job.”</p>
+        </blockquote>
+
+        <h2>Where it works best</h2>
+        <p>Layering shines in living rooms and bedrooms where you want to define a specific zone — a reading corner, a conversation area, or the space at the foot of the bed. It's also brilliant over wall-to-wall carpet in older homes.</p>
+      </article>
+    </section>
+
+    <section class="fm-art-more-sec">
+      <div class="fm-art-more-container">
+        <div class="fm-art-more-header">
+          <span class="fm-art-more-eyebrow">Continue Reading</span>
+          <h2 class="fm-art-more-title">More from <span class="italic-part">the Journal.</span></h2>
+        </div>
+        <div class="fm-art-more-grid">
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('rug-size-guide')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="How to Choose the Perfect Rug Size" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Buying Guide</span>
+            <h3 class="fm-art-more-heading">How to Choose the Perfect Rug Size for Every Room</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('hand-tufted-explained')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1638310533874-6c124c012e1d?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Understanding Hand-Tufted Rugs" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Craft</span>
+            <h3 class="fm-art-more-heading">Understanding Hand-Tufted Rugs</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('color-trends')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1557374669-d1f478dc92c4?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Color Trends for Modern Interiors" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Design Trends</span>
+            <h3 class="fm-art-more-heading">Color Trends for Modern Interiors</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Article 4: Color Trends -->
+  <div class="fm-art-view" id="ArtView-color-trends">
+    <section class="fm-art-hero-wrap">
+      <div class="fm-art-hero-bg">
+        <img src="https://images.unsplash.com/photo-1557374669-d1f478dc92c4?crop=entropy&cs=srgb&fm=jpg&w=2400&q=85" alt="Color Trends for Modern Interiors" class="fm-art-hero-img" loading="eager">
+        <div class="fm-art-hero-overlay"></div>
+      </div>
+      <div class="fm-art-hero-content">
+        <button type="button" class="fm-art-back-btn" onclick="window.fmShowJournalMain()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>The Journal</span>
+        </button>
+        <span class="fm-art-eyebrow">Design Trends</span>
+        <h1 class="fm-art-title">Color Trends for Modern Interiors</h1>
+        <div class="fm-art-meta-bar">
+          <span>The Farsh Mahal Team</span>
+          <span class="fm-art-meta-dot"></span>
+          <span class="fm-art-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>November 30, 2025</span>
+          </span>
+          <span class="fm-art-meta-dot"></span>
+          <span>4 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-art-body-sec">
+      <article class="fm-art-body-inner">
+        <p>The most enduring interior color palettes share one quality: they feel inevitable. They're not trendy, they don't shout, and they age beautifully. Here are the palettes we're drawn to in 2026.</p>
+
+        <h2>Warm neutrals with green</h2>
+        <p>Cream, oat, and warm putty paired with a single deep-forest accent — like our own Farsh Green — feel both timeless and quietly modern.</p>
+
+        <h2>Sun-worn earths</h2>
+        <p>Terracotta, ochre, and softened rust, grounded by aged brass and dark walnut, evoke a Mediterranean serenity that reads beautifully in American homes.</p>
+      </article>
+    </section>
+
+    <section class="fm-art-more-sec">
+      <div class="fm-art-more-container">
+        <div class="fm-art-more-header">
+          <span class="fm-art-more-eyebrow">Continue Reading</span>
+          <h2 class="fm-art-more-title">More from <span class="italic-part">the Journal.</span></h2>
+        </div>
+        <div class="fm-art-more-grid">
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('rug-size-guide')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="How to Choose the Perfect Rug Size" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Buying Guide</span>
+            <h3 class="fm-art-more-heading">How to Choose the Perfect Rug Size for Every Room</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('hand-tufted-explained')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1638310533874-6c124c012e1d?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Understanding Hand-Tufted Rugs" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Craft</span>
+            <h3 class="fm-art-more-heading">Understanding Hand-Tufted Rugs</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('beauty-of-texture')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1745589720030-c32f81367a57?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="The Beauty of Texture in Interior Design" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Design Trends</span>
+            <h3 class="fm-art-more-heading">The Beauty of Texture in Interior Design</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Article 5: Beauty of Texture -->
+  <div class="fm-art-view" id="ArtView-beauty-of-texture">
+    <section class="fm-art-hero-wrap">
+      <div class="fm-art-hero-bg">
+        <img src="https://images.unsplash.com/photo-1745589720030-c32f81367a57?crop=entropy&cs=srgb&fm=jpg&w=2400&q=85" alt="The Beauty of Texture in Interior Design" class="fm-art-hero-img" loading="eager">
+        <div class="fm-art-hero-overlay"></div>
+      </div>
+      <div class="fm-art-hero-content">
+        <button type="button" class="fm-art-back-btn" onclick="window.fmShowJournalMain()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>The Journal</span>
+        </button>
+        <span class="fm-art-eyebrow">Design Trends</span>
+        <h1 class="fm-art-title">The Beauty of Texture in Interior Design</h1>
+        <div class="fm-art-meta-bar">
+          <span>The Farsh Mahal Team</span>
+          <span class="fm-art-meta-dot"></span>
+          <span class="fm-art-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>November 12, 2025</span>
+          </span>
+          <span class="fm-art-meta-dot"></span>
+          <span>4 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-art-body-sec">
+      <article class="fm-art-body-inner">
+        <p>In a photograph, pattern is what catches the eye. In a room, it's texture that keeps you there.</p>
+
+        <h2>Depth without noise</h2>
+        <p>A sculpted, hi-lo hand-tufted rug adds an extraordinary amount of visual and tactile depth to a room without introducing a single new color. It's why textural rugs are our most-recommended piece for calm, quiet spaces.</p>
+      </article>
+    </section>
+
+    <section class="fm-art-more-sec">
+      <div class="fm-art-more-container">
+        <div class="fm-art-more-header">
+          <span class="fm-art-more-eyebrow">Continue Reading</span>
+          <h2 class="fm-art-more-title">More from <span class="italic-part">the Journal.</span></h2>
+        </div>
+        <div class="fm-art-more-grid">
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('rug-size-guide')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1615800002234-05c4d488696c?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="How to Choose the Perfect Rug Size" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Buying Guide</span>
+            <h3 class="fm-art-more-heading">How to Choose the Perfect Rug Size for Every Room</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('hand-tufted-explained')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1638310533874-6c124c012e1d?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Understanding Hand-Tufted Rugs" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Craft</span>
+            <h3 class="fm-art-more-heading">Understanding Hand-Tufted Rugs</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+          <div class="fm-art-more-card" onclick="window.fmShowArticle('color-trends')">
+            <div class="fm-art-more-img-wrap"><img src="https://images.unsplash.com/photo-1557374669-d1f478dc92c4?crop=entropy&cs=srgb&fm=jpg&w=1600&q=80" alt="Color Trends for Modern Interiors" class="fm-art-more-img" loading="lazy"></div>
+            <span class="fm-art-more-cat">Design Trends</span>
+            <h3 class="fm-art-more-heading">Color Trends for Modern Interiors</h3>
+            <div class="fm-art-more-link"><span>Read</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    window.fmShowArticle = function(handle) {
+      var mainView = document.getElementById('FarshJournalMainView');
+      var allArtViews = document.querySelectorAll('.fm-art-view');
+      
+      if (mainView) mainView.style.display = 'none';
+      allArtViews.forEach(function(v) { v.style.display = 'none'; });
+
+      var target = document.getElementById('ArtView-' + handle);
+      if (target) {
+        target.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        try {
+          var newUrl = window.location.pathname + '?article=' + handle;
+          window.history.pushState({ article: handle }, '', newUrl);
+        } catch (e) {}
+      }
+    };
+
+    window.fmShowJournalMain = function() {
+      var mainView = document.getElementById('FarshJournalMainView');
+      var allArtViews = document.querySelectorAll('.fm-art-view');
+      
+      allArtViews.forEach(function(v) { v.style.display = 'none'; });
+      if (mainView) mainView.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      try {
+        window.history.pushState({}, '', window.location.pathname);
+      } catch (e) {}
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Tab filters
+      var tabs = document.querySelectorAll('.fm-jnl-tab-btn');
+      var items = document.querySelectorAll('.fm-jnl-card-item');
+      var featured = document.getElementById('JournalFeaturedStory');
+
+      tabs.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          tabs.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+
+          var filter = btn.getAttribute('data-filter');
+
+          if (featured) {
+            if (filter === 'all' || (featured.getAttribute('data-category') || '').includes(filter)) {
+              featured.style.display = 'block';
+            } else {
+              featured.style.display = 'none';
+            }
+          }
+
+          items.forEach(function(item) {
+            var cat = item.getAttribute('data-category') || '';
+            if (filter === 'all' || cat.includes(filter)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 2. Check URL parameters for direct article load
+      var urlParams = new URLSearchParams(window.location.search);
+      var artParam = urlParams.get('article');
+      if (artParam) {
+        window.fmShowArticle(artParam);
+      } else if (window.location.hash) {
+        var h = window.location.hash.replace('#', '');
+        if (h && document.getElementById('ArtView-' + h)) {
+          window.fmShowArticle(h);
+        }
+      }
+
+      // Handle browser back/forward buttons
+      window.addEventListener('popstate', function(e) {
+        if (e.state && e.state.article) {
+          window.fmShowArticle(e.state.article);
+        } else {
+          window.fmShowJournalMain();
+        }
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,753 @@
+<!-- Load Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-trade-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ----------------------------------------------------
+     1. HERO SECTION
+  ---------------------------------------------------- */
+  .fm-trade-hero-wrap {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: #1B4332;
+  }
+
+  .fm-trade-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .fm-trade-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    animation: fm-trade-kenburns 24s ease-out infinite alternate;
+  }
+
+  @keyframes fm-trade-kenburns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+  }
+
+  .fm-trade-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(17, 24, 20, 0.88) 0%, rgba(17, 24, 20, 0.45) 50%, rgba(17, 24, 20, 0.20) 100%),
+                linear-gradient(to right, rgba(17, 24, 20, 0.70) 0%, rgba(17, 24, 20, 0.25) 50%, rgba(17, 24, 20, 0) 100%);
+  }
+
+  .fm-trade-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1500px;
+    margin: 0 auto;
+    width: 100%;
+    padding: clamp(140px, 16vw, 180px) 24px clamp(60px, 8vw, 100px) 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-trade-hero-content {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+  }
+
+  .fm-trade-hero-inner {
+    max-width: 860px;
+    color: #F7F2ED;
+  }
+
+  .fm-trade-eyebrow {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 20px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-trade-hero-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(44px, 6.2vw, 84px) !important;
+    line-height: 1.0 !important;
+    letter-spacing: -0.025em !important;
+    color: #F7F2ED !important;
+    margin: 0 0 24px 0 !important;
+    font-weight: 400 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .fm-trade-hero-title .fm-title-line {
+    display: block !important;
+    line-height: 1.02 !important;
+    color: #F7F2ED !important;
+  }
+
+  .fm-trade-hero-title span.italic-accent {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 1.08em !important;
+    color: #D9BB7A !important;
+    font-weight: 400 !important;
+    line-height: 1.05 !important;
+    margin-top: 4px !important;
+    display: block !important;
+  }
+
+  .fm-trade-hero-sub {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(247, 242, 237, 0.88) !important;
+    max-width: 560px !important;
+    margin: 24px 0 0 0 !important;
+    font-weight: 400 !important;
+  }
+
+  /* ----------------------------------------------------
+     2. TRADE BENEFITS SECTION
+  ---------------------------------------------------- */
+  .fm-trade-benefits-sec {
+    padding: clamp(64px, 8vw, 110px) 0;
+    background-color: #FBF8F4;
+  }
+
+  .fm-trade-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-trade-container {
+      padding: 0 48px;
+    }
+  }
+
+  .fm-trade-sec-header {
+    margin-bottom: 56px;
+    max-width: 640px;
+  }
+
+  .fm-trade-sec-eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #C9A24D;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .fm-trade-sec-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(32px, 4.2vw, 52px);
+    line-height: 1.05;
+    color: #1B4332;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .fm-trade-benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .fm-trade-benefits-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px 40px;
+    }
+  }
+
+  .fm-trade-benefit-item {
+    border-top: 1px solid #1B4332;
+    padding-top: 24px;
+  }
+
+  .fm-trade-benefit-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(21px, 2vw, 24px);
+    color: #1B4332;
+    margin: 0 0 12px 0;
+    font-weight: 400;
+  }
+
+  .fm-trade-benefit-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(27, 67, 50, 0.75);
+    margin: 0;
+  }
+
+  /* ----------------------------------------------------
+     3. HOW IT WORKS - FOUR STEPS
+  ---------------------------------------------------- */
+  .fm-trade-steps-sec {
+    background-color: #F7F2ED;
+    padding: clamp(64px, 8vw, 110px) 0;
+    border-top: 1px solid rgba(27, 67, 50, 0.12);
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+
+  .fm-trade-steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  @media (min-width: 640px) {
+    .fm-trade-steps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .fm-trade-steps-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .fm-trade-step-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fm-trade-step-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    color: #C9A24D;
+    margin-bottom: 12px;
+  }
+
+  .fm-trade-step-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(22px, 2vw, 26px);
+    color: #1B4332;
+    margin: 0 0 12px 0;
+    font-weight: 400;
+  }
+
+  .fm-trade-step-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(27, 67, 50, 0.70);
+    margin: 0;
+    padding-right: 16px;
+  }
+
+  /* ----------------------------------------------------
+     4. TRADE APPLICATION FORM
+  ---------------------------------------------------- */
+  .fm-trade-form-sec {
+    padding: clamp(64px, 8vw, 120px) 0;
+    background-color: #FBF8F4;
+  }
+
+  .fm-trade-form-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-trade-form-wrap {
+      padding: 0 48px;
+    }
+  }
+
+  .fm-trade-form-header {
+    margin-bottom: 48px;
+  }
+
+  .fm-trade-form-sub {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    color: rgba(27, 67, 50, 0.75);
+    margin: 12px 0 0 0;
+  }
+
+  .fm-trade-form-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px 24px;
+  }
+
+  .fm-trade-col-6 {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  @media (min-width: 768px) {
+    .fm-trade-col-6 {
+      grid-column: span 6;
+    }
+  }
+
+  .fm-trade-col-12 {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .fm-trade-label {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    font-weight: 500 !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+    line-height: 1.2 !important;
+    height: 14px !important;
+  }
+
+  .fm-trade-input,
+  .fm-trade-select {
+    width: 100% !important;
+    height: 46px !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #E5DFD7 !important;
+    padding: 12px 0 !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 22px !important;
+    color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    transition: border-color 0.2s ease;
+  }
+
+  .fm-trade-input:focus,
+  .fm-trade-select:focus {
+    border-bottom-color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .fm-trade-input::placeholder {
+    color: rgba(27, 67, 50, 0.4) !important;
+    font-family: 'Manrope', sans-serif !important;
+  }
+
+  /* Custom Select with Chevron */
+  .fm-trade-select-wrap {
+    position: relative;
+    width: 100%;
+    height: 46px;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fm-trade-select {
+    padding-right: 28px !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+  }
+
+  .fm-trade-select::-ms-expand {
+    display: none;
+  }
+
+  .fm-trade-select option {
+    background-color: #FBF8F4 !important;
+    color: #1B4332 !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    padding: 10px 14px !important;
+  }
+
+  .fm-trade-select-arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #1B4332;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fm-trade-select-arrow svg {
+    width: 12px;
+    height: 12px;
+    stroke: #1B4332;
+    stroke-width: 2.2;
+  }
+
+  /* Textarea */
+  .fm-trade-textarea {
+    width: 100% !important;
+    min-height: 140px !important;
+    height: 140px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #E5DFD7 !important;
+    padding: 12px 0 !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    resize: none !important;
+    margin: 0 !important;
+    display: block !important;
+    transition: border-color 0.2s ease;
+  }
+
+  .fm-trade-textarea:focus {
+    border-bottom-color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .fm-trade-textarea::placeholder {
+    color: rgba(27, 67, 50, 0.4) !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    opacity: 1 !important;
+  }
+
+  /* Submit Button */
+  .fm-trade-submit-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    background-color: #1B4332 !important;
+    color: #F7F2ED !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    width: auto !important;
+    min-width: unset !important;
+    max-width: fit-content !important;
+    padding: 0 36px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.28em !important;
+    line-height: 50px !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    transition: background-color 0.25s ease, transform 0.15s ease !important;
+    box-shadow: none !important;
+    outline: none !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .fm-trade-submit-btn:hover {
+    background-color: #123023 !important;
+  }
+
+  .fm-trade-submit-btn span {
+    color: #F7F2ED !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.28em !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+  }
+
+  .fm-trade-submit-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke: #F7F2ED !important;
+    stroke-width: 1.4 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Success & Error State */
+  .fm-trade-success-box {
+    border: 1px solid #E5DFD7;
+    background-color: #F7F2ED;
+    padding: 48px 32px;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .fm-trade-success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #1B4332;
+    margin: 16px 0 8px 0;
+  }
+  .fm-trade-success-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    color: rgba(27, 67, 50, 0.7);
+    margin: 0 auto;
+    max-width: 440px;
+    line-height: 1.6;
+  }
+{%- endstyle -%}
+
+<div class="fm-trade-root" id="TradeProgramPage">
+
+  <!-- 1. HERO SECTION -->
+  <section class="fm-trade-hero-wrap">
+    <div class="fm-trade-hero-bg">
+      <img
+        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?crop=entropy&cs=srgb&fm=jpg&w=2200&q=85"
+        alt="Designer at work"
+        class="fm-trade-hero-img"
+        loading="eager"
+        width="2200"
+        height="1467"
+      >
+      <div class="fm-trade-hero-overlay"></div>
+    </div>
+
+    <div class="fm-trade-hero-content">
+      <div class="fm-trade-hero-inner">
+        <span class="fm-trade-eyebrow">TRADE PROGRAM</span>
+        <h1 class="fm-trade-hero-title">
+          <span class="fm-title-line">For interior</span>
+          <span class="fm-title-line">designers,</span>
+          <span class="fm-title-line italic-accent">architects, and firms.</span>
+        </h1>
+        <p class="fm-trade-hero-sub">
+          A straightforward trade programme with practical benefits — designed to make sourcing and specifying rugs easier for your projects.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. WHAT'S INCLUDED: TRADE BENEFITS -->
+  <section class="fm-trade-benefits-sec">
+    <div class="fm-trade-container">
+      <div class="fm-trade-sec-header">
+        <span class="fm-trade-sec-eyebrow">What's included</span>
+        <h2 class="fm-trade-sec-title">Trade benefits.</h2>
+      </div>
+
+      <div class="fm-trade-benefits-grid">
+        <!-- Benefit 1 -->
+        <div class="fm-trade-benefit-item">
+          <h3 class="fm-trade-benefit-heading">Trade pricing</h3>
+          <p class="fm-trade-benefit-desc">A discount off retail on stocked pieces and custom orders.</p>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="fm-trade-benefit-item">
+          <h3 class="fm-trade-benefit-heading">Single point of contact</h3>
+          <p class="fm-trade-benefit-desc">One person on our team supports your account and projects.</p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="fm-trade-benefit-item">
+          <h3 class="fm-trade-benefit-heading">Samples on request</h3>
+          <p class="fm-trade-benefit-desc">Material and colour swatches sent to your studio when you need them.</p>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="fm-trade-benefit-item">
+          <h3 class="fm-trade-benefit-heading">Custom design support</h3>
+          <p class="fm-trade-benefit-desc">Our team helps translate your brief into a production-ready design.</p>
+        </div>
+
+        <!-- Benefit 5 -->
+        <div class="fm-trade-benefit-item">
+          <h3 class="fm-trade-benefit-heading">Project-friendly timelines</h3>
+          <p class="fm-trade-benefit-desc">Custom rugs are typically produced in 5–7 weeks.</p>
+        </div>
+
+        <!-- Benefit 6 -->
+        <div class="fm-trade-benefit-item">
+          <h3 class="fm-trade-benefit-heading">Order tracking</h3>
+          <p class="fm-trade-benefit-desc">Clear updates from production through delivery for every project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. HOW IT WORKS: FOUR STEPS -->
+  <section class="fm-trade-steps-sec">
+    <div class="fm-trade-container">
+      <div class="fm-trade-sec-header">
+        <span class="fm-trade-sec-eyebrow">How it works</span>
+        <h2 class="fm-trade-sec-title">Four steps.</h2>
+      </div>
+
+      <div class="fm-trade-steps-grid">
+        <!-- Step 1 -->
+        <div class="fm-trade-step-card">
+          <div class="fm-trade-step-num">01</div>
+          <h3 class="fm-trade-step-title">Apply</h3>
+          <p class="fm-trade-step-desc">Submit your firm details.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="fm-trade-step-card">
+          <div class="fm-trade-step-num">02</div>
+          <h3 class="fm-trade-step-title">Verify</h3>
+          <p class="fm-trade-step-desc">We review and reply within 2 business days.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="fm-trade-step-card">
+          <div class="fm-trade-step-num">03</div>
+          <h3 class="fm-trade-step-title">Onboard</h3>
+          <p class="fm-trade-step-desc">Meet your contact and receive samples.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="fm-trade-step-card">
+          <div class="fm-trade-step-num">04</div>
+          <h3 class="fm-trade-step-title">Order</h3>
+          <p class="fm-trade-step-desc">Shop and place orders with trade pricing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. APPLY: SUBMIT YOUR DETAILS FORM -->
+  <section class="fm-trade-form-sec" id="apply">
+    <div class="fm-trade-form-wrap">
+      <div class="fm-trade-form-header">
+        <span class="fm-trade-sec-eyebrow">Apply</span>
+        <h2 class="fm-trade-sec-title">Submit your details.</h2>
+        <p class="fm-trade-form-sub">We'll be in touch within 2 business days.</p>
+      </div>
+
+      {%- form 'contact', id: 'FarshTradeForm' -%}
+        <input type="hidden" name="contact[tags]" value="trade_application">
+
+        {%- if form.posted_successfully? -%}
+          <div class="fm-trade-success-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#C9A24D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <h3 class="fm-trade-success-title">Application received</h3>
+            <p class="fm-trade-success-desc">Our team will be in touch shortly.</p>
+          </div>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div style="background-color: rgba(192, 57, 43, 0.08); border-left: 3px solid #C0392B; padding: 16px 20px; margin-bottom: 24px; font-size: 14px; color: #C0392B;">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="fm-trade-form-grid">
+            <!-- Row 1: Full Name & Firm Name -->
+            <div class="fm-trade-col-6">
+              <label class="fm-trade-label" for="TradeFullName">FULL NAME *</label>
+              <input type="text" id="TradeFullName" name="contact[name]" class="fm-trade-input" required>
+            </div>
+
+            <div class="fm-trade-col-6">
+              <label class="fm-trade-label" for="TradeFirmName">FIRM / PRACTICE NAME *</label>
+              <input type="text" id="TradeFirmName" name="contact[Firm_Practice_Name]" class="fm-trade-input" required>
+            </div>
+
+            <!-- Row 2: Email & Phone -->
+            <div class="fm-trade-col-6">
+              <label class="fm-trade-label" for="TradeEmail">EMAIL *</label>
+              <input type="email" id="TradeEmail" name="contact[email]" class="fm-trade-input" required>
+            </div>
+
+            <div class="fm-trade-col-6">
+              <label class="fm-trade-label" for="TradePhone">PHONE *</label>
+              <input type="tel" id="TradePhone" name="contact[phone]" class="fm-trade-input" required>
+            </div>
+
+            <!-- Row 3: Website & Location -->
+            <div class="fm-trade-col-6">
+              <label class="fm-trade-label" for="TradeWebsite">WEBSITE / PORTFOLIO</label>
+              <input type="text" id="TradeWebsite" name="contact[Website_Portfolio]" class="fm-trade-input">
+            </div>
+
+            <div class="fm-trade-col-6">
+              <label class="fm-trade-label" for="TradeLocation">CITY & COUNTRY</label>
+              <input type="text" id="TradeLocation" name="contact[City_Country]" class="fm-trade-input">
+            </div>
+
+            <!-- Row 4: Specialty Dropdown -->
+            <div class="fm-trade-col-6">
+              <label class="fm-trade-label" for="TradeSpecialty">SPECIALTY</label>
+              <div class="fm-trade-select-wrap">
+                <select id="TradeSpecialty" name="contact[Specialty]" class="fm-trade-select">
+                  <option value="Residential">Residential</option>
+                  <option value="Commercial">Commercial</option>
+                  <option value="Hospitality">Hospitality</option>
+                  <option value="Retail">Retail</option>
+                  <option value="Multi-family">Multi-family</option>
+                  <option value="Other">Other</option>
+                </select>
+                <div class="fm-trade-select-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 5: Tell us about your work -->
+            <div class="fm-trade-col-12">
+              <label class="fm-trade-label" for="TradeMessage">TELL US ABOUT YOUR WORK</label>
+              <textarea id="TradeMessage" name="contact[body]" rows="5" class="fm-trade-textarea" placeholder="Share what you work on and what you're looking for."></textarea>
+            </div>
+
+            <!-- Row 6: Submit Button -->
+            <div class="fm-trade-col-12" style="margin-top: 16px;">
+              <button type="submit" class="fm-trade-submit-btn">
+                <span>SUBMIT</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </section>
+</div>

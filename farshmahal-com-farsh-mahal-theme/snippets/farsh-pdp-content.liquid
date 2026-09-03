@@ -1,0 +1,1169 @@
+<!-- Load Google Fonts for PDP -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-pdp-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    padding-top: clamp(24px, 3.5vw, 44px);
+    padding-bottom: clamp(48px, 6vw, 80px);
+  }
+
+  .fm-pdp-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-pdp-container {
+      padding: 0 48px;
+    }
+  }
+
+  /* Breadcrumbs */
+  .fm-pdp-breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: rgba(27, 67, 50, 0.60);
+    margin-bottom: clamp(16px, 2vw, 24px);
+  }
+
+  .fm-pdp-breadcrumbs a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .fm-pdp-breadcrumbs a:hover {
+    color: #1B4332;
+  }
+  .fm-pdp-breadcrumbs span.sep {
+    opacity: 0.4;
+  }
+  .fm-pdp-breadcrumbs span.current {
+    color: #1B4332;
+    font-weight: 500;
+  }
+
+  /* Main Grid */
+  .fm-pdp-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 1024px) {
+    .fm-pdp-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 48px;
+      align-items: start;
+    }
+    .fm-pdp-media-col {
+      grid-column: span 7;
+    }
+    .fm-pdp-info-col {
+      grid-column: span 5;
+      padding-left: 16px;
+    }
+  }
+
+  /* Gallery */
+  .fm-pdp-gallery-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 768px) {
+    .fm-pdp-gallery-wrap {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+    .fm-pdp-thumbs-col {
+      grid-column: span 2;
+      order: 1;
+    }
+    .fm-pdp-main-media-col {
+      grid-column: span 10;
+      order: 2;
+    }
+  }
+
+  .fm-pdp-thumbs-list {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .fm-pdp-thumbs-list::-webkit-scrollbar {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .fm-pdp-thumbs-list {
+      flex-direction: column;
+      gap: 14px;
+    }
+  }
+
+  .fm-pdp-thumb-btn {
+    width: 68px;
+    height: 85px;
+    flex-shrink: 0;
+    background-color: #F7F2ED;
+    border: 1px solid transparent;
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  @media (min-width: 768px) {
+    .fm-pdp-thumb-btn {
+      width: 100%;
+      height: 100px;
+    }
+  }
+  .fm-pdp-thumb-btn.active {
+    border-color: #1B4332;
+  }
+  .fm-pdp-thumb-btn:hover:not(.active) {
+    border-color: rgba(27, 67, 50, 0.3);
+  }
+  .fm-pdp-thumb-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .fm-pdp-main-img-wrap {
+    aspect-ratio: 4 / 5;
+    background-color: #F7F2ED;
+    overflow: hidden;
+    position: relative;
+  }
+  .fm-pdp-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fm-pdp-secondary-grid {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .fm-pdp-secondary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+  }
+  .fm-pdp-sec-img-wrap {
+    aspect-ratio: 4 / 5;
+    background-color: #F7F2ED;
+    overflow: hidden;
+  }
+  .fm-pdp-sec-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+  .fm-pdp-sec-img-wrap:hover img {
+    transform: scale(1.04);
+  }
+
+  /* Info Column */
+  .fm-pdp-sticky-box {
+    position: static;
+  }
+  @media (min-width: 1024px) {
+    .fm-pdp-sticky-box {
+      position: sticky;
+      top: 110px;
+    }
+  }
+
+  .fm-pdp-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C1914E !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+    margin-bottom: 12px !important;
+    transition: color 0.2s ease;
+  }
+  .fm-pdp-eyebrow:hover {
+    color: #1B4332 !important;
+  }
+
+  .fm-pdp-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: clamp(34px, 4.2vw, 52px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 0 16px 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .fm-pdp-price-box {
+    margin-bottom: 28px;
+  }
+
+  .fm-pdp-price {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 500 !important;
+    color: #1B4332 !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-pdp-tax-note {
+    font-size: 12px !important;
+    color: #3C5D4E !important;
+    font-style: italic !important;
+    margin-top: 4px;
+  }
+
+  /* Size Selector */
+  .fm-pdp-opt-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .fm-pdp-opt-label {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+    color: #C1914E !important;
+  }
+
+  .fm-pdp-size-guide-link {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    color: #C1914E !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #C1914E !important;
+    padding-bottom: 1px !important;
+    transition: all 0.2s ease !important;
+  }
+  .fm-pdp-size-guide-link:hover {
+    color: #1B4332 !important;
+    border-color: #1B4332 !important;
+  }
+
+  .fm-pdp-sizes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .fm-pdp-size-btn {
+    padding: 10px 18px;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.08em !important;
+    background: transparent;
+    border: 1px solid rgba(27, 67, 50, 0.18);
+    color: #1B4332;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0;
+  }
+  .fm-pdp-size-btn:hover {
+    border-color: #1B4332;
+  }
+  .fm-pdp-size-btn.active {
+    background-color: #1B4332 !important;
+    color: #FBF8F4 !important;
+    border-color: #1B4332 !important;
+  }
+
+  /* Quantity & Buy Action */
+  .fm-pdp-action-row {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .fm-pdp-qty-wrap {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(27, 67, 50, 0.18);
+    background: #FBF8F4;
+  }
+
+  .fm-pdp-qty-btn {
+    padding: 14px 14px;
+    background: transparent;
+    border: none;
+    color: #1B4332;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+  }
+  .fm-pdp-qty-btn:hover {
+    color: #C1914E;
+  }
+
+  .fm-pdp-qty-val {
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 32px;
+    text-align: center;
+  }
+
+  .fm-pdp-atc-btn {
+    flex: 1;
+    background-color: #1B4332 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    padding: 16px 28px !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    transition: background-color 0.2s ease !important;
+    border-radius: 0 !important;
+  }
+  .fm-pdp-atc-btn:hover {
+    background-color: #123023 !important;
+    color: #FFFFFF !important;
+  }
+  .fm-pdp-atc-btn:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    color: #FFFFFF !important;
+  }
+
+  .fm-pdp-atc-btn span,
+  #PdpAtcText {
+    color: #FFFFFF !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+  }
+
+  .fm-pdp-atc-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke: #FFFFFF !important;
+    color: #FFFFFF !important;
+    stroke-width: 1.5 !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Custom Rug Callout */
+  .fm-pdp-custom-notice {
+    font-size: 13px;
+    color: rgba(27, 67, 50, 0.80);
+    margin-bottom: 36px;
+    line-height: 1.5;
+  }
+  .fm-pdp-custom-notice a {
+    color: #1B4332;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-left: 4px;
+  }
+  .fm-pdp-custom-notice a:hover {
+    color: #C9A24D;
+  }
+
+  /* Description & Details Section (farsh-rte) */
+  .fm-pdp-desc-sec {
+    border-top: 1px solid rgba(27, 67, 50, 0.12);
+    padding-top: 32px;
+    margin-top: 32px;
+  }
+
+  .fm-pdp-desc-eyebrow {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+    color: #C1914E !important;
+    margin-bottom: 16px !important;
+    display: block !important;
+    line-height: 1.2 !important;
+  }
+
+  .farsh-rte,
+  .fm-pdp-desc-body {
+    max-width: 62ch;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: #1b4332d9 !important;
+  }
+  .farsh-rte > * + *,
+  .fm-pdp-desc-body > * + * {
+    margin-top: .9em !important;
+  }
+  .farsh-rte p,
+  .fm-pdp-desc-body p {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    color: #1b4332d9 !important;
+    line-height: 1.75 !important;
+    margin: 0 0 16px 0 !important;
+  }
+  .farsh-rte p:empty,
+  .fm-pdp-desc-body p:empty {
+    height: .6em;
+    margin: 0;
+  }
+  .farsh-rte br,
+  .fm-pdp-desc-body br {
+    content: "";
+    display: block;
+    margin-top: .35em;
+  }
+  .farsh-rte b,
+  .farsh-rte strong,
+  .fm-pdp-desc-body b,
+  .fm-pdp-desc-body strong {
+    color: #1B4332 !important;
+    font-weight: 600 !important;
+  }
+  .farsh-rte em,
+  .farsh-rte i,
+  .fm-pdp-desc-body em,
+  .fm-pdp-desc-body i {
+    font-style: italic !important;
+  }
+  .farsh-rte a,
+  .fm-pdp-desc-body a {
+    color: #1B4332 !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 1px !important;
+    text-underline-offset: 3px !important;
+    transition: color .2s ease !important;
+  }
+  .farsh-rte a:hover,
+  .fm-pdp-desc-body a:hover {
+    color: #C1914E !important;
+  }
+  .farsh-rte h1,
+  .farsh-rte h2,
+  .farsh-rte h3,
+  .farsh-rte h4,
+  .fm-pdp-desc-body h1,
+  .fm-pdp-desc-body h2,
+  .fm-pdp-desc-body h3,
+  .fm-pdp-desc-body h4 {
+    color: #1B4332 !important;
+    font-family: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', serif !important;
+    font-weight: 500 !important;
+    letter-spacing: -.005em !important;
+    line-height: 1.2 !important;
+    margin-bottom: .5em !important;
+    margin-top: 1.6em !important;
+    text-transform: uppercase !important;
+  }
+  .farsh-rte h1,
+  .fm-pdp-desc-body h1 {
+    font-size: 1.75rem !important;
+  }
+  @media (min-width: 768px) {
+    .farsh-rte h1,
+    .fm-pdp-desc-body h1 {
+      font-size: 2rem !important;
+    }
+  }
+  .farsh-rte h2,
+  .fm-pdp-desc-body h2 {
+    font-size: 1.4rem !important;
+  }
+  @media (min-width: 768px) {
+    .farsh-rte h2,
+    .fm-pdp-desc-body h2 {
+      font-size: 1.55rem !important;
+    }
+  }
+  .farsh-rte h3,
+  .fm-pdp-desc-body h3 {
+    font-size: 1.2rem !important;
+  }
+  @media (min-width: 768px) {
+    .farsh-rte h3,
+    .fm-pdp-desc-body h3 {
+      font-size: 1.25rem !important;
+    }
+  }
+  .farsh-rte h4,
+  .fm-pdp-desc-body h4 {
+    font-size: 1.05rem !important;
+  }
+  .farsh-rte ol,
+  .farsh-rte ul,
+  .fm-pdp-desc-body ol,
+  .fm-pdp-desc-body ul {
+    margin: .6em 0 !important;
+    padding-left: 1.35rem !important;
+  }
+  .farsh-rte ul,
+  .fm-pdp-desc-body ul {
+    list-style: disc !important;
+  }
+  .farsh-rte ol,
+  .fm-pdp-desc-body ol {
+    list-style: decimal !important;
+  }
+  .farsh-rte li,
+  .fm-pdp-desc-body li {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    color: #1b4332d9 !important;
+    line-height: 1.7 !important;
+    margin-bottom: .4em !important;
+    padding-left: .15rem !important;
+  }
+  .farsh-rte li::marker,
+  .fm-pdp-desc-body li::marker {
+    color: #C1914E !important;
+  }
+  .farsh-rte li > p,
+  .fm-pdp-desc-body li > p {
+    margin: 0 !important;
+    display: inline !important;
+    color: inherit !important;
+    font-size: inherit !important;
+  }
+
+  /* Accordion (Shipping & Returns) */
+  .fm-pdp-accordion {
+    border-top: 1px solid rgba(27, 67, 50, 0.12);
+    margin-top: 28px;
+  }
+
+  .fm-pdp-acc-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+    color: #1B4332 !important;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .fm-pdp-acc-trigger:hover {
+    color: #C1914E !important;
+  }
+
+  .fm-pdp-acc-trigger svg {
+    width: 14px;
+    height: 14px;
+    stroke: #1B4332;
+    stroke-width: 1.5;
+    transition: transform 0.3s ease;
+  }
+  .fm-pdp-acc-trigger.open svg {
+    transform: rotate(180deg);
+  }
+
+  .fm-pdp-acc-content {
+    display: none;
+    padding-bottom: 24px;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    color: #3C5D4E !important;
+  }
+  .fm-pdp-acc-content.open {
+    display: block;
+  }
+  .fm-pdp-acc-content p {
+    margin: 0 0 10px 0;
+  }
+  .fm-pdp-acc-content strong,
+  .fm-pdp-acc-content b {
+    font-weight: 500 !important;
+    color: #1B4332 !important;
+  }
+
+  /* Related Products */
+  .fm-pdp-related-sec {
+    padding: clamp(40px, 5vw, 64px) 0 0 0;
+    border-top: 1px solid rgba(27, 67, 50, 0.10);
+    margin-top: clamp(40px, 5vw, 64px);
+  }
+
+  .fm-pdp-related-eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #C1914E;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .fm-pdp-related-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(30px, 3.8vw, 46px);
+    line-height: 1.05;
+    color: #1B4332;
+    margin: 0 0 32px 0;
+    font-weight: 400;
+  }
+  .fm-pdp-related-title span.italic-part {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+  }
+
+  .fm-pdp-related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .fm-pdp-related-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+  }
+
+  .fm-pdp-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .fm-pdp-card-img-wrap {
+    aspect-ratio: 4 / 5;
+    background-color: #F7F2ED;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .fm-pdp-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fm-pdp-card:hover .fm-pdp-card-img {
+    transform: scale(1.05);
+  }
+
+  .fm-pdp-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #1B4332;
+    color: #FBF8F4;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    font-weight: 600;
+  }
+
+  .fm-pdp-card-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.2;
+    color: #1B4332;
+    margin: 0 0 6px 0;
+    font-weight: 400;
+    transition: color 0.2s ease;
+  }
+  .fm-pdp-card:hover .fm-pdp-card-title {
+    color: #C1914E;
+  }
+
+  .fm-pdp-card-price {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    color: #3C5D4E;
+    margin: 0;
+  }
+{%- endstyle -%}
+
+{%- assign product_title = product.title | default: 'Terra Hush' -%}
+{%- assign collection_obj = product.collections.first -%}
+{%- assign collection_title = collection_obj.title | default: 'Nordic Calm' -%}
+{%- assign collection_url = collection_obj.url | default: '/collections/nordic-calm' -%}
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+
+{%- comment -%} Determine Gallery Images {%- endcomment -%}
+{%- assign product_images_count = product.images.size -%}
+{%- if product_images_count > 0 -%}
+  {%- assign main_img_url = product.featured_image | image_url: width: 1800 -%}
+{%- else -%}
+  {%- assign main_img_url = 'https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10_Organic_Silence_1-removebg-preview.png?v=1786366163' -%}
+{%- endif -%}
+
+<div class="fm-pdp-root" id="FarshPDP">
+  <div class="fm-pdp-container">
+
+    <!-- 1. Breadcrumbs -->
+    <nav class="fm-pdp-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/collections/all">Shop</a>
+      <span class="sep">/</span>
+      <a href="{{ collection_url }}">{{ collection_title }}</a>
+      <span class="sep">/</span>
+      <span class="current">{{ product_title }}</span>
+    </nav>
+
+    <!-- 2. Main Product Grid -->
+    <div class="fm-pdp-grid">
+
+      <!-- Left Media Column -->
+      <div class="fm-pdp-media-col">
+        <div class="fm-pdp-gallery-wrap">
+
+          <!-- Thumbnails -->
+          <div class="fm-pdp-thumbs-col">
+            <div class="fm-pdp-thumbs-list" id="PdpThumbs">
+              {%- if product_images_count > 0 -%}
+                {%- for img in product.images -%}
+                  <button
+                    type="button"
+                    class="fm-pdp-thumb-btn {% if forloop.first %}active{% endif %}"
+                    data-img-url="{{ img | image_url: width: 1800 }}"
+                    onclick="window.fmChangePdpImageByUrl(this)"
+                  >
+                    <img src="{{ img | image_url: width: 300 }}" alt="{{ img.alt | escape | default: product_title }}">
+                  </button>
+                {%- endfor -%}
+              {%- else -%}
+                <button type="button" class="fm-pdp-thumb-btn active" data-img-url="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10_Organic_Silence_1-removebg-preview.png?v=1786366163" onclick="window.fmChangePdpImageByUrl(this)">
+                  <img src="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10_Organic_Silence_1-removebg-preview.png?v=1786366163" alt="Thumbnail 1">
+                </button>
+                <button type="button" class="fm-pdp-thumb-btn" data-img-url="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence_2.png?v=1786366163" onclick="window.fmChangePdpImageByUrl(this)">
+                  <img src="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence_2.png?v=1786366163" alt="Thumbnail 2">
+                </button>
+                <button type="button" class="fm-pdp-thumb-btn" data-img-url="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence_1.png?v=1786366163" onclick="window.fmChangePdpImageByUrl(this)">
+                  <img src="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence_1.png?v=1786366163" alt="Thumbnail 3">
+                </button>
+              {%- endif -%}
+            </div>
+          </div>
+
+          <!-- Main Featured Image -->
+          <div class="fm-pdp-main-media-col">
+            <div class="fm-pdp-main-img-wrap">
+              <img
+                id="PdpMainImage"
+                src="{{ main_img_url }}"
+                alt="{{ product_title }}"
+                class="fm-pdp-main-img"
+                loading="eager"
+              >
+            </div>
+
+            <!-- Desktop Secondary 2-Grid -->
+            <div class="fm-pdp-secondary-grid">
+              {%- if product_images_count > 2 -%}
+                <div class="fm-pdp-sec-img-wrap">
+                  <img src="{{ product.images[1] | image_url: width: 1200 }}" alt="{{ product_title }}" loading="lazy">
+                </div>
+                <div class="fm-pdp-sec-img-wrap">
+                  <img src="{{ product.images[2] | image_url: width: 1200 }}" alt="{{ product_title }}" loading="lazy">
+                </div>
+              {%- elsif product_images_count > 1 -%}
+                <div class="fm-pdp-sec-img-wrap" style="grid-column: span 2;">
+                  <img src="{{ product.images[1] | image_url: width: 1200 }}" alt="{{ product_title }}" loading="lazy">
+                </div>
+              {%- else -%}
+                <div class="fm-pdp-sec-img-wrap">
+                  <img src="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence_2.png?v=1786366163" alt="Room setting 1" loading="lazy">
+                </div>
+                <div class="fm-pdp-sec-img-wrap">
+                  <img src="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence_1.png?v=1786366163" alt="Room setting 2" loading="lazy">
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Info & Purchasing Column -->
+      <div class="fm-pdp-info-col">
+        <div class="fm-pdp-sticky-box">
+
+          <!-- Collection Eyebrow -->
+          <a href="{{ collection_url }}" class="fm-pdp-eyebrow">{{ collection_title }}</a>
+
+          <!-- Product Title -->
+          <h1 class="fm-pdp-title">{{ product_title }}</h1>
+
+          <!-- Price & Tax Note -->
+          <div class="fm-pdp-price-box">
+            <div class="fm-pdp-price" id="PdpPrice">
+              {% assign pdp_display_price = selected_variant.price | default: product.price %}
+              {% render 'farsh-price-formatted', price: pdp_display_price %}
+            </div>
+            <div class="fm-pdp-tax-note">(Excluded of all taxes)</div>
+          </div>
+
+          <!-- Shopify Form -->
+          {%- form 'product', product, id: 'FarshProductForm', class: 'fm-pdp-form' -%}
+            <input type="hidden" name="id" id="PdpVariantId" value="{{ selected_variant.id | default: product.variants.first.id }}">
+
+            <!-- Size Selector -->
+            {%- if product.variants.size > 0 -%}
+              <div class="fm-pdp-opt-header">
+                <span class="fm-pdp-opt-label">SIZE</span>
+              </div>
+
+              <div class="fm-pdp-sizes-grid" id="PdpSizeButtons">
+                {%- for variant in product.variants -%}
+                  <button
+                    type="button"
+                    class="fm-pdp-size-btn {% if variant.id == selected_variant.id %}active{% endif %}"
+                    data-variant-id="{{ variant.id }}"
+                    data-price="{% render 'farsh-price-formatted', price: variant.price %}"
+                    data-available="{{ variant.available }}"
+                    onclick="window.fmSelectSize(this)"
+                  >
+                    {{ variant.title }}
+                  </button>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            <!-- Quantity & Add to Cart -->
+            <div class="fm-pdp-action-row">
+              <div class="fm-pdp-qty-wrap">
+                <button type="button" class="fm-pdp-qty-btn" onclick="window.fmChangeQty(-1)" aria-label="Decrease quantity">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+                <span class="fm-pdp-qty-val" id="PdpQtyVal">1</span>
+                <input type="hidden" name="quantity" id="PdpQtyInput" value="1">
+                <button type="button" class="fm-pdp-qty-btn" onclick="window.fmChangeQty(1)" aria-label="Increase quantity">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+              </div>
+
+              <button
+                type="button"
+                class="fm-pdp-atc-btn"
+                id="PdpAddToCartBtn"
+                onclick="window.fmHandleAddToCart()"
+                {% unless selected_variant.available %}disabled{% endunless %}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span id="PdpAtcText">
+                  {%- if selected_variant.available -%}
+                    Add to Cart
+                  {%- else -%}
+                    Sold Out
+                  {%- endif -%}
+                </span>
+              </button>
+            </div>
+          {%- endform -%}
+
+          <!-- Description Section -->
+          <div class="fm-pdp-desc-sec">
+            <div class="fm-pdp-desc-eyebrow">Description</div>
+            <div class="farsh-rte fm-pdp-desc-body">
+              {%- if product.description != blank -%}
+                {{ product.description }}
+              {%- else -%}
+                <p><b>Soft shapes and quiet contrast, like a landscape settling into stillness.</b></p>
+                <p>
+                  {{ product_title }} unfolds in loose, organic shapes — taupe and warm beige meeting a field of soft ivory in curves that feel drawn by hand rather than measured. On one edge, tight concentric rings rise in carved texture, echoing tree rings or a quiet ripple across water, while the rest of the rug stays smooth and even underfoot. It's a design suited to spaces that want calm with a little visual movement — a living room anchoring a neutral palette, or a bedroom that could use one grounding, sculptural piece.
+                </p>
+                <p>
+                  Every curve and carved line in {{ product_title }} is shaped by hand. Artisans in India handtuft the rug from 100% wool, working the high-low texture section by section so the contrast between flat pile and carved detail stays crisp and deliberate. It's a slower way of making a rug, and it shows in the way the design holds its shape and depth over time.
+                </p>
+                <h1>WHY YOU'LL LOVE IT</h1>
+                <ul>
+                  <li>Organic, freeform shapes bring gentle movement without competing with your furniture</li>
+                  <li>Carved concentric detailing adds texture you can see and feel underfoot</li>
+                  <li>Handtufted from 100% wool for a soft, substantial feel that holds up to daily life</li>
+                  <li>Neutral tonal palette pairs easily with warm or cool color schemes</li>
+                  <li>A grounding piece for living rooms, bedrooms, or reading nooks</li>
+                </ul>
+                <h1>THE DETAILS</h1>
+                <ul>
+                  <li>Material: 100% Wool</li>
+                  <li>Construction: Handtufted, with carved high-low pile detailing</li>
+                  <li>Origin: Handcrafted in India</li>
+                </ul>
+              {%- endif -%}
+            </div>
+          </div>
+
+          <!-- Shipping & Returns Accordion -->
+          <div class="fm-pdp-accordion">
+            <button type="button" class="fm-pdp-acc-trigger" onclick="window.fmToggleAccordion(this)">
+              <span>Shipping & Returns</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="fm-pdp-acc-content">
+              <p><strong>Free insured delivery worldwide. Duties and Taxes Excluded.</strong></p>
+              <p>In-stock pieces ship within 6-12 business days. Custom and made-to-order rugs typically ship in 5-7 weeks.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. Dynamic Related Products Section -->
+    {%- assign related_collection = product.collections.first | default: collections.all -%}
+    {%- if related_collection != blank and related_collection.products.size > 1 -%}
+      <section class="fm-pdp-related-sec">
+        <span class="fm-pdp-related-eyebrow">You may also love</span>
+        <h2 class="fm-pdp-related-title">More from <span class="italic-part">the collection.</span></h2>
+
+        <div class="fm-pdp-related-grid">
+          {%- assign count = 0 -%}
+          {%- for rel_product in related_collection.products -%}
+            {%- unless rel_product.id == product.id -%}
+              {%- if count < 4 -%}
+                {%- assign count = count | plus: 1 -%}
+                <a href="{{ rel_product.url }}" class="fm-pdp-card">
+                  <div class="fm-pdp-card-img-wrap">
+                    <span class="fm-pdp-card-badge">New</span>
+                    {%- if rel_product.featured_image -%}
+                      <img src="{{ rel_product.featured_image | image_url: width: 800 }}" alt="{{ rel_product.title | escape }}" class="fm-pdp-card-img" loading="lazy">
+                    {%- else -%}
+                      <img src="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10_Organic_Silence_1-removebg-preview.png?v=1786366163" alt="{{ rel_product.title | escape }}" class="fm-pdp-card-img" loading="lazy">
+                    {%- endif -%}
+                  </div>
+                  <h3 class="fm-pdp-card-title">{{ rel_product.title }}</h3>
+                  <p class="fm-pdp-card-price">From {% render 'farsh-price-formatted', price: rel_product.price_min %}</p>
+                </a>
+              {%- endif -%}
+            {%- endunless -%}
+          {%- endfor -%}
+        </div>
+      </section>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    window.fmChangePdpImageByUrl = function(btn) {
+      var url = btn.getAttribute('data-img-url');
+      var mainImg = document.getElementById('PdpMainImage');
+      if (mainImg && url) {
+        mainImg.src = url;
+      }
+      var thumbs = document.querySelectorAll('.fm-pdp-thumb-btn');
+      thumbs.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    };
+
+    window.fmSelectSize = function(btn) {
+      var allButtons = document.querySelectorAll('.fm-pdp-size-btn');
+      allButtons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      var priceEl = document.getElementById('PdpPrice');
+      var variantInput = document.getElementById('PdpVariantId');
+      var atcBtn = document.getElementById('PdpAddToCartBtn');
+      var atcText = document.getElementById('PdpAtcText');
+      
+      var price = btn.getAttribute('data-price');
+      var variantId = btn.getAttribute('data-variant-id');
+      var available = btn.getAttribute('data-available') === 'true';
+
+      if (priceEl && price) priceEl.textContent = price;
+      if (variantInput && variantId) variantInput.value = variantId;
+
+      if (atcBtn && atcText) {
+        if (available) {
+          atcBtn.disabled = false;
+          atcText.textContent = 'Add to Cart';
+        } else {
+          atcBtn.disabled = true;
+          atcText.textContent = 'Sold Out';
+        }
+      }
+    };
+
+    window.fmChangeQty = function(delta) {
+      var qtyInput = document.getElementById('PdpQtyInput');
+      var qtyVal = document.getElementById('PdpQtyVal');
+      if (!qtyInput || !qtyVal) return;
+      var cur = parseInt(qtyInput.value, 10) || 1;
+      var next = Math.max(1, cur + delta);
+      qtyInput.value = next;
+      qtyVal.textContent = next;
+    };
+
+    window.fmToggleAccordion = function(btn) {
+      btn.classList.toggle('open');
+      var content = btn.nextElementSibling;
+      if (content) {
+        content.classList.toggle('open');
+      }
+    };
+
+    // Add to Cart Execution Handler
+    window.fmHandleAddToCart = function() {
+      var atcBtn = document.getElementById('PdpAddToCartBtn');
+      var atcText = document.getElementById('PdpAtcText');
+      var variantInput = document.getElementById('PdpVariantId');
+      var qtyInput = document.getElementById('PdpQtyInput');
+      
+      var variantId = variantInput ? variantInput.value : '';
+      if (!variantId) {
+        var activeBtn = document.querySelector('.fm-pdp-size-btn.active');
+        if (activeBtn) variantId = activeBtn.getAttribute('data-variant-id');
+      }
+
+      var qty = qtyInput ? (parseInt(qtyInput.value, 10) || 1) : 1;
+
+      if (!variantId) {
+        alert('Please select a size first.');
+        return;
+      }
+
+      if (atcBtn) atcBtn.disabled = true;
+      if (atcText) atcText.textContent = 'Adding...';
+
+      var formData = new FormData();
+      formData.append('id', variantId);
+      formData.append('quantity', qty);
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(function(res) {
+        if (!res.ok) {
+          return res.json().then(function(err) { throw err; });
+        }
+        return res.json();
+      })
+      .then(function(item) {
+        if (atcText) atcText.textContent = 'Added to Bag ✓';
+        
+        // Fetch updated cart to refresh count & drawer
+        return fetch('/cart.js')
+          .then(function(r) { return r.json(); })
+          .then(function(cartData) {
+            // Update header cart count
+            var cartLinks = document.querySelectorAll('#cart-icon-bubble, .fm-cart-link, a[href*="/cart"]');
+            cartLinks.forEach(function(link) {
+              var cartText = link.querySelector('.fm-cart-text');
+              if (cartText) {
+                cartText.textContent = 'Cart (' + cartData.item_count + ')';
+              }
+            });
+
+            // If Shopify Dawn cart drawer exists on page, re-render & open
+            var cartDrawer = document.querySelector('cart-drawer');
+            if (cartDrawer) {
+              cartDrawer.classList.remove('is-empty');
+              fetch(window.location.pathname + '?sections=cart-drawer,cart-icon-bubble')
+                .then(function(sRes) { return sRes.json(); })
+                .then(function(sections) {
+                  if (typeof cartDrawer.renderContents === 'function') {
+                    cartDrawer.renderContents({ sections: sections });
+                  } else if (sections && sections['cart-drawer']) {
+                    var doc = new DOMParser().parseFromString(sections['cart-drawer'], 'text/html');
+                    var newInner = doc.querySelector('.drawer__inner');
+                    var curInner = cartDrawer.querySelector('.drawer__inner');
+                    if (newInner && curInner) curInner.innerHTML = newInner.innerHTML;
+                  }
+                  if (typeof cartDrawer.open === 'function') {
+                    cartDrawer.open();
+                  }
+                })
+                .catch(function() {
+                  if (typeof cartDrawer.open === 'function') cartDrawer.open();
+                });
+            }
+
+            document.dispatchEvent(new CustomEvent('cart:updated', { detail: { item: item, cart: cartData } }));
+          });
+      })
+      .catch(function(err) {
+        console.error('Error adding to cart:', err);
+        var msg = (err && (err.description || err.message)) ? (err.description || err.message) : 'Error adding to cart';
+        alert(msg);
+      })
+      .finally(function() {
+        setTimeout(function() {
+          if (atcBtn) atcBtn.disabled = false;
+          if (atcText) atcText.textContent = 'Add to Cart';
+        }, 2200);
+      });
+    };
+
+    function initPdpAddToCart() {
+      var form = document.getElementById('FarshProductForm');
+      if (form && !form.dataset.pdpInitialized) {
+        form.dataset.pdpInitialized = 'true';
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          window.fmHandleAddToCart();
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPdpAddToCart);
+    } else {
+      initPdpAddToCart();
+    }
+  })();
+</script>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-dune" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.12" flood-color="#1B4332" />
+    </filter>
+  </defs>
+  <rect width="600" height="750" fill="#F6F3ED"/>
+  <!-- Rectangular Rug -->
+  <rect x="70" y="60" width="460" height="630" rx="8" fill="#F0ECE1" filter="url(#shadow-dune)"/>
+  <!-- Topographic Contour Wave Carvings -->
+  <path d="M 70 120 C 180 80, 260 200, 380 140 C 450 100, 490 140, 530 110 L 530 690 L 70 690 Z" fill="#E4DDCF"/>
+  <path d="M 70 220 C 160 170, 240 290, 360 220 C 440 180, 480 230, 530 190 L 530 690 L 70 690 Z" fill="#D7CDBE"/>
+  <path d="M 70 320 C 180 260, 260 380, 390 310 C 460 260, 490 320, 530 280 L 530 690 L 70 690 Z" fill="#C9BDAA"/>
+  <path d="M 70 430 C 160 370, 240 480, 370 410 C 450 360, 480 420, 530 380 L 530 690 L 70 690 Z" fill="#BAAC98"/>
+  <path d="M 70 540 C 180 480, 260 590, 390 520 C 460 470, 490 530, 530 490 L 530 690 L 70 690 Z" fill="#AC9D87"/>
+  <!-- Dune Flow Carving Lines -->
+  <path d="M 70 100 C 190 60, 270 180, 390 120 C 460 80, 500 120, 530 90" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.7"/>
+  <path d="M 70 200 C 170 150, 250 270, 370 200 C 450 160, 490 210, 530 170" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.7"/>
+  <path d="M 70 300 C 190 240, 270 360, 400 290 C 470 240, 500 300, 530 260" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.7"/>
+  <path d="M 70 410 C 170 350, 250 460, 380 390 C 460 340, 490 400, 530 360" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.7"/>
+  <path d="M 70 520 C 190 460, 270 570, 400 500 C 470 450, 500 510, 530 470" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.7"/>
+  <path d="M 70 630 C 170 570, 250 670, 380 600 C 460 550, 490 610, 530 570" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.7"/>
+</svg>

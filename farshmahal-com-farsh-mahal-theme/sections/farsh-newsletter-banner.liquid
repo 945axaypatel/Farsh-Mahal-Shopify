@@ -1,0 +1,212 @@
+{%- style -%}
+  .fm-newsletter-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color | default: '#1B4332' }};
+    color: {{ section.settings.text_color | default: '#F7F2ED' }};
+    padding-top: {{ section.settings.padding_top | default: 80 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 80 }}px;
+    text-align: center;
+  }
+
+  .fm-newsletter-container-{{ section.id }} {
+    max-width: {{ section.settings.container_width | default: 680 }}px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .fm-newsletter-eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: {{ section.settings.accent_gold | default: '#D9BB7A' }};
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .fm-newsletter-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    color: {{ section.settings.text_color | default: '#F7F2ED' }};
+    margin: 0 0 16px 0;
+  }
+
+  .fm-newsletter-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(247, 242, 237, 0.75);
+    margin: 0 0 32px 0;
+  }
+
+  .fm-newsletter-form {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(247, 242, 237, 0.35);
+    transition: border-color 0.3s ease;
+  }
+  .fm-newsletter-form:focus-within {
+    border-bottom-color: {{ section.settings.accent_gold | default: '#D9BB7A' }};
+  }
+
+  .fm-newsletter-input {
+    flex: 1;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 14px 16px 14px 0 !important;
+    color: #FFFFFF !important;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    box-shadow: none !important;
+  }
+  .fm-newsletter-input::placeholder {
+    color: rgba(247, 242, 237, 0.40);
+  }
+
+  .fm-newsletter-submit {
+    background: transparent !important;
+    border: none !important;
+    color: {{ section.settings.accent_gold | default: '#D9BB7A' }} !important;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 14px 0 14px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+{%- endstyle -%}
+
+<section class="fm-newsletter-section-{{ section.id }}" aria-label="Newsletter Subscription">
+  <div class="fm-newsletter-container-{{ section.id }}">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="fm-newsletter-eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    <h2 class="fm-newsletter-title">{{ section.settings.title | default: 'Join the Farsh Mahal Journal' }}</h2>
+    <p class="fm-newsletter-desc">{{ section.settings.description | default: 'Receive private previews of new collection arrivals, interior architectural stories, and bespoke commissions.' }}</p>
+
+    {%- form 'customer', class: 'fm-newsletter-form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input
+        type="email"
+        name="contact[email]"
+        class="fm-newsletter-input"
+        placeholder="{{ section.settings.placeholder | default: 'Your email address' }}"
+        required
+        aria-label="Email address"
+      >
+      <button type="submit" class="fm-newsletter-submit">
+        <span>{{ section.settings.btn_label | default: 'SUBSCRIBE' }}</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+      {%- if form.posted_successfully? -%}
+        <p style="font-size: 13px; color: #D9BB7A; margin-top: 16px;">{{ section.settings.success_message | default: 'Welcome — check your inbox for a warm hello.' }}</p>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FM Newsletter Banner",
+  "tag": "section",
+  "class": "section-fm-newsletter-banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "EXCLUSIVE ACCESS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Join the Farsh Mahal Journal"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Receive private previews of new collection arrivals, interior architectural stories, and bespoke commissions."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input Placeholder",
+      "default": "Your email address"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "SUBSCRIBE"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success Message",
+      "default": "Welcome — check your inbox for a warm hello."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#1B4332"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#F7F2ED"
+    },
+    {
+      "type": "color",
+      "id": "accent_gold",
+      "label": "Accent Gold",
+      "default": "#D9BB7A"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 500,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "label": "Max Container Width",
+      "default": 680
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Newsletter Banner"
+    }
+  ]
+}
+{% endschema %}

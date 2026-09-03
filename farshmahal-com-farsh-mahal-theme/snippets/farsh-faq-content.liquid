@@ -1,0 +1,340 @@
+<!-- Load exact Google Fonts for FAQ Page -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-faq-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    padding-top: 40px;
+    padding-bottom: 96px;
+    min-height: 70vh;
+  }
+  @media (min-width: 768px) {
+    .fm-faq-root {
+      padding-top: 60px;
+      padding-bottom: 128px;
+    }
+  }
+
+  .fm-faq-header {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+  @media (min-width: 768px) {
+    .fm-faq-header {
+      padding-top: 48px;
+      padding-bottom: 56px;
+    }
+  }
+
+  .fm-faq-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-faq-header-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-faq-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-faq-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 38px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 0 16px 0 !important;
+    font-weight: 400 !important;
+    max-width: 800px;
+  }
+  @media (min-width: 768px) {
+    .fm-faq-title {
+      font-size: 64px !important;
+    }
+  }
+
+  .fm-faq-subtitle {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    max-width: 640px !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .fm-faq-body-sec {
+    padding: 56px 0;
+  }
+  @media (min-width: 768px) {
+    .fm-faq-body-sec {
+      padding: 80px 0;
+    }
+  }
+
+  .fm-faq-body-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-faq-body-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-faq-h2 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 26px !important;
+    line-height: 1.18 !important;
+    color: #1B4332 !important;
+    margin-top: 56px !important;
+    margin-bottom: 20px !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .fm-faq-h2:first-child {
+    margin-top: 0 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-faq-h2 {
+      font-size: 34px !important;
+    }
+  }
+
+  .fm-faq-h3 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+    color: #1B4332 !important;
+    margin-top: 36px !important;
+    margin-bottom: 14px !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-faq-h3 {
+      font-size: 22px !important;
+    }
+  }
+
+  .fm-faq-p {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.80) !important;
+    margin: 0 0 18px 0 !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-faq-p {
+      font-size: 16px !important;
+    }
+  }
+
+  .fm-faq-qa-block {
+    border-top: 1px solid rgba(27, 67, 50, 0.12);
+    padding-top: 24px;
+    margin-top: 24px;
+  }
+  .fm-faq-qa-block:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .fm-faq-qa-question {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 13.5px !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #1B4332 !important;
+    font-weight: 600 !important;
+    margin-bottom: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .fm-faq-qa-answer {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    margin: 0 !important;
+  }
+
+  .link-underline {
+    color: #1B4332 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    transition: color 0.2s ease;
+  }
+  .link-underline:hover {
+    color: #C9A24D !important;
+  }
+{%- endstyle -%}
+
+<div class="fm-faq-root" data-testid="content-page-frequently-asked-questions">
+  <!-- Header Banner -->
+  <header class="fm-faq-header">
+    <div class="fm-faq-header-inner">
+      <span class="fm-faq-eyebrow">Help Centre</span>
+      <h1 class="fm-faq-title">Frequently Asked Questions</h1>
+      <p class="fm-faq-subtitle">Answers to the questions we hear most often about orders, delivery, returns, and craftsmanship.</p>
+    </div>
+  </header>
+
+  <!-- Body Content -->
+  <section class="fm-faq-body-sec">
+    <div class="fm-faq-body-inner">
+      <h2 class="fm-faq-h2">Orders & Payment</h2>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">How do I know my order has been placed successfully?</div>
+  <p class="fm-faq-qa-answer">Once your order is placed you'll receive an Order Confirmation Email and, where applicable, an Order Confirmation SMS. This confirmation acknowledges receipt of your order only — a contract of sale is formed once your order has been dispatched, and all orders remain subject to acceptance by Farsh Mahal.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Can Farsh Mahal cancel or reject my order?</div>
+  <p class="fm-faq-qa-answer">Yes. We reserve the right to accept or reject any order, limit quantities, or cancel due to pricing errors, inventory issues, suspected fraud, payment failure, or other legitimate business reasons. If a product becomes unavailable after you've ordered — which can happen with handcrafted, limited-quantity pieces — we may cancel the order, offer an alternative, or issue a full refund.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Are the prices and product photos on the website accurate?</div>
+  <p class="fm-faq-qa-answer">Prices are shown in the currency applicable to your region and may include or exclude taxes as noted at checkout; customs duties, import taxes, or local charges (where applicable) are not included. Prices may change without notice; if a pricing error is discovered we'll notify you and let you choose to proceed at the corrected price or cancel. We work carefully to represent colour and texture accurately, but actual colours can vary slightly due to your screen, lighting, or photography settings.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Is my payment information secure?</div>
+  <p class="fm-faq-qa-answer">Yes. Payments are processed through authorised third-party payment gateways, and we do not store your complete credit card, debit card, or full banking details on our own servers. For international orders, our processors may share limited transaction data with fraud-prevention and currency-conversion services strictly to complete your purchase.</p>
+</div>
+      <h2 class="fm-faq-h2">Shipping & Delivery</h2>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Is shipping free?</div>
+  <p class="fm-faq-qa-answer">Yes — free shipping on all orders placed through our website. For international orders, customs duties, local taxes, and other import charges (where applicable) are not included in the product price and are payable by the customer per your destination country's regulations.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">How long will my order take to arrive?</div>
+  <p class="fm-faq-qa-answer">Orders are typically dispatched within 48 business hours of confirmation. Most orders are delivered within 3–10 business days within India and 6–12 business days internationally. During sale periods, festive seasons, or other high-volume periods, deliveries may take an additional 5–7 business days. You can see the estimated delivery window on each product's detail page.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">How will I track my shipment?</div>
+  <p class="fm-faq-qa-answer">Once your order ships, you'll receive a shipping confirmation email and/or SMS with tracking details and a tracking link.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Will I need to show ID when my rug is delivered?</div>
+  <p class="fm-faq-qa-answer">For certain deliveries, our courier partner may require a valid government-issued photo ID or other document at the time of delivery, in line with local regulations or courier requirements.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">What if delivery can't be completed?</div>
+  <p class="fm-faq-qa-answer">If delivery fails due to an incorrect address, unavailability, or repeated unsuccessful attempts, our Customer Support team will reach out to arrange re-delivery or otherwise assist you.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Are there any hidden shipping charges?</div>
+  <p class="fm-faq-qa-answer">No. For international shipments, any customs duties, import taxes, VAT/GST, or other local government charges are payable by you at delivery, per your destination country's customs rules.</p>
+</div>
+      <h2 class="fm-faq-h2">Returns, Exchanges & Cancellations</h2>
+      <h3 class="fm-faq-h3">If your order was delivered within India</h3>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">What is your return window?</div>
+  <p class="fm-faq-qa-answer">You can request a return within 2 days of receiving your order. The rug must be unused, unwashed, and untampered with, and returned with its original packaging, labels, and serial number tags intact and legible — missing or altered tags void eligibility. Damaged items, and custom or made-to-order rugs (except in cases of a manufacturing defect), are not eligible.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">How do I start a return?</div>
+  <p class="fm-faq-qa-answer">Email farshmahal@gmail.com. We'll arrange a free pickup from your location within 3–4 working days at a time that works for you. If you prefer to self-ship, dispatch the item within 48 hours of raising the request. If your original packaging is damaged, let us know when raising the request and we'll send a tamper-proof packet so you can repack the rug securely.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Is return shipping always free?</div>
+  <p class="fm-faq-qa-answer">Yes, for up to two returns within any rolling six-month period. Beyond that, return freight is at the customer's cost.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">When will I get my refund?</div>
+  <p class="fm-faq-qa-answer">Every returned rug goes through a mandatory quality inspection on arrival at our warehouse. If it's found damage-free, your refund is initiated within 5–7 business days, back to your original payment method (bank transfer for cash-on-delivery orders, or your original card/net banking source for prepaid orders). You can also choose to apply the refund toward a new purchase instead.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">What if my rug arrives damaged or defective?</div>
+  <p class="fm-faq-qa-answer">Notify us within 48 hours of delivery. We may ask for photos before approving a replacement, which is provided at no additional cost once confirmed.</p>
+</div>
+      <h3 class="fm-faq-h3">If your order was delivered outside India</h3>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Can I return an international order?</div>
+  <p class="fm-faq-qa-answer">Products delivered outside India are not eligible for return or refund. You may, however, request an exchange within 2 days of delivery if the rug has a verified manufacturing defect.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">How does an international exchange work?</div>
+  <p class="fm-faq-qa-answer">Email farshmahal@gmail.com. Our team will contact you within 1–2 working days to help you choose a replacement of similar or higher value, then coordinate pickup through our authorised courier partner. If the replacement costs more, you'll pay the difference before dispatch; if it costs less, we'll issue a credit note for the balance, redeemable on our website within 6 months.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Who pays the shipping and customs costs on an international exchange?</div>
+  <p class="fm-faq-qa-answer">You're responsible for pickup charges, return shipping, freight, customs duties, taxes, and any other charges related to sending the original rug back. Farsh Mahal covers the shipping cost of the replacement rug itself (excluding customs duties, taxes, and other applicable charges).</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">What isn't considered a manufacturing defect?</div>
+  <p class="fm-faq-qa-answer">Occasional sprouting, pulled yarns, or loss of individual tufts; shedding (reduce by vacuuming on low power at least twice a week); natural colour or texture variation from fibres, dyes, sunlight, humidity, or heat; rolling marks (which fade with routine vacuuming); matting or crushing from regular use; and temporary odour in newly unpacked rugs (place the rug back-side-up in direct sunlight for up to 24 hours to reduce this).</p>
+</div>
+      <h2 class="fm-faq-h2">Custom & Made-to-Order Rugs</h2>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Are custom and made-to-order rugs returnable?</div>
+  <p class="fm-faq-qa-answer">Because each is produced to your individual specifications, custom and made-to-order rugs are excluded from standard return or cancellation, except where there's a verified manufacturing defect.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">What if my custom rug has a defect?</div>
+  <p class="fm-faq-qa-answer">Contact us within 48 hours of delivery so we can review photos and, where confirmed, arrange an exchange at no extra cost — the same defect process that applies to standard orders.</p>
+</div>
+      <h2 class="fm-faq-h2">Product Quality & Craftsmanship</h2>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Why does my rug look slightly different from what I saw online?</div>
+  <p class="fm-faq-qa-answer">Every Farsh Mahal piece is handcrafted by skilled artisans, so small variations are part of what makes each rug unique — not a defect. This includes minor differences in dimensions, colour tone, texture, pattern, weaving, hand-finishing, natural dye tone, and fringe detail. If you'd like more images or details before ordering, our Customer Support team is happy to help.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Do you offer a warranty?</div>
+  <p class="fm-faq-qa-answer">Please get in touch with our Customer Support team for warranty details specific to your product, as coverage can depend on the collection and construction type.</p>
+</div>
+      <h2 class="fm-faq-h2">Trade, Wholesale & Interior Design Partners</h2>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Can designers, hospitality groups, or trade partners work with Farsh Mahal?</div>
+  <p class="fm-faq-qa-answer">Yes. If you hold, or want to apply for, a trade, wholesale, hospitality, or interior-design account, we collect relevant business registration and tax details, project information you choose to share with us for fulfilment, and order history used to manage your pricing tier and account terms. If you're submitting information on behalf of an end client, you're responsible for making sure you're authorised to share it with us.</p>
+</div>
+      <h2 class="fm-faq-h2">Privacy & Data</h2>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Does Farsh Mahal sell my personal information?</div>
+  <p class="fm-faq-qa-answer">No. We never sell your personal information. We only share it with trusted partners where necessary to run our business — for example, payment processors, international shipping and customs partners, warehousing providers, hosting/technology providers, and CRM or marketing platforms — and all of them are contractually required to protect it.</p>
+</div>
+      <div class="fm-faq-qa-block">
+        <div class="fm-faq-qa-question">Where is my data stored, since I'm ordering from outside India?</div>
+        <p class="fm-faq-faq-answer fm-faq-qa-answer">Farsh Mahal is based in India, so your information is typically stored and processed there, and may also be processed in other countries where our service providers (payment, logistics, hosting) operate. Where we transfer data out of the EEA, UK, or Switzerland, we rely on Standard Contractual Clauses or equivalent legal safeguards.</p>
+      </div>
+      <div class="fm-faq-qa-block">
+        <div class="fm-faq-qa-question">What rights do I have over my data?</div>
+        <p class="fm-faq-qa-answer">It depends on where you're located: EEA / UK / Switzerland (GDPR/UK GDPR): access, correction, deletion, restriction, objection, portability, and consent withdrawal. California (CCPA/CPRA): access, deletion or correction, and opting out of the "sale" or "sharing" of data (though we don't sell it). India (DPDP Act, 2023): access, correction, erasure, consent withdrawal, and grievances through our Grievance Officer. Everywhere else: we'll honour equivalent rights to the extent required by local law. To exercise any of these, contact us — we may need to verify your identity first.</p>
+      </div>
+      <div class="fm-faq-qa-block">
+        <div class="fm-faq-qa-question">Why do you ask for customs or tax information on international orders?</div>
+  <p class="fm-faq-qa-answer">Because we ship handmade rugs across borders, we need customs declaration details, applicable import duty/VAT/GST calculations, and courier or customs broker reference numbers to move your order through customs smoothly.</p>
+</div>
+      <div class="fm-faq-qa-block">
+  <div class="fm-faq-qa-question">Can I opt out of marketing emails?</div>
+  <p class="fm-faq-qa-answer">Yes, at any time — use the unsubscribe link in our emails or contact us directly. This won't affect transactional messages like order and shipping updates.</p>
+</div>
+      <h2 class="fm-faq-h2">Contact Us</h2>
+      <p class="fm-faq-p">Still have a question? Reach our Customer Support team:</p>
+      <p class="fm-faq-p">
+  <strong>Email:</strong> <a href="mailto:farshmahal@gmail.com" class="link-underline">farshmahal@gmail.com</a><br>
+  <strong>Phone:</strong> +91 6351043735 (available during India Standard Time business hours).
+</p>
+    </div>
+  </section>
+</div>

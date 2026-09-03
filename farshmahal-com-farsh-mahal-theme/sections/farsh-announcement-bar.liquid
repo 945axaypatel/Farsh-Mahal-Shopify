@@ -1,0 +1,116 @@
+{%- style -%}
+  .fm-announcement-bar {
+    background-color: {{ section.settings.bg_color | default: '#1B4332' }} !important;
+    padding: {{ section.settings.padding_vertical | default: 8 }}px 16px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 101;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  .fm-announcement-text {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.18rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #FFFFFF !important;
+    font-weight: 500;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    line-height: 1.4;
+  }
+  .fm-announcement-text span:first-child {
+    color: #FFFFFF !important;
+  }
+  .fm-announcement-accent {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    text-transform: none;
+    color: {{ section.settings.accent_color | default: '#C9A24D' }} !important;
+    font-size: 1.45rem;
+    letter-spacing: 0.03em;
+    font-weight: 400;
+    margin-left: 2px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .fm-announcement-bar {
+      padding: 7px 12px;
+    }
+    .fm-announcement-text {
+      font-size: 1.05rem;
+      letter-spacing: 0.11em;
+      gap: 4px;
+    }
+    .fm-announcement-accent {
+      font-size: 1.3rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="fm-announcement-bar" role="region" aria-label="Announcement">
+  <p class="fm-announcement-text">
+    <span>{{ section.settings.prefix_text | default: 'ROOTED IN INDIAN CRAFT, MADE FOR CONSIDERED INTERIORS,' }}</span>
+    <span class="fm-announcement-accent">{{ section.settings.accent_text | default: 'Way You Live.' }}</span>
+  </p>
+</div>
+
+{% schema %}
+{
+  "name": "FM Announcement Bar",
+  "tag": "section",
+  "class": "section-fm-announcement-bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "prefix_text",
+      "label": "Prefix Text",
+      "default": "ROOTED IN INDIAN CRAFT, MADE FOR CONSIDERED INTERIORS,"
+    },
+    {
+      "type": "text",
+      "id": "accent_text",
+      "label": "Accent Text (Italic)",
+      "default": "Way You Live."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#1B4332"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Text Color",
+      "default": "#C9A24D"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical Padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Announcement Bar"
+    }
+  ]
+}
+{% endschema %}
