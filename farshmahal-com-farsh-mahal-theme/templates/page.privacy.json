@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "fm-page-privacy",
+      "settings": {
+        "eyebrow": "Policy",
+        "title": "Privacy Policy",
+        "subtitle": "How we collect, use, and safeguard your data."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

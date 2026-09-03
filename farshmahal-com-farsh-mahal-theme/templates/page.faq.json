@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "fm-page-faq",
+      "settings": {
+        "eyebrow": "Help Centre",
+        "title": "Frequently Asked Questions",
+        "subtitle": "Answers to the questions we hear most often about orders, delivery, returns, and craftsmanship."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

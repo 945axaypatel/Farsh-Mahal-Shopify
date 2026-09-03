@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-grid" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.12" flood-color="#1B4332" />
+    </filter>
+  </defs>
+  <rect width="600" height="750" fill="#F8F5EF"/>
+  <rect x="70" y="60" width="460" height="630" rx="6" fill="#EDE7DE" filter="url(#shadow-grid)"/>
+  <!-- Grid Matrix of Textured Blocks -->
+  <!-- Top Left Block: Striped -->
+  <rect x="90" y="80" width="140" height="150" fill="#D7CFC0"/>
+  <line x1="90" y1="105" x2="230" y2="105" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="90" y1="130" x2="230" y2="130" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="90" y1="155" x2="230" y2="155" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="90" y1="180" x2="230" y2="180" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="90" y1="205" x2="230" y2="205" stroke="#EDE7DE" stroke-width="3"/>
+  <!-- Top Center Solid Block -->
+  <rect x="240" y="80" width="160" height="90" fill="#BDB3A1"/>
+  <!-- Top Right Vertical Striped Block -->
+  <rect x="410" y="80" width="100" height="190" fill="#8E8371"/>
+  <line x1="435" y1="80" x2="435" y2="270" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="460" y1="80" x2="460" y2="270" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="485" y1="80" x2="485" y2="270" stroke="#EDE7DE" stroke-width="3"/>
+  <!-- Middle Left Vertical Striped -->
+  <rect x="90" y="240" width="90" height="220" fill="#6B6050"/>
+  <line x1="115" y1="240" x2="115" y2="460" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="140" y1="240" x2="140" y2="460" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="165" y1="240" x2="165" y2="460" stroke="#EDE7DE" stroke-width="3"/>
+  <!-- Middle Center Solid -->
+  <rect x="190" y="180" width="150" height="210" fill="#E2DBD0"/>
+  <rect x="350" y="180" width="50" height="150" fill="#A89D8A"/>
+  <!-- Center Accent Block -->
+  <rect x="290" y="400" width="120" height="150" fill="#7A6E5C"/>
+  <line x1="290" y1="430" x2="410" y2="430" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="290" y1="460" x2="410" y2="460" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="290" y1="490" x2="410" y2="490" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="290" y1="520" x2="410" y2="520" stroke="#EDE7DE" stroke-width="3"/>
+  <!-- Bottom Left Solid Block -->
+  <rect x="90" y="470" width="190" height="200" fill="#4E4537"/>
+  <!-- Bottom Right Large Striped Block -->
+  <rect x="420" y="280" width="90" height="390" fill="#C9BFAC"/>
+  <line x1="420" y1="320" x2="510" y2="320" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="420" y1="360" x2="510" y2="360" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="420" y1="400" x2="510" y2="400" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="420" y1="440" x2="510" y2="440" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="420" y1="480" x2="510" y2="480" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="420" y1="520" x2="510" y2="520" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="420" y1="560" x2="510" y2="560" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="420" y1="600" x2="510" y2="600" stroke="#EDE7DE" stroke-width="3"/>
+  <line x1="420" y1="640" x2="510" y2="640" stroke="#EDE7DE" stroke-width="3"/>
+  <!-- Bottom Center Solid -->
+  <rect x="290" y="560" width="120" height="110" fill="#D5CDBC"/>
+</svg>

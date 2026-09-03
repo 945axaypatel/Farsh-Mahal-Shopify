@@ -1,0 +1,438 @@
+<!-- Load Google Fonts for Contact Page -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-contact-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding-top: 0;
+    overflow-x: hidden;
+  }
+
+  /* 1. Hero Section */
+  .fm-contact-hero-sec {
+    padding-top: clamp(32px, 4vw, 56px);
+    padding-bottom: clamp(32px, 4vw, 56px);
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+
+  .fm-contact-hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-contact-hero-container {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-contact-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C1914E !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+  }
+
+  .fm-contact-title {
+    font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif !important;
+    font-size: clamp(44px, 6.2vw, 80px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 0 24px 0 !important;
+    font-weight: 400 !important;
+    max-width: 900px;
+    display: block !important;
+  }
+  .fm-contact-title span.italic-part,
+  .fm-contact-title span {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 1em !important;
+    line-height: inherit !important;
+    color: #1B4332 !important;
+    font-weight: 400 !important;
+    display: inline !important;
+  }
+
+  .fm-contact-subtitle {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: clamp(15px, 1.3vw, 17px) !important;
+    line-height: 1.75 !important;
+    color: #3C5D4E !important;
+    margin: 0 !important;
+    max-width: 580px;
+  }
+
+  /* 2. Form Section */
+  .fm-contact-form-sec {
+    padding-top: clamp(40px, 5vw, 72px);
+    padding-bottom: clamp(56px, 7vw, 96px);
+  }
+
+  .fm-contact-form-container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-contact-form-container {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-contact-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 768px) {
+    .fm-contact-form-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+  }
+
+  .fm-contact-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fm-contact-label {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+    color: #C1914E !important;
+    margin-bottom: 10px !important;
+  }
+
+  .fm-contact-input {
+    width: 100% !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.18) !important;
+    padding: 12px 0 !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: border-color 0.2s ease !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .fm-contact-input:focus {
+    border-bottom-color: #1B4332 !important;
+    box-shadow: none !important;
+  }
+
+  .fm-contact-select {
+    width: 100% !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.18) !important;
+    padding: 12px 24px 12px 0 !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: border-color 0.2s ease !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231B4332' stroke-width='1.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 4px center !important;
+  }
+  .fm-contact-select:focus {
+    border-bottom-color: #1B4332 !important;
+    box-shadow: none !important;
+  }
+
+  .fm-contact-textarea {
+    width: 100% !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.18) !important;
+    padding: 12px 0 !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: border-color 0.2s ease !important;
+    border-radius: 0 !important;
+    resize: none !important;
+    box-sizing: border-box !important;
+  }
+  .fm-contact-textarea::placeholder {
+    color: rgba(27, 67, 50, 0.40) !important;
+  }
+  .fm-contact-textarea:focus {
+    border-bottom-color: #1B4332 !important;
+    box-shadow: none !important;
+  }
+
+  .fm-contact-submit-wrap {
+    margin-top: 36px;
+  }
+
+  .fm-contact-submit-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    background-color: #1B4332 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    padding: 16px 40px !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.24em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease !important;
+    border-radius: 0 !important;
+  }
+  .fm-contact-submit-btn:hover {
+    background-color: #123023 !important;
+    color: #FFFFFF !important;
+  }
+  .fm-contact-submit-btn:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    color: #FFFFFF !important;
+  }
+
+  .fm-contact-submit-btn span,
+  #ContactSubmitText {
+    color: #FFFFFF !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.24em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+  }
+
+  .fm-contact-submit-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke: #FFFFFF !important;
+    color: #FFFFFF !important;
+    stroke-width: 1.5 !important;
+    fill: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Success & Error message boxes */
+  .fm-contact-success-box {
+    border: 1px solid rgba(27, 67, 50, 0.15);
+    background-color: #F7F2ED;
+    padding: 48px 32px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .fm-contact-success-icon {
+    width: 42px;
+    height: 42px;
+    margin: 0 auto 16px auto;
+    color: #C1914E;
+    stroke: #C1914E;
+  }
+  .fm-contact-success-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    color: #1B4332;
+    margin: 0 0 8px 0;
+    font-weight: 400;
+  }
+  .fm-contact-success-text {
+    font-size: 15px;
+    color: #3C5D4E;
+    margin: 0;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .fm-contact-error-text {
+    color: #C1914E;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+{%- endstyle -%}
+
+<div class="fm-contact-root" data-testid="contact-page">
+
+  <!-- 1. Hero Header Section -->
+  <section class="fm-contact-hero-sec">
+    <div class="fm-contact-hero-container">
+      <div class="fm-contact-eyebrow">Contact</div>
+      <h1 class="fm-contact-title">
+        Let's begin a<br>
+        <span class="italic-part">conversation.</span>
+      </h1>
+      <p class="fm-contact-subtitle">
+        Whether it's a question about a rug, a design project, or the trade programme — our team would love to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. Form Section -->
+  <section class="fm-contact-form-sec">
+    <div class="fm-contact-form-container">
+
+      {%- form 'contact', id: 'FarshContactForm' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="fm-contact-success-box">
+            <svg class="fm-contact-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+            <h3 class="fm-contact-success-title">Message received</h3>
+            <p class="fm-contact-success-text">Thank you. We'll respond within 2 business days.</p>
+          </div>
+        {%- else -%}
+
+          {%- if form.errors -%}
+            <div class="fm-contact-error-text" style="margin-bottom: 24px;">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="fm-contact-form-grid">
+            <!-- Full Name -->
+            <div class="fm-contact-field">
+              <label class="fm-contact-label" for="ContactFormName">Full Name*</label>
+              <input
+                type="text"
+                id="ContactFormName"
+                name="contact[name]"
+                class="fm-contact-input"
+                data-testid="contact-name"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                required
+              >
+            </div>
+
+            <!-- Email -->
+            <div class="fm-contact-field">
+              <label class="fm-contact-label" for="ContactFormEmail">Email*</label>
+              <input
+                type="email"
+                id="ContactFormEmail"
+                name="contact[email]"
+                class="fm-contact-input"
+                data-testid="contact-email"
+                spellcheck="false"
+                autocomplete="email"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                required
+              >
+            </div>
+
+            <!-- Phone -->
+            <div class="fm-contact-field">
+              <label class="fm-contact-label" for="ContactFormPhone">Phone*</label>
+              <input
+                type="tel"
+                id="ContactFormPhone"
+                name="contact[phone]"
+                class="fm-contact-input"
+                data-testid="contact-phone"
+                autocomplete="tel"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                required
+              >
+            </div>
+
+            <!-- Subject -->
+            <div class="fm-contact-field">
+              <label class="fm-contact-label" for="ContactFormSubject">Subject</label>
+              <select
+                id="ContactFormSubject"
+                name="contact[subject]"
+                class="fm-contact-select"
+                data-testid="contact-subject"
+              >
+                <option value="General Enquiry">General Enquiry</option>
+                <option value="Product Question">Product Question</option>
+                <option value="Custom Rug">Custom Rug</option>
+                <option value="Trade / Designer">Trade / Designer</option>
+                <option value="Press">Press</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="fm-contact-field" style="margin-top: 32px;">
+            <label class="fm-contact-label" for="ContactFormMessage">Message*</label>
+            <textarea
+              id="ContactFormMessage"
+              name="contact[body]"
+              rows="6"
+              class="fm-contact-textarea"
+              data-testid="contact-message"
+              placeholder="Tell us a little about your enquiry."
+              required
+            >{{ form.body }}</textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="fm-contact-submit-wrap">
+            <button type="submit" class="fm-contact-submit-btn" data-testid="contact-submit" id="ContactSubmitBtn">
+              <span id="ContactSubmitText">Send Message</span>
+              <svg viewBox="0 0 24 24">
+                <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path>
+                <path d="m21.854 2.147-10.94 10.939"></path>
+              </svg>
+            </button>
+          </div>
+
+        {%- endif -%}
+      {%- endform -%}
+
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function() {
+    var form = document.getElementById('FarshContactForm');
+    if (form) {
+      form.addEventListener('submit', function() {
+        var btn = document.getElementById('ContactSubmitBtn');
+        var txt = document.getElementById('ContactSubmitText');
+        if (btn && txt) {
+          btn.disabled = true;
+          txt.textContent = 'Sending…';
+        }
+      });
+    }
+  })();
+</script>

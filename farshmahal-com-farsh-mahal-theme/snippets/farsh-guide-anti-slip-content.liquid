@@ -1,0 +1,277 @@
+<!-- Load exact Google Fonts for Anti-Slip Guide Page -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-anti-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    padding-top: 40px;
+    padding-bottom: 96px;
+    min-height: 70vh;
+  }
+  @media (min-width: 768px) {
+    .fm-anti-root {
+      padding-top: 60px;
+      padding-bottom: 128px;
+    }
+  }
+
+  .fm-anti-header {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+  @media (min-width: 768px) {
+    .fm-anti-header {
+      padding-top: 48px;
+      padding-bottom: 56px;
+    }
+  }
+
+  .fm-anti-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-anti-header-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-anti-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-anti-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 38px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 0 16px 0 !important;
+    font-weight: 400 !important;
+    max-width: 800px;
+  }
+  @media (min-width: 768px) {
+    .fm-anti-title {
+      font-size: 64px !important;
+    }
+  }
+
+  .fm-anti-subtitle {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    max-width: 640px !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .fm-anti-body-sec {
+    padding: 56px 0;
+  }
+  @media (min-width: 768px) {
+    .fm-anti-body-sec {
+      padding: 80px 0;
+    }
+  }
+
+  .fm-anti-body-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-anti-body-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-anti-h2 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 26px !important;
+    line-height: 1.18 !important;
+    color: #1B4332 !important;
+    margin-top: 56px !important;
+    margin-bottom: 20px !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .fm-anti-h2:first-child {
+    margin-top: 0 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-anti-h2 {
+      font-size: 34px !important;
+    }
+  }
+
+  .fm-anti-p {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.80) !important;
+    margin: 0 0 18px 0 !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-anti-p {
+      font-size: 16px !important;
+    }
+  }
+
+  .fm-anti-ul {
+    list-style: disc !important;
+    padding-left: 24px !important;
+    margin: 0 0 24px 0 !important;
+    color: rgba(27, 67, 50, 0.80) !important;
+    line-height: 1.8 !important;
+    font-size: 15px !important;
+  }
+  @media (min-width: 768px) {
+    .fm-anti-ul {
+      font-size: 16px !important;
+    }
+  }
+  .fm-anti-ul li {
+    margin-bottom: 8px !important;
+  }
+  .fm-anti-ul li::marker {
+    color: #C9A24D !important;
+  }
+
+  .fm-anti-qa-block {
+    border-top: 1px solid rgba(27, 67, 50, 0.12);
+    padding-top: 24px;
+    margin-top: 24px;
+  }
+  .fm-anti-qa-block:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .fm-anti-qa-question {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 13.5px !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #1B4332 !important;
+    font-weight: 600 !important;
+    margin-bottom: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .fm-anti-qa-answer {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    margin: 0 !important;
+  }
+{%- endstyle -%}
+
+<div class="fm-anti-root" data-testid="content-page-anti-slip-guide">
+  <!-- Header Banner -->
+  <header class="fm-anti-header">
+    <div class="fm-anti-header-inner">
+      <span class="fm-anti-eyebrow">Guide</span>
+      <h1 class="fm-anti-title">Anti-Slip Guide</h1>
+      <p class="fm-anti-subtitle">Underneath it all: what rug pads do, why they matter, and how to choose the right one.</p>
+    </div>
+  </header>
+
+  <!-- Body Content -->
+  <section class="fm-anti-body-sec">
+    <div class="fm-anti-body-inner">
+
+      <!-- 1. What are anti-slip mats? -->
+      <h2 class="fm-anti-h2">What are anti-slip mats?</h2>
+      <p class="fm-anti-p">Anti-slip mats may not be the most thrilling topic, but don't underestimate them. They extend the life of your rugs, add cushioning, and prevent slips and falls. Here's a quick breakdown of what they do and how they help.</p>
+
+      <!-- 2. Why you might want one -->
+      <h2 class="fm-anti-h2">Why you might want one</h2>
+      <ul class="fm-anti-ul">
+        <li>Floor protection — a barrier between rug and floor</li>
+        <li>Slip resistance — keeps rugs from sliding on hard floors</li>
+        <li>Impact absorption — softer underfoot, easier on joints</li>
+        <li>Prolonged rug lifespan — reduces friction wear</li>
+        <li>Noise reduction — quieter footsteps in busy rooms</li>
+        <li>Comfort underfoot — a subtle but noticeable difference</li>
+      </ul>
+
+      <!-- 3. Custom anti-slip mat, tailored to your rug -->
+      <h2 class="fm-anti-h2">Custom anti-slip mat, tailored to your rug</h2>
+      <p class="fm-anti-p">Your rug is more than décor — it's an investment. We offer custom rug pads cut to your rug's exact dimensions, so it sits flat and stays in place. Because when it comes to rugs, one size really doesn't fit all.</p>
+
+      <!-- 4. Frequently asked -->
+      <h2 class="fm-anti-h2">Frequently asked</h2>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">What are rug pads used for?</div>
+        <p class="fm-anti-qa-answer">Rug pads prevent rugs from slipping, protect floors from scratches, and add cushioning. They also promote air circulation to help prevent moisture buildup, and make cleaning easier by acting as a barrier between the rug and the floor.</p>
+      </div>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">What size rug pad do I need?</div>
+        <p class="fm-anti-qa-answer">Match the pad to your rug's size and shape. Opt for an exact fit — or a slightly larger pad that can be trimmed. Non-slip pads should sit just inside the rug edge.</p>
+      </div>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">Does the rug pad stick to the floor?</div>
+        <p class="fm-anti-qa-answer">No. Non-slip pads simply grip the floor so the rug stays in place, and can be removed at any time.</p>
+      </div>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">Can you stitch my rug pad to my carpet?</div>
+        <p class="fm-anti-qa-answer">We don't recommend stitching a pad to your carpet — it can cause damage and make future cleaning or rearranging difficult.</p>
+      </div>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">How do I clean rug pads?</div>
+        <p class="fm-anti-qa-answer">Vacuum both sides regularly. Washable pads can be machine washed on a gentle cycle with mild detergent and air-dried. Non-washable pads can be spot-cleaned with mild detergent and a soft brush or cloth, or hand-washed in a bathtub with a thorough rinse.</p>
+      </div>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">How much do rug pads cost?</div>
+        <p class="fm-anti-qa-answer">Our rug pads are available at fixed, affordable pricing across sizes. For a custom cut, contact our team.</p>
+      </div>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">Do rug pads make a carpet feel more plush?</div>
+        <p class="fm-anti-qa-answer">Rug pads are primarily designed for slip resistance, floor protection, and rug stability. Some pads made from foam or felt can add a small amount of cushioning underfoot.</p>
+      </div>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">Do rug pads work like anti-skid?</div>
+        <p class="fm-anti-qa-answer">Yes. They have a grippy underside that adheres to the floor to keep the rug in place — important on hardwood and tile, where slipping is a real hazard.</p>
+      </div>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">Do rug pads extend the life of a carpet?</div>
+        <p class="fm-anti-qa-answer">They can. By reducing wear, preventing slipping, adding cushioning, and improving air circulation, pads act as a protective barrier between the rug and the floor.</p>
+      </div>
+
+      <div class="fm-anti-qa-block">
+        <div class="fm-anti-qa-question">Do rug pads make a rug softer?</div>
+        <p class="fm-anti-qa-answer">Pads aren't designed specifically to make a rug softer, but foam or felt pads can add a slightly softer feel underfoot.</p>
+      </div>
+
+    </div>
+  </section>
+</div>

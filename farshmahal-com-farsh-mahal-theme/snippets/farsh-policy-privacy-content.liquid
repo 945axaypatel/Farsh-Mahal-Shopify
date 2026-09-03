@@ -1,0 +1,238 @@
+<!-- Load exact Google Fonts for Privacy Policy Page -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-privacy-root {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    padding-top: 40px;
+    padding-bottom: 96px;
+    min-height: 70vh;
+  }
+  @media (min-width: 768px) {
+    .fm-privacy-root {
+      padding-top: 60px;
+      padding-bottom: 128px;
+    }
+  }
+
+  .fm-privacy-header {
+    padding-top: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+  }
+  @media (min-width: 768px) {
+    .fm-privacy-header {
+      padding-top: 48px;
+      padding-bottom: 56px;
+    }
+  }
+
+  .fm-privacy-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-privacy-header-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-privacy-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-privacy-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+    font-size: 38px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 0 16px 0 !important;
+    font-weight: 400 !important;
+    max-width: 800px;
+  }
+  @media (min-width: 768px) {
+    .fm-privacy-title {
+      font-size: 64px !important;
+    }
+  }
+
+  .fm-privacy-subtitle {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    max-width: 640px !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  .fm-privacy-body-sec {
+    padding: 56px 0;
+  }
+  @media (min-width: 768px) {
+    .fm-privacy-body-sec {
+      padding: 80px 0;
+    }
+  }
+
+  .fm-privacy-body-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-privacy-body-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-privacy-h2 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 26px !important;
+    line-height: 1.18 !important;
+    color: #1B4332 !important;
+    margin-top: 56px !important;
+    margin-bottom: 20px !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .fm-privacy-h2:first-child {
+    margin-top: 0 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-privacy-h2 {
+      font-size: 34px !important;
+    }
+  }
+
+  .fm-privacy-p {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.85) !important;
+    margin: 0 0 18px 0 !important;
+    font-weight: 400 !important;
+  }
+  @media (min-width: 768px) {
+    .fm-privacy-p {
+      font-size: 16px !important;
+    }
+  }
+  .fm-privacy-p strong {
+    color: #1B4332 !important;
+    font-weight: 600 !important;
+  }
+
+  .link-underline {
+    color: #1B4332 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    transition: color 0.2s ease;
+  }
+  .link-underline:hover {
+    color: #C9A24D !important;
+  }
+{%- endstyle -%}
+
+<div class="fm-privacy-root" data-testid="content-page-privacy-policy">
+  <!-- Header Banner -->
+  <header class="fm-privacy-header">
+    <div class="fm-privacy-header-inner">
+      <span class="fm-privacy-eyebrow">Policy</span>
+      <h1 class="fm-privacy-title">Privacy Policy</h1>
+      <p class="fm-privacy-subtitle">How we collect, use, and safeguard your data.</p>
+    </div>
+  </header>
+
+  <!-- Body Content -->
+  <section class="fm-privacy-body-sec">
+    <div class="fm-privacy-body-inner">
+
+      <p class="fm-privacy-p">
+        This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from our website. Please read our Terms & Conditions alongside this Privacy Policy.
+      </p>
+
+      <!-- 1. Personal information we collect -->
+      <h2 class="fm-privacy-h2">Personal information we collect</h2>
+      <p class="fm-privacy-p">
+        When you visit our website, we automatically collect certain information about your device, web browser, IP address, and time zone. As you browse, we collect information about the pages and products you view, the referring websites and search terms, and how you interact with our website — via cookies, log files, web beacons, tags, pixels, analytics, and server-side tracking.
+      </p>
+      <p class="fm-privacy-p">
+        When you sign up, subscribe to our mailing list, or place an order, we collect information from you including your name, contact information (email, mobile number, shipping and billing address), payment information (for refunds and adjustments), Facebook or Google profile information if you sign in through those providers, and any information relevant to surveys or offers you engage with.
+      </p>
+
+      <!-- 2. How we use your information -->
+      <h2 class="fm-privacy-h2">How we use your information</h2>
+      <p class="fm-privacy-p">
+        We use this information to understand your needs and preferences, and to provide a better experience:
+      </p>
+      <p class="fm-privacy-p">
+        <strong>Internal record keeping:</strong> to improve our products and services, handle disputes, and — with your permission — send occasional promotional emails, market-research contacts (email, phone, or WhatsApp), and to customise the site to your interests.
+      </p>
+      <p class="fm-privacy-p">
+        <strong>Order fulfilment:</strong> to process payment, arrange shipping, provide invoices and confirmations, and to communicate with you about your order and payment security.
+      </p>
+      <p class="fm-privacy-p">
+        <strong>Behavioural advertising:</strong> to serve retargeted advertisements that may interest you across platforms such as Facebook, Google, Instagram, Pinterest, LinkedIn, Snapchat, and Microsoft.
+      </p>
+
+      <!-- 3. Controlling your personal information -->
+      <h2 class="fm-privacy-h2">Controlling your personal information</h2>
+      <p class="fm-privacy-p">
+        We do not sell, distribute, or lease your personal information to third parties without your permission or unless required by law. We share your information with third parties (advertising platforms, logistic partners, payment gateway) for order fulfilment and behavioural advertising only. If you believe any information we hold is incorrect or incomplete, please email <a href="mailto:farshmahal@gmail.com" class="link-underline">farshmahal@gmail.com</a> — we'll promptly correct it.
+      </p>
+
+      <!-- 4. Security & payment information -->
+      <h2 class="fm-privacy-h2">Security & payment information</h2>
+      <p class="fm-privacy-p">
+        We take reasonable precautions and follow industry best practices to protect your information. We use SSL (Secure Socket Layer) technology for secure shopping. We partner with leading payment gateways for credit and debit card, net-banking, UPI, and wallet transactions. We do not offer Cash on Delivery.
+      </p>
+      <p class="fm-privacy-p">
+        Farsh Mahal will never ask a customer to confirm account or payment details via email, call, or text. If you receive such a request claiming to be from us, do not respond — contact our Support Team at <a href="mailto:farshmahal@gmail.com" class="link-underline">farshmahal@gmail.com</a> immediately.
+      </p>
+
+      <!-- 5. Third-party services and links -->
+      <h2 class="fm-privacy-h2">Third-party services and links</h2>
+      <p class="fm-privacy-p">
+        Our third-party service providers only collect, use, and disclose your information to the extent necessary to perform the services they provide to us. We use Shopify to power our online store; review Shopify's Privacy Policy to learn more about their use of personal information.
+      </p>
+      <p class="fm-privacy-p">
+        Payment gateways, logistics partners, and similar service providers have their own privacy policies. Our store also uses Google Analytics, Google Tag Manager, Facebook Pixels, and server-side tracking to help us understand store visits and page views. We recommend reviewing each provider's privacy policy directly.
+      </p>
+      <p class="fm-privacy-p">
+        When you click on external links, you leave our website and are no longer governed by this Privacy Policy or our Terms & Conditions. We're not responsible for the privacy or content of any third-party site — please exercise care and review their policies.
+      </p>
+
+      <!-- 6. Changes to this Privacy Policy -->
+      <h2 class="fm-privacy-h2">Changes to this Privacy Policy</h2>
+      <p class="fm-privacy-p">
+        We reserve the right to modify this Privacy Policy at any time — please review it frequently. Changes and clarifications take effect immediately on posting. If our store is acquired or merged with another company, your information may be transferred to the new owners so we may continue to serve you.
+      </p>
+
+      <!-- 7. Contact -->
+      <h2 class="fm-privacy-h2">Contact</h2>
+      <p class="fm-privacy-p">
+        Farsh Mahal by M & G Enterprise<br>
+        Address: 34, Krushnam Gokulam Society, B/H Avsar Party Plot Road, Mehsana, Gujarat, India 384002<br>
+        Email: <a href="mailto:farshmahal@gmail.com" class="link-underline">farshmahal@gmail.com</a>
+      </p>
+
+    </div>
+  </section>
+</div>

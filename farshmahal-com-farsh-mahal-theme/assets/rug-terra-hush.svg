@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-terra" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.12" flood-color="#1B4332" />
+    </filter>
+    <linearGradient id="grad-bg-terra" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FBF8F4"/>
+      <stop offset="100%" stop-color="#F4EFE6"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="750" fill="url(#grad-bg-terra)"/>
+  <!-- Organic Pebble Silhouette Rug -->
+  <path d="M 120 100 C 220 50, 420 60, 490 120 C 560 180, 520 320, 530 460 C 540 600, 480 680, 360 700 C 220 720, 90 680, 80 540 C 70 420, 110 320, 90 200 C 70 130, 80 120, 120 100 Z" fill="#EAE5DC" filter="url(#shadow-terra)"/>
+  <!-- Inner Organic Fields -->
+  <path d="M 160 160 C 240 120, 400 130, 450 180 C 490 230, 460 340, 470 440 C 480 540, 430 620, 340 640 C 230 660, 150 620, 140 510 C 130 400, 160 310, 140 230 C 130 180, 135 170, 160 160 Z" fill="#DDD6C9"/>
+  <!-- Bottom Taupe Patch -->
+  <path d="M 80 540 C 90 440, 200 480, 260 550 C 310 610, 320 670, 280 695 C 200 710, 90 680, 80 540 Z" fill="#A89C8A"/>
+  <!-- Middle Warm Patch -->
+  <path d="M 180 250 C 260 210, 360 240, 400 310 C 430 360, 410 440, 360 480 C 300 520, 220 480, 190 420 C 160 360, 150 280, 180 250 Z" fill="#C7BBAA"/>
+  <!-- Top Subtle Patch -->
+  <path d="M 140 130 C 220 90, 350 110, 380 160 C 400 200, 340 260, 270 270 C 190 280, 130 230, 120 180 C 115 150, 125 140, 140 130 Z" fill="#B5A998"/>
+  <!-- Wave Carved Lines -->
+  <path d="M 180 340 C 250 310, 350 330, 400 370" stroke="#F4EFE6" stroke-width="3.5" fill="none" opacity="0.8"/>
+  <path d="M 190 370 C 260 340, 360 360, 410 400" stroke="#F4EFE6" stroke-width="3.5" fill="none" opacity="0.8"/>
+  <path d="M 200 400 C 270 370, 370 390, 420 430" stroke="#F4EFE6" stroke-width="3.5" fill="none" opacity="0.8"/>
+</svg>

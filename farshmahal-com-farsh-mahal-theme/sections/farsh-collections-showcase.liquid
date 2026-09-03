@@ -1,0 +1,508 @@
+<!-- Load exact Google Fonts for Collections Showcase -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-collections-page-{{ section.id }} {
+    background-color: {{ section.settings.bg_color | default: '#FBF8F4' }};
+    color: {{ section.settings.text_color | default: '#1B4332' }};
+    overflow-x: hidden;
+    padding-top: 40px;
+  }
+
+  .fm-coll-container-{{ section.id }} {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-coll-container-{{ section.id }} {
+      padding: 0 40px;
+    }
+  }
+
+  /* Hero Section */
+  .fm-coll-hero-section-{{ section.id }} {
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-coll-hero-section-{{ section.id }} {
+      padding-top: 96px;
+      padding-bottom: 120px;
+    }
+  }
+
+  .fm-coll-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: flex-end;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-coll-hero-grid {
+      grid-template-columns: 7fr 5fr;
+      gap: 48px;
+    }
+  }
+
+  .fm-coll-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C1914E !important;
+    margin: 0 0 16px 0 !important;
+    display: block !important;
+    line-height: 1.4 !important;
+  }
+  .fm-coll-heading {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(38px, 5.8vw, 76px) !important;
+    font-weight: 400 !important;
+    color: #1B4332 !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 !important;
+  }
+  .fm-coll-heading span,
+  .fm-coll-heading span.italic,
+  .fm-coll-heading .fm-coll-italic {
+    font-style: italic !important;
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 1em !important;
+    font-weight: 400 !important;
+    color: #1B4332 !important;
+    letter-spacing: -0.02em !important;
+    display: inline !important;
+  }
+  .fm-coll-desc-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 8px;
+  }
+  @media screen and (max-width: 767px) {
+    .fm-coll-desc-wrap {
+      justify-content: flex-start;
+      padding-bottom: 0;
+    }
+  }
+  .fm-coll-desc {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    margin: 0 !important;
+    max-width: 440px !important;
+  }
+
+  /* Alternating Showcase Rows */
+  .fm-coll-list-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding-bottom: 120px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-coll-list-wrap {
+      gap: 140px;
+      padding-bottom: 160px;
+    }
+  }
+
+  .fm-coll-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-coll-row {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 48px;
+    }
+  }
+
+  .fm-coll-row-media {
+    grid-column: span 12;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-coll-row-media {
+      grid-column: span 7;
+    }
+    .fm-coll-row.is-even .fm-coll-row-media {
+      order: 2;
+    }
+  }
+
+  .fm-coll-row-content {
+    grid-column: span 12;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-coll-row-content {
+      grid-column: span 5;
+    }
+    .fm-coll-row.is-odd .fm-coll-row-content {
+      padding-left: 16px;
+    }
+    .fm-coll-row.is-even .fm-coll-row-content {
+      order: 1;
+      padding-right: 16px;
+    }
+  }
+
+  .fm-coll-img-wrap {
+    display: block;
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+    background-color: #F7F4EE;
+    text-decoration: none !important;
+  }
+  .fm-coll-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fm-coll-img-wrap:hover .fm-coll-img {
+    transform: scale(1.04);
+  }
+
+  .fm-coll-row-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.24em !important;
+    text-transform: uppercase !important;
+    color: #1B4332 !important;
+    margin-bottom: 14px;
+  }
+  .fm-coll-row-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(28px, 3.8vw, 56px) !important;
+    line-height: 1.04 !important;
+    color: #1B4332 !important;
+    margin: 0 0 14px 0;
+    font-weight: 400;
+  }
+  .fm-coll-row-sub {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: clamp(17px, 1.8vw, 22px) !important;
+    color: #C1914E !important;
+    margin: 0 0 20px 0;
+    line-height: 1.3;
+  }
+  .fm-coll-row-desc {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+    color: rgba(27, 67, 50, 0.75) !important;
+    margin: 0 0 28px 0;
+    max-width: 440px;
+  }
+  .fm-coll-row-link {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.24em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    color: #1B4332 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: all 0.2s ease !important;
+  }
+  .fm-coll-row-link span {
+    color: #1B4332 !important;
+  }
+  .fm-coll-row-link svg {
+    color: #1B4332 !important;
+    stroke: #1B4332 !important;
+  }
+  .fm-coll-row-link:hover {
+    color: #1B4332 !important;
+    opacity: 0.75 !important;
+    gap: 12px !important;
+  }
+  .fm-coll-row-link:hover span {
+    color: #1B4332 !important;
+  }
+  .fm-coll-row-link:hover svg {
+    color: #1B4332 !important;
+    stroke: #1B4332 !important;
+  }
+
+  /* Closing Quote Banner */
+  .fm-coll-closing-banner {
+    border-top: 1px solid rgba(27, 67, 50, 0.12);
+    padding: 80px 24px;
+    background-color: #F7F4EE;
+    text-align: center;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-coll-closing-banner {
+      padding: 120px 24px;
+    }
+  }
+  .fm-coll-closing-text {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(32px, 4.5vw, 56px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+    color: #1B4332 !important;
+    margin: 0 auto !important;
+    max-width: 900px !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+  }
+  .fm-coll-closing-text span,
+  .fm-coll-closing-text span.italic,
+  .fm-coll-closing-text .fm-coll-closing-italic {
+    font-style: italic !important;
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 1em !important;
+    font-weight: 400 !important;
+    color: #1B4332 !important;
+    letter-spacing: -0.02em !important;
+    display: inline !important;
+  }
+{%- endstyle -%}
+
+<div class="fm-collections-page-{{ section.id }}" data-testid="collections-page">
+  <!-- Hero Section -->
+  <section class="fm-coll-hero-section-{{ section.id }}">
+    <div class="fm-coll-container-{{ section.id }}">
+      <div class="fm-coll-hero-grid">
+        <div>
+          <span class="fm-coll-eyebrow">{{ section.settings.eyebrow | default: 'OUR COLLECTIONS' }}</span>
+          <h1 class="fm-coll-heading">
+            Every collection<br>
+            <span class="fm-coll-italic">begins with inspiration.</span>
+          </h1>
+        </div>
+        <div class="fm-coll-desc-wrap">
+          <p class="fm-coll-desc">{{ section.settings.subtext | default: 'Each rug is thoughtfully designed to create a distinct atmosphere while sharing the same commitment to craftsmanship and quality.' }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase List -->
+  <div class="fm-coll-list-wrap">
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign is_even = forloop.index | modulo: 2 -%}
+        {%- assign coll = block.settings.collection -%}
+        {%- assign coll_title = coll.title | default: block.settings.title -%}
+        {%- assign coll_handle = coll.handle | default: coll_title | handleize -%}
+        {%- if coll.url != blank -%}
+          {%- assign coll_url = coll.url -%}
+        {%- elsif block.settings.custom_link != blank -%}
+          {%- assign coll_url = block.settings.custom_link -%}
+        {%- else -%}
+          {%- assign coll_url = '/collections/' | append: coll_handle -%}
+        {%- endif -%}
+        {%- assign coll_image = block.settings.image | default: coll.featured_image | default: block.settings.fallback_image -%}
+        {%- assign coll_desc = block.settings.description | default: coll.description -%}
+
+        <section class="fm-coll-container-{{ section.id }}" {{ block.shopify_attributes }}>
+          <div class="fm-coll-row {% if is_even == 0 %}is-even{% else %}is-odd{% endif %}">
+            <!-- Media Side -->
+            <div class="fm-coll-row-media">
+              <a href="{{ coll_url }}" class="fm-coll-img-wrap">
+                {%- if coll_image != blank -%}
+                  {%- if coll_image.src -%}
+                    <img src="{{ coll_image | image_url: width: 1400 }}" alt="{{ coll_title | escape }}" class="fm-coll-img" loading="lazy">
+                  {%- else -%}
+                    <img src="{{ coll_image }}" alt="{{ coll_title | escape }}" class="fm-coll-img" loading="lazy">
+                  {%- endif -%}
+                {%- else -%}
+                  <img src="https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=srgb&fm=jpg&w=2000&q=80" alt="{{ coll_title | escape }}" class="fm-coll-img" loading="lazy">
+                {%- endif -%}
+              </a>
+            </div>
+
+            <!-- Content Side -->
+            <div class="fm-coll-row-content">
+              {%- if block.settings.eyebrow != blank -%}
+                <div class="fm-coll-row-eyebrow">{{ block.settings.eyebrow }}</div>
+              {%- endif -%}
+              <h2 class="fm-coll-row-title">{{ coll_title }}</h2>
+              {%- if block.settings.subtitle != blank -%}
+                <p class="fm-coll-row-sub">{{ block.settings.subtitle }}</p>
+              {%- endif -%}
+              {%- if coll_desc != blank -%}
+                <p class="fm-coll-row-desc">{{ coll_desc }}</p>
+              {%- endif -%}
+              <a href="{{ coll_url }}" class="fm-coll-row-link">
+                <span>Explore {{ coll_title }}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </section>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Auto loop Shopify Admin Collections -->
+      {%- for coll in collections -%}
+        {%- unless coll.handle == 'frontpage' -%}
+          {%- assign is_even = forloop.index | modulo: 2 -%}
+          <section class="fm-coll-container-{{ section.id }}">
+            <div class="fm-coll-row {% if is_even == 0 %}is-even{% else %}is-odd{% endif %}">
+              <div class="fm-coll-row-media">
+                <a href="{{ coll.url }}" class="fm-coll-img-wrap">
+                  {%- if coll.featured_image != blank -%}
+                    <img src="{{ coll.featured_image | image_url: width: 1400 }}" alt="{{ coll.title | escape }}" class="fm-coll-img" loading="lazy">
+                  {%- else -%}
+                    <img src="https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=srgb&fm=jpg&w=2000&q=80" alt="{{ coll.title | escape }}" class="fm-coll-img" loading="lazy">
+                  {%- endif -%}
+                </a>
+              </div>
+              <div class="fm-coll-row-content">
+                <h2 class="fm-coll-row-title">{{ coll.title }}</h2>
+                {%- if coll.description != blank -%}
+                  <p class="fm-coll-row-desc">{{ coll.description }}</p>
+                {%- endif -%}
+                <a href="{{ coll.url }}" class="fm-coll-row-link">
+                  <span>Explore {{ coll.title }}</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </section>
+        {%- endunless -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+
+  <!-- Closing Philosophy Banner -->
+  <section class="fm-coll-closing-banner">
+    <p class="fm-coll-closing-text">
+      One philosophy.<br>
+      <span class="fm-coll-closing-italic">Beautiful design made for everyday</span><br>
+      <span class="fm-coll-closing-italic">living.</span>
+    </p>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "FM Collections Showcase",
+  "tag": "section",
+  "class": "section-fm-collections-showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our Collections"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Line 1",
+      "default": "Every collection"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading Line 2 (Italic)",
+      "default": "begins with inspiration."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Description Text",
+      "default": "Each rug is thoughtfully designed to create a distinct atmosphere while sharing the same commitment to craftsmanship and quality."
+    },
+    {
+      "type": "text",
+      "id": "philosophy_line1",
+      "label": "Closing Line 1",
+      "default": "One philosophy."
+    },
+    {
+      "type": "text",
+      "id": "philosophy_line2",
+      "label": "Closing Line 2 (Italic)",
+      "default": "Beautiful design made for everyday living."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FBF8F4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1B4332"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_feature",
+      "name": "Collection Feature",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Shopify Collection"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "Collection · 01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Organic Terrain"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Italic Subtitle",
+          "default": "Nature, Reimagined."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Long Description",
+          "default": "Flowing lines, earthy palettes, and layered textures inspired by landscapes shaped over time. Perfect for modern organic interiors seeking warmth and calm."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image",
+          "label": "Image URL"
+        },
+        {
+          "type": "url",
+          "id": "custom_link",
+          "label": "Custom Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Collections Showcase"
+    }
+  ]
+}
+{% endschema %}

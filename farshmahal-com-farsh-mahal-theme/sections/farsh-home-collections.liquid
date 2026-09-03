@@ -1,0 +1,411 @@
+<!-- Farsh Mahal - Homepage 5 Collections Bento Grid Section -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-home-col-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color | default: '#FAF7F2' }};
+    padding-top: {{ section.settings.padding_top | default: 96 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 130 }}px;
+  }
+  .fm-home-col-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-home-col-container {
+      padding: 0 48px;
+    }
+  }
+
+  .fm-home-col-header {
+    max-width: 800px;
+    margin-bottom: 48px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-home-col-header {
+      margin-bottom: 60px;
+    }
+  }
+
+  .fm-home-col-eyebrow {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C1914E !important;
+    font-weight: 600 !important;
+    margin: 0 0 16px 0 !important;
+    display: block !important;
+    line-height: 1.4 !important;
+  }
+  .fm-home-col-heading {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(34px, 5.5vw, 68px) !important;
+    line-height: 1.04 !important;
+    color: #1B4332 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+  .fm-home-col-heading-italic {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    font-size: 1em !important;
+    color: #1B4332 !important;
+    display: block !important;
+    letter-spacing: -0.02em !important;
+    margin-top: 4px !important;
+  }
+
+  /* Bento 12-Column Grid matching farshmahal.com */
+  .fm-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-bento-grid {
+      gap: 24px;
+    }
+  }
+
+  /* Card 1: Top Left Wide (8 cols) */
+  .fm-bento-card-0 {
+    grid-column: span 12;
+    aspect-ratio: 16 / 10;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-bento-card-0 {
+      grid-column: span 8;
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  /* Card 2: Top Right Portrait (4 cols) */
+  .fm-bento-card-1 {
+    grid-column: span 12;
+    aspect-ratio: 4 / 5;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-bento-card-1 {
+      grid-column: span 4;
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  /* Cards 3, 4, 5: Bottom Row 3 equal columns (4 cols each) */
+  .fm-bento-card-2,
+  .fm-bento-card-3 {
+    grid-column: span 6;
+    aspect-ratio: 4 / 5;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-bento-card-2,
+    .fm-bento-card-3 {
+      grid-column: span 4;
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  .fm-bento-card-4 {
+    grid-column: span 12;
+    aspect-ratio: 4 / 5;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-bento-card-4 {
+      grid-column: span 4;
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  /* Base Bento Card Style */
+  .fm-bento-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #EDE8E1;
+    text-decoration: none !important;
+  }
+
+  .fm-bento-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fm-bento-card:hover .fm-bento-img {
+    transform: scale(1.05);
+  }
+
+  /* Dark Gradient Overlay */
+  .fm-bento-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(11, 23, 18, 0.78) 0%, rgba(11, 23, 18, 0.30) 45%, rgba(11, 23, 18, 0.05) 75%, transparent 100%);
+    pointer-events: none;
+    transition: background 0.4s ease;
+  }
+  .fm-bento-card:hover .fm-bento-overlay {
+    background: linear-gradient(0deg, rgba(11, 23, 18, 0.85) 0%, rgba(11, 23, 18, 0.40) 50%, rgba(11, 23, 18, 0.08) 80%, transparent 100%);
+  }
+
+  /* Content Overlay */
+  .fm-bento-content {
+    position: absolute;
+    inset: 0;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #F7F2ED;
+    box-sizing: border-box;
+    z-index: 3;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-bento-content {
+      padding: 36px 40px;
+    }
+  }
+
+  .fm-bento-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 10px !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    color: #D9BB7A !important;
+    font-weight: 600 !important;
+    margin-bottom: 8px;
+    display: block;
+    line-height: 1.2;
+  }
+  .fm-bento-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(24px, 3.2vw, 42px) !important;
+    line-height: 1.08 !important;
+    color: #FFFFFF !important;
+    margin: 0 0 6px 0 !important;
+    font-weight: 400;
+  }
+  .fm-bento-blurb {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: clamp(12px, 1.2vw, 14px) !important;
+    line-height: 1.5 !important;
+    color: rgba(247, 242, 237, 0.88) !important;
+    margin: 0 0 16px 0 !important;
+    max-width: 440px;
+  }
+  .fm-bento-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    color: #FFFFFF !important;
+    transition: opacity 0.3s ease, gap 0.3s ease;
+  }
+  .fm-bento-cta span {
+    color: #FFFFFF !important;
+  }
+  .fm-bento-cta svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+  }
+  .fm-bento-card:hover .fm-bento-cta {
+    color: #FFFFFF !important;
+    opacity: 0.9;
+    gap: 9px;
+  }
+{%- endstyle -%}
+
+<section class="fm-home-col-section-{{ section.id }}" aria-label="Five Collections">
+  <div class="fm-home-col-container">
+    <div class="fm-home-col-header">
+      <span class="fm-home-col-eyebrow">{{ section.settings.eyebrow | default: 'FIVE COLLECTIONS' }}</span>
+      <h2 class="fm-home-col-heading">
+        {{ section.settings.heading | default: 'Designed around different' }}
+        <span class="fm-home-col-heading-italic">{{ section.settings.heading_italic | default: 'ways of living.' }}</span>
+      </h2>
+    </div>
+
+    <div class="fm-bento-grid">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- assign idx = forloop.index0 -%}
+          {%- assign coll = block.settings.collection -%}
+          {%- assign coll_title = coll.title | default: block.settings.title -%}
+          {%- assign coll_handle = coll.handle | default: coll_title | handleize -%}
+          {%- assign coll_url = coll.url | default: block.settings.link | default: '/collections/' | append: coll_handle -%}
+          {%- assign coll_image = block.settings.image | default: coll.featured_image | default: block.settings.fallback_image -%}
+
+          <div class="fm-bento-card-{{ idx }}" {{ block.shopify_attributes }}>
+            <a href="{{ coll_url }}" class="fm-bento-card">
+              {%- if coll_image != blank -%}
+                {%- if coll_image.src -%}
+                  <img src="{{ coll_image | image_url: width: 1400 }}" alt="{{ coll_title | escape }}" class="fm-bento-img" loading="lazy">
+                {%- else -%}
+                  <img src="{{ coll_image }}" alt="{{ coll_title | escape }}" class="fm-bento-img" loading="lazy">
+                {%- endif -%}
+              {%- else -%}
+                <img src="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/Farsh-Mahal-Rug-Organic-Terrain-01_1300x1625.jpg?v=1738075000" alt="{{ coll_title | escape }}" class="fm-bento-img" loading="lazy">
+              {%- endif -%}
+
+              <div class="fm-bento-overlay"></div>
+
+              <div class="fm-bento-content">
+                <span class="fm-bento-eyebrow">Collection · 0{{ forloop.index }}</span>
+                <h3 class="fm-bento-title">{{ coll_title }}</h3>
+                {%- if block.settings.subtitle != blank -%}
+                  <p class="fm-bento-blurb">{{ block.settings.subtitle }}</p>
+                {%- elsif coll.description != blank -%}
+                  <p class="fm-bento-blurb">{{ coll.description | strip_html | truncate: 55 }}</p>
+                {%- endif -%}
+                <div class="fm-bento-cta">
+                  <span>EXPLORE</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </div>
+              </div>
+            </a>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback loop when no blocks -->
+        {%- for coll in collections limit: 5 -%}
+          {%- unless coll.handle == 'frontpage' -%}
+            {%- assign idx = forloop.index0 -%}
+            <div class="fm-bento-card-{{ idx }}">
+              <a href="{{ coll.url }}" class="fm-bento-card">
+                {%- if coll.featured_image != blank -%}
+                  <img src="{{ coll.featured_image | image_url: width: 1400 }}" alt="{{ coll.title | escape }}" class="fm-bento-img" loading="lazy">
+                {%- else -%}
+                  <img src="https://cdn.shopify.com/s/files/1/0778/7534/7627/files/Farsh-Mahal-Rug-Organic-Terrain-01_1300x1625.jpg?v=1738075000" alt="{{ coll.title | escape }}" class="fm-bento-img" loading="lazy">
+                {%- endif -%}
+                <div class="fm-bento-overlay"></div>
+                <div class="fm-bento-content">
+                  <span class="fm-bento-eyebrow">Collection · 0{{ forloop.index }}</span>
+                  <h3 class="fm-bento-title">{{ coll.title }}</h3>
+                  <p class="fm-bento-blurb">{{ coll.description | default: 'Architectural clarity & organic warmth.' | strip_html | truncate: 55 }}</p>
+                  <div class="fm-bento-cta">
+                    <span>EXPLORE</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FM Home Collections",
+  "tag": "section",
+  "class": "section-fm-home-collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FIVE COLLECTIONS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Line 1",
+      "default": "Designed around different"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading Line 2 (Italic)",
+      "default": "ways of living."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF7F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 128
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_feature",
+      "name": "Collection Card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Organic Terrain"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Blurb",
+          "default": "Flowing landscapes underfoot."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image",
+          "label": "Image URL"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Home Collections"
+    }
+  ]
+}
+{% endschema %}

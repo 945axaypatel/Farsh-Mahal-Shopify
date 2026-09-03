@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-layered" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.12" flood-color="#1B4332" />
+    </filter>
+  </defs>
+  <rect width="600" height="750" fill="#F8F5EE"/>
+  <rect x="70" y="60" width="460" height="630" rx="8" fill="#EDE7DD" filter="url(#shadow-layered)"/>
+  <!-- Organic Landscape Backdrop Shapes -->
+  <path d="M 70 240 C 160 160, 300 180, 360 280 C 400 340, 360 440, 280 460 C 180 480, 100 420, 70 340 Z" fill="#C4BAA9"/>
+  <path d="M 280 80 C 380 70, 530 130, 530 280 C 460 310, 370 280, 330 210 C 290 140, 280 90, 280 80 Z" fill="#9E9584"/>
+  <path d="M 70 480 C 140 420, 260 450, 320 540 C 360 610, 310 680, 240 690 L 70 690 Z" fill="#887E6D"/>
+  <path d="M 310 440 C 410 380, 530 460, 530 580 C 470 640, 380 660, 330 600 C 290 550, 280 460, 310 440 Z" fill="#D3C9B8"/>
+  <!-- Textured Background Details -->
+  <path d="M 70 560 C 180 500, 340 600, 480 540" stroke="#FAF7F2" stroke-width="3" stroke-dasharray="8 8" fill="none"/>
+  <path d="M 70 620 C 180 560, 340 660, 480 600" stroke="#FAF7F2" stroke-width="3" stroke-dasharray="8 8" fill="none"/>
+  <!-- Botanical Stem and Leaves Artwork -->
+  <g stroke="#3E473D" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main Branch 1 -->
+    <path d="M 160 520 C 170 420, 210 320, 270 220 C 290 180, 320 140, 350 110"/>
+    <!-- Leaf Pairs -->
+    <path d="M 220 380 C 200 350, 210 320, 240 330 C 250 350, 240 380, 220 380 Z" fill="#606C5D"/>
+    <path d="M 230 360 C 260 340, 280 350, 270 380 C 250 390, 230 380, 230 360 Z" fill="#606C5D"/>
+    <path d="M 250 300 C 230 270, 240 240, 270 250 C 280 270, 270 300, 250 300 Z" fill="#606C5D"/>
+    <path d="M 260 280 C 290 260, 310 270, 300 300 C 280 310, 260 300, 260 280 Z" fill="#606C5D"/>
+    <path d="M 280 220 C 260 190, 270 160, 300 170 C 310 190, 300 220, 280 220 Z" fill="#606C5D"/>
+    <path d="M 300 190 C 330 170, 350 180, 340 210 C 320 220, 300 210, 300 190 Z" fill="#606C5D"/>
+    <path d="M 330 130 C 320 100, 340 80, 365 95 C 370 115, 355 135, 330 130 Z" fill="#606C5D"/>
+    <!-- Secondary Branch 2 -->
+    <path d="M 380 650 C 390 580, 420 520, 470 480"/>
+    <path d="M 420 560 C 405 540, 415 520, 435 530 C 445 545, 435 565, 420 560 Z" fill="#606C5D"/>
+    <path d="M 445 520 C 435 500, 445 480, 465 490 C 475 505, 465 525, 445 520 Z" fill="#606C5D"/>
+    <path d="M 460 490 C 480 470, 500 480, 490 500 C 475 510, 460 500, 460 490 Z" fill="#606C5D"/>
+  </g>
+</svg>

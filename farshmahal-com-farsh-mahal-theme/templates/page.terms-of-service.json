@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "farsh-policy-terms",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

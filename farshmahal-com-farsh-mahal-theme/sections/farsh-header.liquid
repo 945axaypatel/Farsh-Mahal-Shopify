@@ -1,0 +1,1998 @@
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+
+{%- style -%}
+  /* Global Stacking Context Elevation for Mega Menu */
+  :root {
+    --fm-header-zindex: 999999;
+  }
+  .shopify-section-group-header-group {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 999999 !important;
+  }
+  .section-fm-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 999999 !important;
+  }
+  .fm-header-wrapper {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 999999 !important;
+    background-color: #FBF8F4 !important;
+    background: #FBF8F4 !important;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.08);
+    transition: var(--fm-transition);
+  }
+
+  .fm-header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 99999 !important;
+    background-color: #FBF8F4 !important;
+    background: #FBF8F4 !important;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.08);
+    transition: var(--fm-transition);
+  }
+  .fm-header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 76px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
+  /* Left Navigation */
+  .fm-header-left {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.2vw, 32px);
+  }
+  .fm-nav-link {
+    font-family: var(--fm-font-sans);
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: {{ section.settings.nav_color | default: '#1B4332' }};
+    text-decoration: none;
+    transition: var(--fm-transition);
+    position: relative;
+    padding: 6px 0;
+  }
+  .fm-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--fm-gold);
+    transition: width 0.3s ease;
+  }
+  .fm-nav-link:hover {
+    color: var(--fm-gold);
+  }
+  .fm-nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Center Logo */
+  .fm-header-center {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .fm-brand-logo-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fm-brand-wordmark {
+    font-family: var(--fm-font-serif) !important;
+    font-size: clamp(2.4rem, 3vw, 3.2rem);
+    letter-spacing: 0.22em;
+    color: {{ section.settings.logo_color | default: '#1B4332' }} !important;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1;
+    margin: 0;
+    transition: var(--fm-transition);
+  }
+  .fm-brand-wordmark:hover {
+    color: var(--fm-gold) !important;
+  }
+
+  /* Right Navigation & Utilities */
+  .fm-header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(16px, 2vw, 28px);
+  }
+  .fm-cart-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--fm-font-sans);
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: {{ section.settings.nav_color | default: '#1B4332' }};
+    text-decoration: none;
+    transition: var(--fm-transition);
+  }
+  .fm-cart-link:hover {
+    color: var(--fm-gold);
+  }
+
+  /* Mobile Controls */
+  .fm-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--fm-forest);
+  }
+  .fm-mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--fm-ivory);
+    z-index: 99;
+    padding: 32px 24px;
+    overflow-y: auto;
+    border-top: 1px solid var(--fm-border-light);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fm-mobile-drawer.open {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .fm-mobile-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+  }
+  .fm-mobile-menu-list li {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--fm-border-light);
+    padding-bottom: 16px;
+  }
+  .fm-mobile-menu-list a {
+    font-family: var(--fm-font-serif);
+    font-size: 2.4rem;
+    color: var(--fm-forest);
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 989px) {
+    .fm-header-container {
+      grid-template-columns: auto 1fr auto;
+      height: 68px;
+      padding: 0 16px;
+    }
+    .fm-header-left .fm-nav-link,
+    .fm-header-right .fm-nav-link {
+      display: none;
+    }
+    .fm-mobile-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fm-brand-wordmark {
+      font-size: 2.2rem;
+      letter-spacing: 0.16em;
+    }
+    .fm-cart-link span.fm-cart-text {
+      display: none;
+    }
+  }
+
+  .cart-count-bubble,
+  #cart-icon-bubble .cart-count-bubble {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  /* ----------------------------------------------------
+     Luxury Slide-Down Search Bar (farshmahal.com 100% exact)
+  ---------------------------------------------------- */
+    /* ----------------------------------------------------
+     Luxury Shop Mega Menu (farshmahal.com 100% exact)
+  ---------------------------------------------------- */
+  .fm-nav-item-shop {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .fm-mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #FBF8F4 !important;
+    background: #FBF8F4 !important;
+    border-top: 1px solid rgba(27, 67, 50, 0.08);
+    border-bottom: 1px solid rgba(27, 67, 50, 0.08);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    z-index: 999999 !important;
+    display: none;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .fm-mega-menu.is-active {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .fm-mega-menu-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 56px 40px;
+    box-sizing: border-box;
+    background-color: #FBF8F4 !important;
+    background: #FBF8F4 !important;
+  }
+
+  .fm-mega-grid,
+  .fm-mega-col-collections,
+  .fm-mega-col-sizes {
+    background-color: #FBF8F4 !important;
+    background: #FBF8F4 !important;
+  }
+
+  .fm-mega-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 64px;
+  }
+
+  .fm-mega-col-collections {
+    grid-column: span 5;
+  }
+
+  .fm-mega-col-sizes {
+    grid-column: span 7;
+  }
+
+  .fm-mega-eyebrow {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    display: block !important;
+    margin-bottom: 24px !important;
+    line-height: 1.2 !important;
+  }
+
+  .fm-mega-collections-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .fm-mega-col-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.08);
+    padding-bottom: 12px;
+    text-decoration: none !important;
+    transition: border-color 0.2s ease;
+  }
+  .fm-mega-col-item:hover {
+    border-bottom-color: #1B4332;
+  }
+
+  .fm-mega-col-name {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 22px !important;
+    line-height: 1.15 !important;
+    color: #1B4332 !important;
+    font-weight: 400 !important;
+    transition: color 0.2s ease;
+  }
+  .fm-mega-col-item:hover .fm-mega-col-name {
+    color: #C9A24D !important;
+  }
+
+  .fm-mega-col-note {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 13px !important;
+    color: rgba(27, 67, 50, 0.55) !important;
+    text-align: right;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+  .fm-mega-col-item:hover .fm-mega-col-note {
+    color: #1B4332 !important;
+  }
+
+  .fm-mega-all-link {
+    margin-top: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.24em !important;
+    text-transform: uppercase !important;
+    color: #1B4332 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease;
+  }
+  .fm-mega-all-link:hover {
+    color: #C9A24D !important;
+    gap: 12px;
+  }
+
+  .fm-mega-sizes-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 16px;
+    column-gap: 24px;
+  }
+
+  .fm-mega-size-link {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 13.5px !important;
+    color: #1B4332 !important;
+    text-decoration: none !important;
+    font-weight: 400 !important;
+    transition: color 0.2s ease;
+    display: inline-block;
+  }
+  .fm-mega-size-link:hover {
+    color: #C9A24D !important;
+  }
+
+  .fm-mega-size-guide-text {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    color: rgba(27, 67, 50, 0.6) !important;
+    margin-top: 32px !important;
+    max-width: 320px;
+  }
+
+  .fm-mega-guide-link {
+    color: #1B4332 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    transition: color 0.2s ease;
+  }
+  .fm-mega-guide-link:hover {
+    color: #C9A24D !important;
+  }
+
+  .fm-header-search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: #1B4332;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+  }
+  .fm-header-search-btn:hover {
+    color: #C9A24D;
+  }
+
+  .fm-header-search-bar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #FBF8F4 !important;
+    background: #FBF8F4 !important;
+    border-top: 1px solid rgba(27, 67, 50, 0.08);
+    border-bottom: 1px solid rgba(27, 67, 50, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    z-index: 999;
+  }
+
+  .fm-search-bar-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .fm-search-bar-inner {
+      padding: 0 40px;
+    }
+  }
+
+  .fm-search-form {
+    margin: 0;
+    padding: 16px 0;
+    width: 100%;
+  }
+  @media (min-width: 768px) {
+    .fm-search-form {
+      padding: 22px 0;
+    }
+  }
+
+  .fm-search-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .fm-search-icon {
+    color: #1B4332;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .fm-search-input {
+    flex: 1;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 15px !important;
+    color: #1B4332 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    letter-spacing: 0.01em;
+  }
+  @media (min-width: 768px) {
+    .fm-search-input {
+      font-size: 17px !important;
+    }
+  }
+  .fm-search-input::placeholder {
+    color: rgba(27, 67, 50, 0.45) !important;
+    font-weight: 400;
+  }
+
+  .fm-search-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: rgba(27, 67, 50, 0.6);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .fm-search-close-btn:hover {
+    color: #1B4332;
+    transform: scale(1.1);
+  }
+
+  .fm-search-results-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 24px;
+    right: 24px;
+    background: #FBF8F4;
+    border: 1px solid rgba(27, 67, 50, 0.12);
+    border-top: none;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+    max-height: 440px;
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 16px 20px;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .fm-search-results-dropdown {
+      left: 40px;
+      right: 40px;
+      padding: 20px 28px;
+    }
+  }
+
+  .fm-search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(27, 67, 50, 0.06);
+    text-decoration: none !important;
+    transition: background-color 0.2s ease;
+  }
+  .fm-search-result-item:last-child {
+    border-bottom: none;
+  }
+  .fm-search-result-thumb {
+    width: 48px;
+    height: 60px;
+    object-fit: cover;
+    background-color: #EDE8DE;
+    flex-shrink: 0;
+  }
+  .fm-search-result-info {
+    flex: 1;
+  }
+  .fm-search-result-title {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 16px !important;
+    color: #1B4332 !important;
+    margin: 0 0 2px 0 !important;
+  }
+  .fm-search-result-item:hover .fm-search-result-title {
+    color: #C9A24D !important;
+  }
+  .fm-search-result-series {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 10px !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    color: #C9A24D !important;
+    font-weight: 600 !important;
+  }
+  .fm-search-result-price {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 14px !important;
+    color: #1B4332 !important;
+    margin-left: auto;
+    font-weight: 500;
+  }
+{%- endstyle -%}
+
+<header class="fm-header-wrapper" id="FarshMahalHeader">
+  <div class="fm-header-container">
+    <!-- Mobile Hamburger Toggle & Left Menu (Desktop) -->
+    <div class="fm-header-left">
+      <button type="button" class="fm-mobile-toggle" id="FmMobileMenuBtn" aria-label="Toggle Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="fm-header-left-nav" aria-label="Main Navigation Left">
+        <div style="display: flex; gap: clamp(14px, 2vw, 28px);">
+          {%- if section.settings.left_menu != blank -%}
+            {%- for link in linklists[section.settings.left_menu].links -%}
+              <a href="{{ link.url }}" class="fm-nav-link">{{ link.title }}</a>
+            {%- endfor -%}
+          {%- else -%}
+            <div class="fm-nav-item fm-nav-item-shop">
+              <a href="/collections/all" class="fm-nav-link" id="FmShopNavTrigger" data-testid="nav-shop">Shop</a>
+            </div>
+            <a href="/collections" class="fm-nav-link">Collections</a>
+            <a href="/pages/custom-rugs" class="fm-nav-link">Custom</a>
+            <a href="/pages/trade" class="fm-nav-link">Trade</a>
+          {%- endif -%}
+        </div>
+      </nav>
+    </div>
+
+    <!-- Center Wordmark Logo -->
+    <div class="fm-header-center">
+      <a href="{{ routes.root_url }}" class="fm-brand-logo-link" aria-label="Farsh Mahal Homepage">
+        {%- if section.settings.logo != blank -%}
+          <img src="{{ section.settings.logo | image_url: width: 400 }}" alt="{{ shop.name | escape }}" style="max-height: 48px; width: auto;">
+        {%- else -%}
+          <span class="fm-brand-wordmark">{{ section.settings.brand_name | default: 'FARSH MAHAL' }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    <!-- Right Navigation & Tools -->
+    <div class="fm-header-right">
+      <nav class="fm-header-right-nav" aria-label="Main Navigation Right">
+        <div style="display: flex; gap: clamp(14px, 2vw, 28px); align-items: center;">
+          {%- if section.settings.right_menu != blank -%}
+            {%- for link in linklists[section.settings.right_menu].links -%}
+              <a href="{{ link.url }}" class="fm-nav-link">{{ link.title }}</a>
+            {%- endfor -%}
+          {%- else -%}
+            <a href="/blogs/news" class="fm-nav-link">Journal</a>
+            <a href="/pages/story" class="fm-nav-link">Story</a>
+          {%- endif -%}
+        </div>
+      </nav>
+
+      <!-- Search Tool -->
+      <!-- Luxury Search Trigger -->
+      <button type="button" class="fm-header-search-btn" id="FmSearchTrigger" aria-label="Search" data-testid="nav-search-trigger">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+
+      <!-- Cart Button with Count -->
+      <a href="{{ routes.cart_url }}" class="fm-cart-link" id="cart-icon-bubble" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="fm-cart-text">Cart ({{ cart.item_count }})</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Drawer -->
+  <div class="fm-mobile-drawer" id="FmMobileDrawer">
+    <ul class="fm-mobile-menu-list">
+      <li><a href="/collections/all">Shop All Rugs <span>&rarr;</span></a></li>
+      <li><a href="/collections">Collections <span>&rarr;</span></a></li>
+      <li><a href="/pages/custom-rugs">Custom Rugs <span>&rarr;</span></a></li>
+      <li><a href="/pages/trade">Trade Programme <span>&rarr;</span></a></li>
+      <li><a href="/blogs/news">Journal & Essays <span>&rarr;</span></a></li>
+      <li><a href="/pages/story">Our Story <span>&rarr;</span></a></li>
+      <li><a href="/pages/contact">Contact & Concierge <span>&rarr;</span></a></li>
+      <li><a href="/pages/faq">FAQ & Assistance <span>&rarr;</span></a></li>
+      <li><a href="/pages/rug-care-selection-guide">Rug Care & Selection Guide <span>&rarr;</span></a></li>
+      <li><a href="/pages/anti-slip-guide">Anti-Slip Guide <span>&rarr;</span></a></li>
+    </ul>
+
+    <div style="padding-top: 16px; border-top: 1px solid var(--fm-border);">
+      <p style="font-size: 1.3rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fm-gold); margin-bottom: 8px; font-weight: 600;">Direct Concierge</p>
+      <a href="mailto:{{ section.settings.contact_email | default: 'farshmahal@gmail.com' }}" style="color: var(--fm-forest); font-size: 1.5rem; text-decoration: none; display: block; margin-bottom: 6px;">{{ section.settings.contact_email | default: 'farshmahal@gmail.com' }}</a>
+      <a href="tel:{{ section.settings.contact_phone | default: '+916351043735' }}" style="color: var(--fm-forest); font-size: 1.45rem; text-decoration: none;">{{ section.settings.contact_phone | default: '+91 6351043735' }}</a>
+    </div>
+  </div>
+    <!-- Exact Luxury Shop Mega Menu matching screenshot & farshmahal.com -->
+  <div class="fm-mega-menu" id="FmMegaMenuShop" data-testid="mega-menu-shop">
+    <div class="fm-mega-menu-inner">
+      <div class="fm-mega-grid">
+        <!-- Left: Collections Column (5 cols) -->
+        <div class="fm-mega-col-collections">
+          <span class="fm-mega-eyebrow">COLLECTIONS</span>
+          <ul class="fm-mega-collections-list">
+            <li>
+              <a href="/collections/organic-terrain" class="fm-mega-col-item">
+                <span class="fm-mega-col-name">Organic Terrain</span>
+                <span class="fm-mega-col-note">Flowing landscapes underfoot</span>
+              </a>
+            </li>
+            <li>
+              <a href="/collections/modern-grid" class="fm-mega-col-item">
+                <span class="fm-mega-col-name">Modern Grid</span>
+                <span class="fm-mega-col-note">Architectural clarity, refined</span>
+              </a>
+            </li>
+            <li>
+              <a href="/collections/retro-geometry" class="fm-mega-col-item">
+                <span class="fm-mega-col-name">Retro Geometry</span>
+                <span class="fm-mega-col-note">Confident mid-century forms</span>
+              </a>
+            </li>
+            <li>
+              <a href="/collections/nordic-calm" class="fm-mega-col-item">
+                <span class="fm-mega-col-name">Nordic Calm</span>
+                <span class="fm-mega-col-note">Quiet Scandinavian luxury</span>
+              </a>
+            </li>
+            <li>
+              <a href="/collections/texture-max" class="fm-mega-col-item">
+                <span class="fm-mega-col-name">Texture Max</span>
+                <span class="fm-mega-col-note">Sculpted, dimensional craft</span>
+              </a>
+            </li>
+          </ul>
+          <a href="/collections" class="fm-mega-all-link">
+            BROWSE ALL COLLECTIONS
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- Right: Shop by Size Column (7 cols) -->
+        <div class="fm-mega-col-sizes">
+          <span class="fm-mega-eyebrow">SHOP BY SIZE</span>
+          <ul class="fm-mega-sizes-grid">
+            <li><a href="/collections/all?size=2x3" class="fm-mega-size-link">2 × 3 ft</a></li>
+            <li><a href="/collections/all?size=3x5" class="fm-mega-size-link">3 × 5 ft</a></li>
+            <li><a href="/collections/all?size=4x6" class="fm-mega-size-link">4 × 6 ft</a></li>
+            <li><a href="/collections/all?size=5x8" class="fm-mega-size-link">5 × 8 ft</a></li>
+            <li><a href="/collections/all?size=6x9" class="fm-mega-size-link">6 × 9 ft</a></li>
+            <li><a href="/collections/all?size=8x10" class="fm-mega-size-link">8 × 10 ft</a></li>
+            <li><a href="/collections/all?size=9x12" class="fm-mega-size-link">9 × 12 ft</a></li>
+            <li><a href="/collections/all?size=10x14" class="fm-mega-size-link">10 × 14 ft</a></li>
+            <li><a href="/collections/all?size=12x15" class="fm-mega-size-link">12 × 15 ft</a></li>
+            <li><a href="/collections/all?size=runner" class="fm-mega-size-link">Runner</a></li>
+            <li><a href="/collections/all?size=round" class="fm-mega-size-link">Round</a></li>
+            <li><a href="/pages/custom-rugs" class="fm-mega-size-link">Custom</a></li>
+          </ul>
+          <p class="fm-mega-size-guide-text">
+            Unsure which size fits? <a href="/pages/rug-care-selection-guide" class="fm-mega-guide-link">Read our size guide.</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exact Luxury Slide-Down Search Bar matching farshmahal.com -->
+  <div class="fm-header-search-bar" id="FmSearchBar" style="display: none;" data-testid="search-bar">
+    <div class="fm-search-bar-inner">
+      <form action="/collections/all" method="get" class="fm-search-form" id="FmSearchForm" role="search">
+        <div class="fm-search-input-wrap">
+          <svg class="fm-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="search" 
+            name="q" 
+            id="FmSearchInput"
+            class="fm-search-input" 
+            placeholder="Search rugs, collections, journal..." 
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            data-testid="search-input"
+          >
+          <button type="button" class="fm-search-close-btn" id="FmSearchClose" aria-label="Close search" data-testid="search-close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Live Search Results Dropdown -->
+      <div class="fm-search-results-dropdown" id="FmSearchResults" style="display: none;"></div>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('FmMobileMenuBtn');
+    const drawer = document.getElementById('FmMobileDrawer');
+    if (btn && drawer) {
+      btn.addEventListener('click', function() {
+        drawer.classList.toggle('open');
+      });
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+        // Mega Menu Hover Logic
+    var shopNav = document.getElementById('FmShopNavTrigger');
+    var megaMenu = document.getElementById('FmMegaMenuShop');
+    var header = document.getElementById('FarshMahalHeader');
+    var megaTimeout = null;
+
+    function showMega() {
+      clearTimeout(megaTimeout);
+      if (megaMenu) {
+        megaMenu.classList.add('is-active');
+      }
+    }
+
+    function hideMega() {
+      clearTimeout(megaTimeout);
+      megaTimeout = setTimeout(function() {
+        if (megaMenu) {
+          megaMenu.classList.remove('is-active');
+        }
+      }, 150);
+    }
+
+    if (shopNav && megaMenu) {
+      shopNav.addEventListener('mouseenter', showMega);
+      shopNav.addEventListener('focus', showMega);
+      shopNav.addEventListener('mouseleave', hideMega);
+      megaMenu.addEventListener('mouseenter', showMega);
+      megaMenu.addEventListener('mouseleave', hideMega);
+    }
+
+    if (header) {
+      header.addEventListener('mouseleave', hideMega);
+    }
+
+    var searchTrigger = document.getElementById('FmSearchTrigger');
+    var searchBar = document.getElementById('FmSearchBar');
+    var searchClose = document.getElementById('FmSearchClose');
+    var searchInput = document.getElementById('FmSearchInput');
+    var searchForm = document.getElementById('FmSearchForm');
+    var searchResults = document.getElementById('FmSearchResults');
+
+    var catalogProducts = [
+    {
+        "id": 1,
+        "title": "Terra Hush",
+        "series": "ORGANIC TERRAIN",
+        "price": 1678,
+        "is_new": true,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10_Organic_Silence_1-removebg-preview.png?v=1786366163",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence_2.png?v=1786366163",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10_Organic_Silence_1-removebg-preview.png?v=1786366163",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence_2.png?v=1786366163",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence_1.png?v=1786366163"
+        ],
+        "colors": [
+            "Ivory",
+            "Cream",
+            "Sand"
+        ],
+        "handle": "organic-silence-copy",
+        "url": "/products/organic-silence-copy"
+    },
+    {
+        "id": 2,
+        "title": "Stonewash Bloom",
+        "series": "NORDIC CALM",
+        "price": 1678,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07_Layered_Calm_1-removebg-preview.png?v=1786365555",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07LayeredCalm1_2.png?v=1786365556",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07_Layered_Calm_1-removebg-preview.png?v=1786365555",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07LayeredCalm1_2.png?v=1786365556",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07LayeredCalm1_3.png?v=1786365556"
+        ],
+        "colors": [
+            "Grey",
+            "Stone",
+            "Cream"
+        ],
+        "handle": "winter-light-copy",
+        "url": "/products/winter-light-copy"
+    },
+    {
+        "id": 3,
+        "title": "Dune Movement",
+        "series": "ORGANIC TERRAIN",
+        "price": 1619,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-05_Dune_Movement-removebg-preview.png?v=1786358947",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-05DuneMovement_3.png?v=1786358947",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-05_Dune_Movement-removebg-preview.png?v=1786358947",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-05DuneMovement_3.png?v=1786358947",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-05DuneMovement_2.png?v=1786358947"
+        ],
+        "colors": [
+            "Sand",
+            "Cream",
+            "Ochre"
+        ],
+        "handle": "canyon-layers-copy",
+        "url": "/products/canyon-layers-copy"
+    },
+    {
+        "id": 4,
+        "title": "Canyon Layers",
+        "series": "ORGANIC TERRAIN",
+        "price": 1644,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-03_Canyon_Layers-removebg-preview.png?v=1786358602",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-03CanyonLayers_2.png?v=1786358602",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-03_Canyon_Layers-removebg-preview.png?v=1786358602",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-03CanyonLayers_2.png?v=1786358602",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-03CanyonLayers_3.png?v=1786358603"
+        ],
+        "colors": [
+            "Terracotta",
+            "Sand",
+            "Cream"
+        ],
+        "handle": "desert-contour-copy",
+        "url": "/products/desert-contour-copy"
+    },
+    {
+        "id": 5,
+        "title": "Organic Silence",
+        "series": "NORDIC CALM",
+        "price": 1622,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10_Organic_Silence-removebg-preview.png?v=1786365949",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence1_2.png?v=1786365949",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10_Organic_Silence-removebg-preview.png?v=1786365949",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence1_2.png?v=1786365949",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-10OrganicSilence1_1.png?v=1786365950"
+        ],
+        "colors": [
+            "Ivory",
+            "Cream",
+            "Sand"
+        ],
+        "handle": "organic-silence",
+        "url": "/products/organic-silence"
+    },
+    {
+        "id": 6,
+        "title": "Nordic Grid",
+        "series": "NORDIC CALM",
+        "price": 1617,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-09_Nordic_Grid-removebg-preview.png?v=1786365804",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-09NordicGrid_1.png?v=1786365804",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-09_Nordic_Grid-removebg-preview.png?v=1786365804",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-09NordicGrid_1.png?v=1786365804",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-09NordicGrid_2.png?v=1786365804"
+        ],
+        "colors": [
+            "Stone",
+            "Grey",
+            "Ivory"
+        ],
+        "handle": "nordic-grid",
+        "url": "/products/nordic-grid"
+    },
+    {
+        "id": 7,
+        "title": "Winter Light",
+        "series": "NORDIC CALM",
+        "price": 1609,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-08_Winter_Light-removebg-preview.png?v=1786365688",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-08WinterLight_2.png?v=1786365688",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-08_Winter_Light-removebg-preview.png?v=1786365688",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-08WinterLight_2.png?v=1786365688",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-08WinterLight_3.png?v=1786365688"
+        ],
+        "colors": [
+            "Ivory",
+            "Grey",
+            "Warm White"
+        ],
+        "handle": "winter-light",
+        "url": "/products/winter-light"
+    },
+    {
+        "id": 8,
+        "title": "Layered Calm",
+        "series": "NORDIC CALM",
+        "price": 1619,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07_Layered_Calm-removebg-preview.png?v=1786365372",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07LayeredCalm_4.png?v=1786365373",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07_Layered_Calm-removebg-preview.png?v=1786365372",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07LayeredCalm_4.png?v=1786365373",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-07LayeredCalm_3.png?v=1786365373"
+        ],
+        "colors": [
+            "Stone",
+            "Green",
+            "Ivory"
+        ],
+        "handle": "layered-calm",
+        "url": "/products/layered-calm"
+    },
+    {
+        "id": 9,
+        "title": "Forest Mist",
+        "series": "NORDIC CALM",
+        "price": 1680,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-05_Forest_Mist-removebg-preview.png?v=1786365160",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-05ForestMist_2.png?v=1786365161",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-05_Forest_Mist-removebg-preview.png?v=1786365160",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-05ForestMist_2.png?v=1786365161",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-05ForestMist_1.png?v=1786365161"
+        ],
+        "colors": [
+            "Green",
+            "Grey",
+            "Stone"
+        ],
+        "handle": "forest-mist",
+        "url": "/products/forest-mist"
+    },
+    {
+        "id": 10,
+        "title": "Soft Geometry",
+        "series": "NORDIC CALM",
+        "price": 1656,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-04_Soft_Geometry-removebg-preview.png?v=1786365060",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-04SoftGeometry_2.png?v=1786365060",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-04_Soft_Geometry-removebg-preview.png?v=1786365060",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-04SoftGeometry_2.png?v=1786365060",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-04SoftGeometry_1.png?v=1786365060"
+        ],
+        "colors": [
+            "Stone",
+            "Ivory",
+            "Grey"
+        ],
+        "handle": "soft-geometry",
+        "url": "/products/soft-geometry"
+    },
+    {
+        "id": 11,
+        "title": "Nordic Stone",
+        "series": "NORDIC CALM",
+        "price": 1657,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-03_Nordic_Stone-removebg-preview.png?v=1786364950",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-03NordicStone_1.png?v=1786364951",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-03_Nordic_Stone-removebg-preview.png?v=1786364950",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-03NordicStone_1.png?v=1786364951",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-03NordicStone_3.png?v=1786364951"
+        ],
+        "colors": [
+            "Stone",
+            "Grey",
+            "Ivory"
+        ],
+        "handle": "nordic-stone",
+        "url": "/products/nordic-stone"
+    },
+    {
+        "id": 12,
+        "title": "Quiet Horizon",
+        "series": "NORDIC CALM",
+        "price": 1646,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-02_Quiet_Horizon-removebg-preview.png?v=1786364829",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-02QuietHorizon_2.png?v=1786364814",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-02_Quiet_Horizon-removebg-preview.png?v=1786364829",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-02QuietHorizon_2.png?v=1786364814",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-02QuietHorizon_1.png?v=1786364814"
+        ],
+        "colors": [
+            "Sand",
+            "Cream",
+            "Ivory"
+        ],
+        "handle": "quiet-horizon",
+        "url": "/products/quiet-horizon"
+    },
+    {
+        "id": 13,
+        "title": "Fjord Lines",
+        "series": "NORDIC CALM",
+        "price": 1676,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-01_Fjord_Lines-removebg-preview.png?v=1786364688",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-01FjordLines_1.png?v=1786364689",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-01_Fjord_Lines-removebg-preview.png?v=1786364688",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-01FjordLines_1.png?v=1786364689",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/NC-01FjordLines_2.png?v=1786364688"
+        ],
+        "colors": [
+            "Grey",
+            "Stone",
+            "Blue"
+        ],
+        "handle": "fjord-lines",
+        "url": "/products/fjord-lines"
+    },
+    {
+        "id": 14,
+        "title": "Gallery Abstract",
+        "series": "RETRO GEOMETRY",
+        "price": 1647,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-10_Gallery_Abstract-removebg-preview.png?v=1786364484",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-10GalleryAbstract_3.png?v=1786364485",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-10_Gallery_Abstract-removebg-preview.png?v=1786364484",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-10GalleryAbstract_3.png?v=1786364485",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-10GalleryAbstract_1.png?v=1786364484"
+        ],
+        "colors": [
+            "Charcoal",
+            "Cream",
+            "Stone"
+        ],
+        "handle": "gallery-abstract",
+        "url": "/products/gallery-abstract"
+    },
+    {
+        "id": 15,
+        "title": "Solar Geometry",
+        "series": "RETRO GEOMETRY",
+        "price": 1659,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-09_Solar_Geometry-removebg-preview.png?v=1786364151",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-09SolarGeometry_4.png?v=1786364152",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-09_Solar_Geometry-removebg-preview.png?v=1786364151",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-09SolarGeometry_4.png?v=1786364152",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-09SolarGeometry_2.png?v=1786364151"
+        ],
+        "colors": [
+            "Gold",
+            "Ochre",
+            "Cream"
+        ],
+        "handle": "solar-geometry",
+        "url": "/products/solar-geometry"
+    },
+    {
+        "id": 16,
+        "title": "Vintage Portal",
+        "series": "RETRO GEOMETRY",
+        "price": 1607,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-08_Vintage_Portal-removebg-preview.png?v=1786364010",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-08VintagePortal_2.png?v=1786364010",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-08_Vintage_Portal-removebg-preview.png?v=1786364010",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-08VintagePortal_2.png?v=1786364010",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-08VintagePortal_3.png?v=1786364011"
+        ],
+        "colors": [
+            "Charcoal",
+            "Cream",
+            "Sand"
+        ],
+        "handle": "vintage-portal",
+        "url": "/products/vintage-portal"
+    },
+    {
+        "id": 17,
+        "title": "Desert Blocks",
+        "series": "RETRO GEOMETRY",
+        "price": 1629,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-07_Desert_Blocks-removebg-preview.png?v=1786363867",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-07DesertBlocks_4.png?v=1786363867",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-07_Desert_Blocks-removebg-preview.png?v=1786363867",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-07DesertBlocks_4.png?v=1786363867",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-07DesertBlocks_3.png?v=1786363867"
+        ],
+        "colors": [
+            "Terracotta",
+            "Ochre",
+            "Cream"
+        ],
+        "handle": "desert-blocks",
+        "url": "/products/desert-blocks"
+    },
+    {
+        "id": 18,
+        "title": "Soft Memphis",
+        "series": "RETRO GEOMETRY",
+        "price": 1638,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-06_Soft_Memphis-removebg-preview.png?v=1786363723",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-06SoftMemphis_2.png?v=1786363724",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-06_Soft_Memphis-removebg-preview.png?v=1786363723",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-06SoftMemphis_2.png?v=1786363724",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-06SoftMemphis_4.png?v=1786363724"
+        ],
+        "colors": [
+            "Green",
+            "Blush",
+            "Charcoal"
+        ],
+        "handle": "soft-memphis",
+        "url": "/products/soft-memphis"
+    },
+    {
+        "id": 19,
+        "title": "Canyon Circles",
+        "series": "RETRO GEOMETRY",
+        "price": 655,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-05_Canyon_Circles-removebg-preview.png?v=1786363609",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-05CanyonCircles_2.png?v=1786363608",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-05_Canyon_Circles-removebg-preview.png?v=1786363609",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-05CanyonCircles_2.png?v=1786363608",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-05CanyonCircles_3.png?v=1786363609"
+        ],
+        "colors": [
+            "Terracotta",
+            "Ochre",
+            "Cream"
+        ],
+        "handle": "canyon-circles",
+        "url": "/products/canyon-circles"
+    },
+    {
+        "id": 20,
+        "title": "Orbit Forms",
+        "series": "RETRO GEOMETRY",
+        "price": 1671,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-04_Orbit_Forms-removebg-preview.png?v=1786363026",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-04OrbitForms_2.png?v=1786363026",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-04_Orbit_Forms-removebg-preview.png?v=1786363026",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-04OrbitForms_2.png?v=1786363026",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-04OrbitForms_3.png?v=1786363027"
+        ],
+        "colors": [
+            "Charcoal",
+            "Terracotta",
+            "Cream"
+        ],
+        "handle": "orbit-forms",
+        "url": "/products/orbit-forms"
+    },
+    {
+        "id": 21,
+        "title": "Moon Arch",
+        "series": "RETRO GEOMETRY",
+        "price": 1609,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-03_Moon_Arch-removebg-preview.png?v=1786362910",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-03MoonArch_2.png?v=1786362911",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-03_Moon_Arch-removebg-preview.png?v=1786362910",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-03MoonArch_2.png?v=1786362911",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-03MoonArch_3.png?v=1786362911"
+        ],
+        "colors": [
+            "Charcoal",
+            "Cream",
+            "Stone"
+        ],
+        "handle": "moon-arch",
+        "url": "/products/moon-arch"
+    },
+    {
+        "id": 22,
+        "title": "Retro Horizon",
+        "series": "RETRO GEOMETRY",
+        "price": 1616,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-02_Retro_Horizon-removebg-preview.png?v=1786362812",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-02RetroHorizon_1.png?v=1786362812",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-02_Retro_Horizon-removebg-preview.png?v=1786362812",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-02RetroHorizon_1.png?v=1786362812",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-02RetroHorizon_2.png?v=1786362812"
+        ],
+        "colors": [
+            "Terracotta",
+            "Ochre",
+            "Sand"
+        ],
+        "handle": "retro-horizon",
+        "url": "/products/retro-horizon"
+    },
+    {
+        "id": 23,
+        "title": "Sunset Arches",
+        "series": "RETRO GEOMETRY",
+        "price": 1602,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-01_Sunset_Arches-removebg-preview.png?v=1786362671",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-01SunsetArches_4.png?v=1786362671",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-01_Sunset_Arches-removebg-preview.png?v=1786362671",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-01SunsetArches_4.png?v=1786362671",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/RG-01_Sunset_Arches_3.png?v=1786362702"
+        ],
+        "colors": [
+            "Terracotta",
+            "Sand",
+            "Cream"
+        ],
+        "handle": "sunset-arches",
+        "url": "/products/sunset-arches"
+    },
+    {
+        "id": 24,
+        "title": "Luxe Basket Texture",
+        "series": "TEXTURE MAX",
+        "price": 1643,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-10_Luxe_Basket_Texture-removebg-preview.png?v=1786362520",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-10LuxeBasketTexture_1.png?v=1786362520",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-10_Luxe_Basket_Texture-removebg-preview.png?v=1786362520",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-10LuxeBasketTexture_1.png?v=1786362520",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-10LuxeBasketTexture_3.png?v=1786362520"
+        ],
+        "colors": [
+            "Sand",
+            "Cream",
+            "Stone"
+        ],
+        "handle": "luxe-basket-texture",
+        "url": "/products/luxe-basket-texture"
+    },
+    {
+        "id": 25,
+        "title": "Contour Relief",
+        "series": "TEXTURE MAX",
+        "price": 1619,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-09_Contour_Relief-removebg-preview.png?v=1786362409",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-09ContourRelief_2.png?v=1786362386",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-09_Contour_Relief-removebg-preview.png?v=1786362409",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-09ContourRelief_2.png?v=1786362386",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-09ContourRelief_3.png?v=1786362386"
+        ],
+        "colors": [
+            "Stone",
+            "Cream",
+            "Grey"
+        ],
+        "handle": "contour-relief",
+        "url": "/products/contour-relief"
+    },
+    {
+        "id": 26,
+        "title": "Organic Blocks",
+        "series": "TEXTURE MAX",
+        "price": 1669,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-08_Organic_Blocks-removebg-preview.png?v=1786362205",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-08OrganicBlocks_3.png?v=1786362205",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-08_Organic_Blocks-removebg-preview.png?v=1786362205",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-08OrganicBlocks_3.png?v=1786362205",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-08OrganicBlocks_4.png?v=1786362205"
+        ],
+        "colors": [
+            "Cream",
+            "Sand",
+            "Stone"
+        ],
+        "handle": "organic-blocks",
+        "url": "/products/organic-blocks"
+    },
+    {
+        "id": 27,
+        "title": "Woven Illusion",
+        "series": "TEXTURE MAX",
+        "price": 1603,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-07_Woven_Illusion-removebg-preview.png?v=1786361760",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-07WovenIllusion_1.png?v=1786361761",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-07_Woven_Illusion-removebg-preview.png?v=1786361760",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-07WovenIllusion_1.png?v=1786361761",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-07WovenIllusion_2.png?v=1786361760"
+        ],
+        "colors": [
+            "Stone",
+            "Grey",
+            "Ivory"
+        ],
+        "handle": "canyon-relief",
+        "url": "/products/canyon-relief"
+    },
+    {
+        "id": 28,
+        "title": "Cloud Form",
+        "series": "TEXTURE MAX",
+        "price": 1627,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-05_Cloud_Form-removebg-preview.png?v=1786361597",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-05CloudForm_1.png?v=1786361598",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-05_Cloud_Form-removebg-preview.png?v=1786361597",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-05CloudForm_1.png?v=1786361598",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-05CloudForm_4.png?v=1786361597"
+        ],
+        "colors": [
+            "Cream",
+            "Warm White",
+            "Sand"
+        ],
+        "handle": "cloud-form",
+        "url": "/products/cloud-form"
+    },
+    {
+        "id": 29,
+        "title": "Sand Ripples",
+        "series": "TEXTURE MAX",
+        "price": 1667,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-04_Sand_Ripples-removebg-preview.png?v=1786361453",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-04SandRipples_3.png?v=1786361454",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-04_Sand_Ripples-removebg-preview.png?v=1786361453",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-04SandRipples_3.png?v=1786361454",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-04SandRipples_2.png?v=1786361453"
+        ],
+        "colors": [
+            "Sand",
+            "Cream",
+            "Ochre"
+        ],
+        "handle": "sand-ripples",
+        "url": "/products/sand-ripples"
+    },
+    {
+        "id": 30,
+        "title": "Ridge Lines",
+        "series": "TEXTURE MAX",
+        "price": 1642,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-03_Ridge_Lines-removebg-preview.png?v=1786361223",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-03RidgeLines_3.png?v=1786361223",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-03_Ridge_Lines-removebg-preview.png?v=1786361223",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-03RidgeLines_3.png?v=1786361223",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-03RidgeLines_2.png?v=1786361224"
+        ],
+        "colors": [
+            "Grey",
+            "Stone",
+            "Cream"
+        ],
+        "handle": "ridge-lines",
+        "url": "/products/ridge-lines"
+    },
+    {
+        "id": 31,
+        "title": "Sculpted Waves",
+        "series": "TEXTURE MAX",
+        "price": 1613,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-01_Sculpted_Waves-removebg-preview.png?v=1786361105",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-01SculptedWaves_1.png?v=1786361105",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-01_Sculpted_Waves-removebg-preview.png?v=1786361105",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-01SculptedWaves_1.png?v=1786361105",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/TX-01SculptedWaves_2.png?v=1786361106"
+        ],
+        "colors": [
+            "Sand",
+            "Stone",
+            "Cream"
+        ],
+        "handle": "sculpted-waves",
+        "url": "/products/sculpted-waves"
+    },
+    {
+        "id": 32,
+        "title": "Gallery Blocks",
+        "series": "MODERN GRID",
+        "price": 1650,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-10_Gallery_Blocks-removebg-preview.png?v=1786360946",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-10GalleryBlocks_4.png?v=1786360946",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-10_Gallery_Blocks-removebg-preview.png?v=1786360946",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-10GalleryBlocks_4.png?v=1786360946",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-10GalleryBlocks_3.png?v=1786360947"
+        ],
+        "colors": [
+            "Charcoal",
+            "Stone",
+            "Cream"
+        ],
+        "handle": "gallery-blocks",
+        "url": "/products/gallery-blocks"
+    },
+    {
+        "id": 33,
+        "title": "Shadow Grid",
+        "series": "MODERN GRID",
+        "price": 1637,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-09_Shadow_Grid-removebg-preview.png?v=1786360813",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-09ShadowGrid_4.png?v=1786360812",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-09_Shadow_Grid-removebg-preview.png?v=1786360813",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-09ShadowGrid_4.png?v=1786360812",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-09ShadowGrid_3.png?v=1786360812"
+        ],
+        "colors": [
+            "Charcoal",
+            "Ivory",
+            "Stone"
+        ],
+        "handle": "shadow-grid",
+        "url": "/products/shadow-grid"
+    },
+    {
+        "id": 34,
+        "title": "Metro Lines",
+        "series": "MODERN GRID",
+        "price": 1661,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-08_Metro_Lines-removebg-preview.png?v=1786360675",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-08MetroLines_1.png?v=1786360675",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-08_Metro_Lines-removebg-preview.png?v=1786360675",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-08MetroLines_1.png?v=1786360675",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-08MetroLines_3.png?v=1786360675"
+        ],
+        "colors": [
+            "Blue",
+            "Ivory",
+            "Grey"
+        ],
+        "handle": "metro-lines",
+        "url": "/products/metro-lines"
+    },
+    {
+        "id": 35,
+        "title": "Floating Squares",
+        "series": "MODERN GRID",
+        "price": 1643,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-07_Floating_Squares-removebg-preview.png?v=1786360522",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-07FloatingSquares_2.png?v=1786360522",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-07_Floating_Squares-removebg-preview.png?v=1786360522",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-07FloatingSquares_2.png?v=1786360522",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-07FloatingSquares_3.png?v=1786360522"
+        ],
+        "colors": [
+            "Green",
+            "Stone",
+            "Cream"
+        ],
+        "handle": "floating-squares",
+        "url": "/products/floating-squares"
+    },
+    {
+        "id": 36,
+        "title": "Architectural Maze",
+        "series": "MODERN GRID",
+        "price": 1670,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-06_Architectural_Maze_1-removebg-preview.png?v=1786360394",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-06ArchitecturalMaze1_2.png?v=1786360394",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-06_Architectural_Maze_1-removebg-preview.png?v=1786360394",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-06ArchitecturalMaze1_2.png?v=1786360394",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-06ArchitecturalMaze1_3.png?v=1786360394"
+        ],
+        "colors": [
+            "Charcoal",
+            "Cream",
+            "Warm White"
+        ],
+        "handle": "architectural-maze",
+        "url": "/products/architectural-maze"
+    },
+    {
+        "id": 37,
+        "title": "Linear Horizon",
+        "series": "MODERN GRID",
+        "price": 1654,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-05_Linear_Horizon-removebg-preview.png?v=1786360280",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-05LinearHorizon_2.png?v=1786360281",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-05_Linear_Horizon-removebg-preview.png?v=1786360280",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-05LinearHorizon_2.png?v=1786360281",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-05LinearHorizon_4.png?v=1786360281"
+        ],
+        "colors": [
+            "Stone",
+            "Sand",
+            "Cream"
+        ],
+        "handle": "linear-horizon",
+        "url": "/products/linear-horizon"
+    },
+    {
+        "id": 38,
+        "title": "Frame Structure",
+        "series": "MODERN GRID",
+        "price": 1647,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-04_Frame_Structure-removebg-preview.png?v=1786360144",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-04FrameStructure_4.png?v=1786360144",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-04_Frame_Structure-removebg-preview.png?v=1786360144",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-04FrameStructure_4.png?v=1786360144",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-04FrameStructure_2.png?v=1786360144"
+        ],
+        "colors": [
+            "Charcoal",
+            "Stone",
+            "Cream"
+        ],
+        "handle": "frame-structure",
+        "url": "/products/frame-structure"
+    },
+    {
+        "id": 39,
+        "title": "Urban Blueprint",
+        "series": "MODERN GRID",
+        "price": 1651,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-03_Urban_Blueprint-removebg-preview.png?v=1786359958",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-03UrbanBlueprint_4.png?v=1786359958",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-03_Urban_Blueprint-removebg-preview.png?v=1786359958",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-03UrbanBlueprint_4.png?v=1786359958",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-03UrbanBlueprint_5.png?v=1786359958"
+        ],
+        "colors": [
+            "Blue",
+            "Charcoal",
+            "Ivory"
+        ],
+        "handle": "urban-blueprint",
+        "url": "/products/urban-blueprint"
+    },
+    {
+        "id": 40,
+        "title": "Offset Blocks",
+        "series": "MODERN GRID",
+        "price": 1654,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-02_Offset_Blocks-removebg-preview.png?v=1786359824",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-02OffsetBlocks_4.png?v=1786359825",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-02_Offset_Blocks-removebg-preview.png?v=1786359824",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-02OffsetBlocks_4.png?v=1786359825",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-02OffsetBlocks_1.png?v=1786359825"
+        ],
+        "colors": [
+            "Sand",
+            "Stone",
+            "Ochre"
+        ],
+        "handle": "offset-blocks",
+        "url": "/products/offset-blocks"
+    },
+    {
+        "id": 41,
+        "title": "Broken Grid",
+        "series": "MODERN GRID",
+        "price": 1613,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-01_Broken_Grid-removebg-preview.png?v=1786359700",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-01BrokenGrid_1.png?v=1786359701",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-01_Broken_Grid-removebg-preview.png?v=1786359700",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-01BrokenGrid_1.png?v=1786359701",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/MG-01BrokenGrid_4.png?v=1786359701"
+        ],
+        "colors": [
+            "Charcoal",
+            "Stone",
+            "Ivory"
+        ],
+        "handle": "broken-grid",
+        "url": "/products/broken-grid"
+    },
+    {
+        "id": 42,
+        "title": "Earth Layers",
+        "series": "ORGANIC TERRAIN",
+        "price": 1627,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-09_Earth_Layers-removebg-preview.png?v=1786359348",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-09EarthLayers_4.png?v=1786359348",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-09_Earth_Layers-removebg-preview.png?v=1786359348",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-09EarthLayers_4.png?v=1786359348",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-09EarthLayers_3.png?v=1786359348"
+        ],
+        "colors": [
+            "Sand",
+            "Charcoal",
+            "Cream"
+        ],
+        "handle": "earth-layers",
+        "url": "/products/earth-layers"
+    },
+    {
+        "id": 43,
+        "title": "Coastal Terrain",
+        "series": "ORGANIC TERRAIN",
+        "price": 1601,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-08_Coastal_Terrain-removebg-preview.png?v=1786359232",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-08CoastalTerrain_1.png?v=1786359233",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-08_Coastal_Terrain-removebg-preview.png?v=1786359232",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-08CoastalTerrain_1.png?v=1786359233",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-08CoastalTerrain_4.png?v=1786359233"
+        ],
+        "colors": [
+            "Blue",
+            "Sand",
+            "Cream"
+        ],
+        "handle": "coastal-terrain",
+        "url": "/products/coastal-terrain"
+    },
+    {
+        "id": 44,
+        "title": "Stone Path",
+        "series": "ORGANIC TERRAIN",
+        "price": 1615,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-07_Stone_Path-removebg-preview.png?v=1786359087",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-07StonePath_3.png?v=1786359088",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-07_Stone_Path-removebg-preview.png?v=1786359087",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-07StonePath_3.png?v=1786359088",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-07StonePath_2.png?v=1786359088"
+        ],
+        "colors": [
+            "Charcoal",
+            "Grey",
+            "Stone"
+        ],
+        "handle": "stone-path",
+        "url": "/products/stone-path"
+    },
+    {
+        "id": 45,
+        "title": "Pebble Flow",
+        "series": "ORGANIC TERRAIN",
+        "price": 1614,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-04_Pebble_Flow-removebg-preview.png?v=1786358725",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-04PebbleFlow_2.png?v=1786358725",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-04_Pebble_Flow-removebg-preview.png?v=1786358725",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-04PebbleFlow_2.png?v=1786358725",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-04PebbleFlow_4.png?v=1786358725"
+        ],
+        "colors": [
+            "Stone",
+            "Grey",
+            "Cream"
+        ],
+        "handle": "canyon-layers",
+        "url": "/products/canyon-layers"
+    },
+    {
+        "id": 46,
+        "title": "River Bend",
+        "series": "ORGANIC TERRAIN",
+        "price": 1666,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-02_River_Bend-removebg-preview.png?v=1786358338",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-02RiverBend_1.png?v=1786358339",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-02_River_Bend-removebg-preview.png?v=1786358338",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-02RiverBend_1.png?v=1786358339",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-02RiverBend_4.png?v=1786358338"
+        ],
+        "colors": [
+            "Green",
+            "Grey",
+            "Cream"
+        ],
+        "handle": "river-bend",
+        "url": "/products/river-bend"
+    },
+    {
+        "id": 47,
+        "title": "Desert Contour",
+        "series": "ORGANIC TERRAIN",
+        "price": 1634,
+        "is_new": false,
+        "image": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-01_Desert_Contour-removebg-preview.png?v=1786356552",
+        "image2": "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-01DesertContour_3.png?v=1786356552",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-01_Desert_Contour-removebg-preview.png?v=1786356552",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-01DesertContour_3.png?v=1786356552",
+            "https://cdn.shopify.com/s/files/1/0778/7534/7627/files/OT-01DesertContour_2.png?v=1786356552"
+        ],
+        "colors": [
+            "Sand",
+            "Terracotta",
+            "Cream"
+        ],
+        "handle": "desert-contour",
+        "url": "/products/desert-contour"
+    }
+];
+
+    function openSearch() {
+      if (searchBar) {
+        searchBar.style.display = 'block';
+        if (searchInput) {
+          setTimeout(function() { searchInput.focus(); }, 100);
+        }
+      }
+    }
+
+    function closeSearch() {
+      if (searchBar) {
+        searchBar.style.display = 'none';
+        if (searchInput) searchInput.value = '';
+        if (searchResults) {
+          searchResults.style.display = 'none';
+          searchResults.innerHTML = '';
+        }
+      }
+    }
+
+    if (searchTrigger) {
+      searchTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (searchBar.style.display === 'none' || !searchBar.style.display) {
+          openSearch();
+        } else {
+          closeSearch();
+        }
+      });
+    }
+
+    if (searchClose) {
+      searchClose.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeSearch();
+      });
+    }
+
+    // Escape key closes search
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && searchBar && searchBar.style.display !== 'none') {
+        closeSearch();
+      }
+    });
+
+    // Form submit -> redirect to /collections/all?q=query or /pages/shop?q=query
+    if (searchForm) {
+      searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var q = searchInput ? searchInput.value.trim() : '';
+        if (q) {
+          window.location.href = '/collections/all?q=' + encodeURIComponent(q);
+        }
+      });
+    }
+
+    // Live search instant lookup
+    if (searchInput && searchResults) {
+      searchInput.addEventListener('input', function() {
+        var q = searchInput.value.trim().toLowerCase();
+        if (q.length < 2) {
+          searchResults.style.display = 'none';
+          searchResults.innerHTML = '';
+          return;
+        }
+
+        var matches = catalogProducts.filter(function(p) {
+          var t = (p.title || '').toLowerCase();
+          var s = (p.series || '').toLowerCase();
+          var h = (p.handle || '').toLowerCase();
+          return t.indexOf(q) !== -1 || s.indexOf(q) !== -1 || h.indexOf(q) !== -1;
+        }).slice(0, 5);
+
+        if (matches.length > 0) {
+          var html = '<div style="font-family: Manrope, sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A24D; margin-bottom: 12px; font-weight: 600;">Matching Rugs (' + matches.length + ')</div>';
+          matches.forEach(function(item) {
+            var formattedPrice = '$' + (typeof item.price === 'number' ? item.price.toLocaleString('en-US') : item.price);
+            html += '<a href="' + item.url + '" class="fm-search-result-item">' +
+                      '<img src="' + item.image + '" alt="' + item.title + '" class="fm-search-result-thumb">' +
+                      '<div class="fm-search-result-info">' +
+                        '<h4 class="fm-search-result-title">' + item.title + '</h4>' +
+                        '<span class="fm-search-result-series">' + item.series + '</span>' +
+                      '</div>' +
+                      '<div class="fm-search-result-price">' + formattedPrice + '</div>' +
+                    '</a>';
+          });
+          html += '<a href="/collections/all?q=' + encodeURIComponent(q) + '" style="display: block; text-align: center; padding-top: 14px; font-family: Manrope, sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #1B4332; font-weight: 600; text-decoration: underline;">View All Results &rarr;</a>';
+          searchResults.innerHTML = html;
+          searchResults.style.display = 'block';
+        } else {
+          searchResults.innerHTML = '<div style="padding: 12px 0; color: rgba(27,67,50,0.6); font-family: Manrope, sans-serif; font-size: 14px;">No matching rugs found for "' + q + '". Press Enter to search all.</div>';
+          searchResults.style.display = 'block';
+        }
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FM Luxury Header",
+  "tag": "section",
+  "class": "section-fm-header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Wordmark Title",
+      "default": "FARSH MAHAL"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Custom Logo Image (Optional)"
+    },
+    {
+      "type": "link_list",
+      "id": "left_menu",
+      "label": "Left Navigation Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "right_menu",
+      "label": "Right Navigation Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_header",
+      "label": "Enable Sticky Header",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Header Background Color",
+      "default": "#F7F2ED"
+    },
+    {
+      "type": "color",
+      "id": "nav_color",
+      "label": "Navigation Links Color",
+      "default": "#1B4332"
+    },
+    {
+      "type": "color",
+      "id": "logo_color",
+      "label": "Logo Text Color",
+      "default": "#1B4332"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Concierge Email",
+      "default": "farshmahal@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone",
+      "label": "Concierge Phone",
+      "default": "+91 6351043735"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Luxury Header"
+    }
+  ]
+}
+{% endschema %}

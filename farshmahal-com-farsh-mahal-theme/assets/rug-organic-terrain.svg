@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-ivory" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFEBE4" />
+      <stop offset="100%" stop-color="#E5DFD5" />
+    </linearGradient>
+    <linearGradient id="sand1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D7CEBF" />
+      <stop offset="100%" stop-color="#C2B7A3" />
+    </linearGradient>
+    <linearGradient id="sand2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B3A58E" />
+      <stop offset="100%" stop-color="#9C8B72" />
+    </linearGradient>
+    <linearGradient id="sage" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8A9A86" />
+      <stop offset="100%" stop-color="#5E7259" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.15" flood-color="#1B4332" />
+    </filter>
+  </defs>
+
+  <!-- Base Rug Contour -->
+  <path d="M 120 40 Q 280 20 460 60 Q 560 180 540 380 Q 550 580 440 680 Q 260 730 140 660 Q 40 540 60 340 Q 50 140 120 40 Z" fill="url(#bg-ivory)" filter="url(#shadow)" />
+
+  <!-- Organic Layers -->
+  <path d="M 140 60 Q 300 90 440 120 Q 510 260 480 400 Q 420 540 380 640 Q 200 680 120 580 Q 80 440 100 280 Q 110 120 140 60 Z" fill="url(#sand1)" />
+  <path d="M 160 140 Q 280 180 380 220 Q 440 340 390 460 Q 340 560 260 600 Q 160 560 140 440 Q 120 300 160 140 Z" fill="url(#sand2)" opacity="0.85" />
+  <path d="M 200 220 Q 300 260 340 340 Q 360 440 280 490 Q 200 500 180 400 Q 160 300 200 220 Z" fill="url(#sage)" opacity="0.75" />
+
+  <!-- Textured Ribbing Lines -->
+  <path d="M 120 180 Q 320 220 480 240" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round" />
+  <path d="M 110 230 Q 310 270 470 300" stroke="rgba(255,255,255,0.3)" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  <path d="M 130 360 Q 330 400 450 440" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round" />
+  <path d="M 150 420 Q 300 460 410 500" stroke="rgba(255,255,255,0.3)" stroke-width="2.5" fill="none" stroke-linecap="round" />
+</svg>

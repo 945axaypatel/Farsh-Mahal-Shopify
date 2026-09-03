@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "farsh-faq-accordion",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

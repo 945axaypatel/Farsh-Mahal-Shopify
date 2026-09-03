@@ -1,0 +1,96 @@
+{%- style -%}
+  .fm-policy-page {
+    background-color: var(--fm-ivory);
+    padding: clamp(50px, 8vw, 90px) 0;
+  }
+  .fm-policy-header {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 56px auto;
+  }
+  .fm-policy-header h1 {
+    font-family: var(--fm-font-serif);
+    font-size: clamp(3rem, 5vw, 4.6rem);
+    color: var(--fm-forest);
+    margin: 0 0 16px 0;
+  }
+  .fm-policy-card {
+    background: #FFFFFF;
+    border: 1px solid var(--fm-border);
+    padding: clamp(32px, 5vw, 48px);
+    margin-bottom: 32px;
+  }
+  .fm-policy-card h2 {
+    font-family: var(--fm-font-serif);
+    font-size: 2.4rem;
+    color: var(--fm-forest);
+    margin: 0 0 16px 0;
+    border-bottom: 1px solid var(--fm-border-light);
+    padding-bottom: 10px;
+  }
+  .fm-policy-text {
+    font-size: 1.55rem;
+    line-height: 1.8;
+    color: #4F4D4A;
+    margin-bottom: 16px;
+  }
+{%- endstyle -%}
+
+<div class="fm-policy-page">
+  <div class="fm-container-narrow">
+    <div class="fm-policy-header">
+      <span class="fm-value-tagline">TRANSPARENT TERMS</span>
+      <h1>Return Policy</h1>
+      <p style="font-size: 1.6rem; color: #55524E; line-height: 1.7;">How returns, manufacturing exchanges, and refunds work at Farsh Mahal.</p>
+    </div>
+
+    <div class="fm-policy-card">
+      <h2>Policy Overview</h2>
+      <p class="fm-policy-text">
+        At Farsh Mahal, all sales are considered final. We only accept returns or exchanges if the product has a verified manufacturing defect that cannot be fixed. <strong>Please note that items delivered outside India are not eligible for return or refund, but are eligible for exchange in the event of a verified defect.</strong>
+      </p>
+    </div>
+
+    <div class="fm-policy-card">
+      <h2>Reporting Defects</h2>
+      <p class="fm-policy-text">
+        In the unlikely event that your product has a manufacturing defect, please inform us within <strong>48 hours of delivery</strong>. Report issues via email to <a href="mailto:farshmahal@gmail.com" style="color: var(--fm-forest); font-weight: 600;">farshmahal@gmail.com</a>, including clear photographs and a detailed description of the defect, along with your order number. Keep all original packaging and tags intact.
+      </p>
+    </div>
+
+    <div class="fm-policy-card">
+      <h2>Exclusions: What Is Not Considered a Defect</h2>
+      <ul class="fm-care-list">
+        <li class="fm-care-list-item"><span class="fm-care-bold">Natural Shedding:</span> Common for new hand-tufted wool rugs; gradually diminishes with routine vacuuming.</li>
+        <li class="fm-care-list-item"><span class="fm-care-bold">Fiber Sprouting:</span> Occasional individual tufts rising above the surface. Simply snip flush with scissors.</li>
+        <li class="fm-care-list-item"><span class="fm-care-bold">Creasing / Rolling Marks:</span> Marks from shipping rolls flatten out naturally within a few days of laying flat.</li>
+        <li class="fm-care-list-item"><span class="fm-care-bold">Scent & Ventilation:</span> Enclosed transit packaging smell dissipates within 24–48 hours in a ventilated space.</li>
+        <li class="fm-care-list-item"><span class="fm-care-bold">Color Variance:</span> Screen calibrations, natural dye absorption, and artisanal dye baths produce subtle unique nuances.</li>
+      </ul>
+    </div>
+
+    <div class="fm-policy-card">
+      <h2>Resolution Process & Shipping Refunds</h2>
+      <p class="fm-policy-text">
+        Once our quality control team confirms an issue under our warranty policy, Farsh Mahal will refund return shipping costs and replace the defective product with an identical new piece. Refunds are processed within 10 business days of receiving the returned item back to your original payment method.
+      </p>
+      <p class="fm-policy-text">
+        <strong>Made-to-order and custom items:</strong> Eligible for cancellation and full refund within 24 hours of purchase. Once 24 hours pass, yarn spinning and dyeing begins and custom cancellations cannot be accommodated.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FM Return Policy",
+  "tag": "section",
+  "class": "section-fm-return-policy",
+  "settings": [],
+  "presets": [
+    {
+      "name": "FM Return Policy"
+    }
+  ]
+}
+{% endschema %}

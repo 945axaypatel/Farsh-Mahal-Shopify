@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "fm-page-terms",
+      "settings": {
+        "eyebrow": "Legal",
+        "title": "Terms & Conditions",
+        "subtitle": "Please read these terms carefully \u2014 using our services means you accept them."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,294 @@
+{%- style -%}
+  .fm-faq-page {
+    background-color: var(--fm-ivory);
+    padding: clamp(50px, 8vw, 90px) 0;
+  }
+  .fm-faq-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 48px auto;
+  }
+  .fm-faq-header h1 {
+    font-family: var(--fm-font-serif);
+    font-size: clamp(3rem, 5vw, 4.6rem);
+    color: var(--fm-forest);
+    margin: 0 0 16px 0;
+  }
+  .fm-faq-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .fm-faq-cat-btn {
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border: 1px solid var(--fm-border);
+    color: var(--fm-charcoal);
+    font-size: 1.35rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--fm-transition);
+  }
+  .fm-faq-cat-btn:hover, .fm-faq-cat-btn.active {
+    background: var(--fm-forest);
+    color: var(--fm-ivory);
+    border-color: var(--fm-forest);
+  }
+  .fm-faq-group {
+    margin-bottom: 48px;
+    background: #FFFFFF;
+    border: 1px solid var(--fm-border);
+    padding: 32px clamp(20px, 4vw, 40px);
+  }
+  .fm-faq-group-title {
+    font-family: var(--fm-font-serif);
+    font-size: 2.6rem;
+    color: var(--fm-forest);
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--fm-gold);
+  }
+  .fm-faq-item {
+    border-bottom: 1px solid var(--fm-border-light);
+    padding: 18px 0;
+  }
+  .fm-faq-item:last-child {
+    border-bottom: none;
+  }
+  .fm-faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--fm-font-serif);
+    font-size: 1.95rem;
+    color: var(--fm-forest);
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .fm-faq-icon {
+    font-size: 2rem;
+    color: var(--fm-gold);
+    transition: transform 0.3s ease;
+    margin-left: 16px;
+    flex-shrink: 0;
+  }
+  .fm-faq-item.open .fm-faq-icon {
+    transform: rotate(45deg);
+  }
+  .fm-faq-a {
+    display: none;
+    padding-top: 14px;
+    font-size: 1.5rem;
+    line-height: 1.75;
+    color: #55524E;
+  }
+  .fm-faq-item.open .fm-faq-a {
+    display: block;
+  }
+{%- endstyle -%}
+
+<div class="fm-faq-page">
+  <div class="fm-container-narrow">
+    <div class="fm-faq-header">
+      <span class="fm-value-tagline">HELP & CONCIERGE</span>
+      <h1>Frequently Asked Questions</h1>
+      <p style="color: #666360; font-size: 1.55rem;">Find detailed answers regarding orders, international shipping, craftsmanship, bespoke inquiries, and care.</p>
+    </div>
+
+    <!-- Category 1: Orders & Payment -->
+    <div class="fm-faq-group" id="faq-orders">
+      <h2 class="fm-faq-group-title">Orders & Payment</h2>
+      
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>How do I know my order has been placed successfully?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Once your order is placed, you'll receive an Order Confirmation Email and, where applicable, an Order Confirmation SMS. Please note that this confirmation acknowledges receipt of your order only - a contract of sale is formed once your order has been dispatched, and all orders remain subject to acceptance by Farsh Mahal.
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>Can Farsh Mahal cancel or reject my order?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Yes. We reserve the right to accept or reject any order, limit quantities purchased, or cancel an order due to pricing errors, inventory issues, suspected fraud, payment failure, or other legitimate business reasons. If a product becomes unavailable after you've ordered it - which can happen with handcrafted, limited-quantity pieces - we may cancel the order, offer an alternative, or issue a full refund.
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>Are the prices and product photos on the website 100% accurate?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Prices are displayed in the currency applicable to your region and may include or exclude taxes as noted at checkout; customs duties, import taxes, or local charges (where applicable) are not included. Prices may change without notice, and if a pricing error is ever discovered, we'll notify you and let you choose to proceed at the corrected price or cancel. For product photos, we work hard to represent colour and texture accurately, but actual colours can vary slightly due to your screen, lighting, or photography settings - so the delivered rug may not match your display exactly.
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>Is my payment information secure?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Yes. Payments are processed through authorized third-party payment gateways with full SSL encryption, and we do not store your complete credit card, debit card, or full banking details on our own servers. For international orders, our processors may share limited transaction data with fraud-prevention and currency-conversion services strictly to complete your purchase.
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 2: Shipping & Delivery -->
+    <div class="fm-faq-group" id="faq-shipping">
+      <h2 class="fm-faq-group-title">Shipping & Delivery</h2>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>Is shipping free?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Yes, we offer free shipping on all orders placed through our website. For international orders, customs duties, local taxes, and other import charges (where applicable) are not included in the product price and are payable by the customer per your destination country's regulations.
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>How long will my order take to arrive?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Orders are typically dispatched within 48 business hours of confirmation. From there, most orders are delivered within 3–10 business days within India and 6–12 business days internationally. During sale periods, festive seasons, or other high-volume periods, deliveries may take an additional 5–7 business days. You can see the estimated delivery window on each product's detail page.
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>How will I track my shipment?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Once your order ships, you'll receive a shipping confirmation email and/or SMS with tracking details and a direct carrier tracking link.
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>Are there any hidden shipping charges?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          No. There are no hidden shipping charges for orders placed through our website. For international shipments, any customs duties, import taxes, VAT/GST, or other local government charges are payable by you at delivery, per your destination country's customs rules.
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 3: Returns, Exchanges & Cancellations -->
+    <div class="fm-faq-group" id="faq-returns">
+      <h2 class="fm-faq-group-title">Returns, Exchanges & Cancellations</h2>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>What is your return window for orders delivered in India?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          You can request a return within 2 days of receiving your order. The rug must be unused, unwashed, and untampered with, and returned with its original packaging, labels, and serial number tags intact and legible. Damaged items, and custom or made-to-order rugs (except in cases of a verified manufacturing defect), are not eligible.
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>Can I return an international order?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Products delivered outside India are not eligible for return or refund. You may, however, request an exchange within 2 days of delivery if the rug has a verified manufacturing defect. Email farshmahal@gmail.com within 48 hours of delivery.
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>What is not considered a manufacturing defect?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Occasional sprouting, pulled yarns, or loss of individual tufts; shedding (reduce by vacuuming on low power at least twice a week); natural colour or texture variation from fibres, dyes, sunlight, humidity, or heat; rolling marks (which fade with routine vacuuming); matting or crushing from regular use; and temporary odour in newly unpacked rugs (place back-side-up in direct sunlight for up to 24 hours).
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>Are custom and made-to-order rugs returnable?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Because each is produced to your individual specifications, custom and made-to-order rugs are excluded from standard return or cancellation, except where there's a verified manufacturing defect. Made-to-order items may be cancelled for a full refund within 24 hours of purchase before production commences.
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 4: Product Quality & Craftsmanship -->
+    <div class="fm-faq-group" id="faq-craft">
+      <h2 class="fm-faq-group-title">Product Quality & Craftsmanship</h2>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>Why does my rug look slightly unique from the product imagery?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Every Farsh Mahal piece is handcrafted by skilled artisans, so small variations in weave, texture, and natural dye tones are part of what makes each rug unique — not a defect. If you'd like more images or details before ordering, our Customer Support team is happy to help.
+        </div>
+      </div>
+
+      <div class="fm-faq-item">
+        <div class="fm-faq-q">
+          <span>Can designers or trade partners work with Farsh Mahal?</span>
+          <span class="fm-faq-icon">+</span>
+        </div>
+        <div class="fm-faq-a">
+          Yes. We welcome interior designers, architects, and hospitality groups. Please visit our <a href="/pages/trade" style="color: var(--fm-forest); font-weight: 600;">Trade Programme page</a> to apply for tiered trade pricing and dedicated concierge support.
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Support Card -->
+    <div style="background: var(--fm-forest); color: var(--fm-ivory); padding: 36px; text-align: center; margin-top: 40px;">
+      <h3 style="font-family: var(--fm-font-serif); font-size: 2.4rem; color: var(--fm-ivory); margin-bottom: 10px;">Still have questions?</h3>
+      <p style="color: rgba(247, 242, 237, 0.85); font-size: 1.5rem; margin-bottom: 24px;">Reach our dedicated concierge team directly at <a href="mailto:farshmahal@gmail.com" style="color: var(--fm-gold); text-decoration: underline;">farshmahal@gmail.com</a> or call <a href="tel:+916351043735" style="color: var(--fm-gold); text-decoration: underline;">+91 6351043735</a>.</p>
+      <a href="/pages/contact" class="button" style="background-color: var(--fm-gold) !important; color: #FFFFFF !important; border-color: var(--fm-gold) !important;">Contact Us &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const items = document.querySelectorAll('.fm-faq-item');
+    items.forEach(item => {
+      const q = item.querySelector('.fm-faq-q');
+      q.addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FM FAQ Accordion",
+  "tag": "section",
+  "class": "section-fm-faq",
+  "settings": [],
+  "presets": [
+    {
+      "name": "FM FAQ Accordion"
+    }
+  ]
+}
+{% endschema %}

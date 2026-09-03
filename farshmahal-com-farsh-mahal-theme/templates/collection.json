@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "shop_collection": {
+      "type": "farsh-shop-collection",
+      "blocks": {
+        "facet_collection": {
+          "type": "filter_category",
+          "settings": {
+            "title": "Collection",
+            "filter_key": "collection",
+            "include_all_option": true,
+            "options": "Organic Terrain, Modern Grid, Retro Geometry, Nordic Calm, Texture Max"
+          }
+        },
+        "facet_size": {
+          "type": "filter_category",
+          "settings": {
+            "title": "Size",
+            "filter_key": "size",
+            "include_all_option": false,
+            "options": "2 \u00d7 3 ft, 3 \u00d7 5 ft, 4 \u00d7 6 ft, 5 \u00d7 8 ft, 6 \u00d7 9 ft, 8 \u00d7 10 ft, 9 \u00d7 12 ft, 10 \u00d7 14 ft, 12 \u00d7 15 ft, Runner, Round, Custom"
+          }
+        },
+        "facet_color": {
+          "type": "color_palette",
+          "settings": {
+            "title": "Color"
+          }
+        }
+      },
+      "block_order": [
+        "facet_collection",
+        "facet_size",
+        "facet_color"
+      ],
+      "settings": {
+        "eyebrow": "SHOP",
+        "heading": "Shop all",
+        "heading_italic": "rugs.",
+        "subtext": "Thoughtfully designed hand-tufted rugs for modern American homes. Refine below to find the piece that feels perfectly at home.",
+        "columns_desktop": 3,
+        "bg_color": "#FBF8F4",
+        "text_color": "#1B4332",
+        "accent_gold": "#C9A24D",
+        "padding_top": 56,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "shop_collection"
+  ]
+}

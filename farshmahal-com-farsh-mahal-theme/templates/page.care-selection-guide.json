@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "fm-page-care-selection",
+      "settings": {
+        "eyebrow": "Guide",
+        "title": "Rug Care & Selection Guide",
+        "subtitle": "Everything you need to look after your rug \u2014 and choose the right size for your room."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

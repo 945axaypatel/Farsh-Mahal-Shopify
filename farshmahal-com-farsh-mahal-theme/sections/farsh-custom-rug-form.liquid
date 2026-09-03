@@ -1,0 +1,821 @@
+{%- style -%}
+  .fm-custom-wrap {
+    background-color: #FBF8F4;
+    color: #1B4332;
+    font-family: 'Manrope', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* 1. Hero Section */
+  @keyframes ken-burns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+  }
+
+  .fm-custom-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: #FBF8F4;
+    padding-top: 96px;
+  }
+  .fm-custom-hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .fm-custom-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    animation: ken-burns 16s ease-out forwards;
+  }
+  .fm-custom-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #FBF8F4 0%, rgba(251, 248, 244, 0.45) 45%, rgba(251, 248, 244, 0) 100%);
+    pointer-events: none;
+  }
+  .fm-custom-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 128px 24px 64px 24px;
+  }
+  @media (min-width: 768px) {
+    .fm-custom-hero-content {
+      padding: 128px 40px 96px 40px;
+    }
+  }
+  .fm-custom-eyebrow {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #C9A24D;
+    display: block;
+    margin-bottom: 24px;
+  }
+  .fm-custom-hero-h1 {
+    font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+    font-size: clamp(44px, 6.5vw, 92px);
+    line-height: 1.0;
+    color: #1B4332;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin: 0 0 24px 0;
+    font-weight: 400;
+  }
+  .fm-custom-hero-h1-italic {
+    font-family: 'Cormorant Garamond', Georgia, Cambria, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.05em;
+    font-weight: 400;
+  }
+  .fm-custom-hero-sub {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(27, 67, 50, 0.8);
+    max-width: 540px;
+    margin: 0;
+  }
+
+  /* 2. Intro Statement Section */
+  .fm-custom-intro-sec {
+    padding: 96px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .fm-custom-intro-sec {
+      padding: 128px 48px;
+    }
+  }
+  .fm-custom-intro-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 36px);
+    line-height: 1.35;
+    color: #1B4332;
+    max-width: 820px;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  /* 3. Our Process - Five Steps Section */
+  .fm-custom-steps-sec {
+    background-color: #F7F2ED;
+    padding: 96px 24px;
+  }
+  @media (min-width: 768px) {
+    .fm-custom-steps-sec {
+      padding: 128px 48px;
+    }
+  }
+  .fm-custom-steps-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .fm-custom-sec-header {
+    margin-bottom: 64px;
+  }
+  .fm-custom-sec-title {
+    font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.05;
+    color: #1B4332;
+    margin: 16px 0 0 0;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .fm-custom-sec-title-italic {
+    font-family: 'Cormorant Garamond', Georgia, Cambria, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.08em;
+    font-weight: 400;
+  }
+
+  .fm-custom-steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .fm-custom-steps-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+    }
+  }
+  .fm-custom-step-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .fm-custom-step-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #C9A24D;
+    font-size: 16px;
+    letter-spacing: 0.24em;
+    font-weight: 500;
+  }
+  .fm-custom-step-title {
+    font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+    font-size: clamp(22px, 1.8vw, 24px);
+    line-height: 1.15;
+    color: #1B4332;
+    margin: 14px 0 0 0;
+    font-weight: 400;
+  }
+  .fm-custom-step-desc {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin-top: 12px;
+    color: rgba(27, 67, 50, 0.7);
+    font-size: 14px;
+    line-height: 1.6;
+    padding-right: 16px;
+  }
+  @media (min-width: 768px) {
+    .fm-custom-step-divider {
+      position: absolute;
+      top: 10px;
+      right: 0;
+      width: 24px;
+      height: 1px;
+      background-color: #E5DFD7;
+    }
+  }
+
+  /* 4. Form Section */
+  .fm-custom-form-sec {
+    padding: 96px 24px 120px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .fm-custom-form-sec {
+      padding: 128px 48px 140px 48px;
+    }
+  }
+  .fm-custom-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px 24px;
+  }
+  @media (min-width: 768px) {
+    .fm-custom-form-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 36px 32px;
+    }
+  }
+  .fm-form-col-6 {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  @media (min-width: 768px) {
+    .fm-form-col-6 {
+      grid-column: span 6;
+    }
+  }
+  .fm-form-col-12 {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .fm-custom-label {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #C9A24D;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    height: 14px;
+  }
+
+  .fm-custom-input,
+  .fm-custom-select {
+    width: 100% !important;
+    height: 46px !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #E5DFD7 !important;
+    padding: 12px 0 !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 22px !important;
+    color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    transition: border-color 0.2s ease;
+  }
+
+  .fm-custom-input:focus,
+  .fm-custom-select:focus {
+    border-bottom-color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .fm-custom-input::placeholder {
+    color: rgba(27, 67, 50, 0.4);
+    font-family: 'Manrope', sans-serif;
+  }
+
+  /* Custom Select with Chevron */
+  .fm-custom-select-wrap {
+    position: relative;
+    width: 100%;
+    height: 46px;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  .fm-custom-select {
+    padding-right: 28px !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+  }
+  .fm-custom-select::-ms-expand {
+    display: none;
+  }
+  .fm-custom-select option {
+    background-color: #FBF8F4 !important;
+    color: #1B4332 !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    padding: 10px 14px !important;
+  }
+  .fm-custom-select-arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #1B4332;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fm-custom-select-arrow svg {
+    width: 12px;
+    height: 12px;
+    stroke: #1B4332;
+    stroke-width: 2.2;
+  }
+
+  /* Interactive Pill Chips */
+  .fm-custom-chips-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .fm-custom-chip-btn {
+    padding: 8px 16px;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    background: transparent;
+    border: 1px solid #E5DFD7;
+    color: #1B4332;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0;
+    line-height: 1.2;
+  }
+  .fm-custom-chip-btn:hover {
+    border-color: #1B4332;
+  }
+  .fm-custom-chip-btn.active {
+    background-color: #1B4332;
+    color: #FBF8F4;
+    border-color: #1B4332;
+  }
+
+  /* Project Notes Textarea */
+  .fm-custom-textarea {
+    width: 100% !important;
+    min-height: 140px !important;
+    height: 140px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #E5DFD7 !important;
+    padding: 12px 0 !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    resize: none !important;
+    margin: 0 !important;
+    display: block !important;
+    transition: border-color 0.2s ease;
+  }
+  .fm-custom-textarea:focus {
+    border-bottom-color: #1B4332 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .fm-custom-textarea::placeholder {
+    color: rgba(27, 67, 50, 0.4) !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 15px !important;
+    opacity: 1 !important;
+  }
+
+  /* Submit Button */
+  .fm-custom-submit-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    background-color: #1B4332 !important;
+    color: #F7F2ED !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    width: auto !important;
+    min-width: unset !important;
+    max-width: fit-content !important;
+    padding: 0 36px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.24em !important;
+    line-height: 50px !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    transition: background-color 0.25s ease, transform 0.15s ease !important;
+    box-shadow: none !important;
+    outline: none !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+  }
+  .fm-custom-submit-btn:hover {
+    background-color: #123023 !important;
+  }
+  .fm-custom-submit-btn span {
+    color: #F7F2ED !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.24em !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+  }
+  .fm-custom-submit-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke: #F7F2ED !important;
+    stroke-width: 1.4 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Success & Error State */
+  .fm-custom-success-box {
+    border: 1px solid #E5DFD7;
+    background-color: #F7F2ED;
+    padding: 48px 32px;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .fm-custom-success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #1B4332;
+    margin: 16px 0 8px 0;
+  }
+  .fm-custom-success-sub {
+    color: rgba(27, 67, 50, 0.7);
+    font-size: 15px;
+    max-width: 440px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+{%- endstyle -%}
+
+<div class="fm-custom-wrap" id="FarshCustomApp">
+  <!-- Section 1: Hero Banner -->
+  <section class="fm-custom-hero">
+    <div class="fm-custom-hero-bg">
+      <img
+        src="{{ section.settings.hero_image | default: 'https://images.unsplash.com/photo-1524314010015-136ee8ae1ab3?crop=entropy&cs=srgb&fm=jpg&w=2000&q=85' }}"
+        alt="Custom rug making"
+        class="fm-custom-hero-img"
+        loading="eager"
+      >
+      <div class="fm-custom-hero-overlay"></div>
+    </div>
+    <div class="fm-custom-hero-content">
+      <span class="fm-custom-eyebrow">{{ section.settings.hero_eyebrow | default: 'CUSTOM RUG PROGRAM' }}</span>
+      <h1 class="fm-custom-hero-h1">
+        {{ section.settings.hero_title | default: 'Designed around' }}<br>
+        <span class="fm-custom-hero-h1-italic">{{ section.settings.hero_title_italic | default: 'your vision.' }}</span>
+      </h1>
+      <p class="fm-custom-hero-sub">
+        {{ section.settings.hero_subtext | default: 'Some spaces deserve something made just for them. From dimensions to colors, every detail can be thoughtfully customized.' }}
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 2: Intro Statement -->
+  <section class="fm-custom-intro-sec">
+    <p class="fm-custom-intro-text">
+      {{ section.settings.intro_statement | default: "Whether you're furnishing a private residence, a boutique hotel, or a commercial space, our custom rug program allows you to create a rug tailored to your project." }}
+    </p>
+  </section>
+
+  <!-- Section 3: Our Process (Five Steps) -->
+  <section class="fm-custom-steps-sec">
+    <div class="fm-custom-steps-container">
+      <div class="fm-custom-sec-header">
+        <span class="fm-custom-eyebrow">{{ section.settings.steps_eyebrow | default: 'OUR PROCESS' }}</span>
+        <h2 class="fm-custom-sec-title">
+          {{ section.settings.steps_title | default: 'Five thoughtful ' }}
+          <span class="fm-custom-sec-title-italic">{{ section.settings.steps_title_italic | default: 'steps.' }}</span>
+        </h2>
+      </div>
+
+      <div class="fm-custom-steps-grid">
+        <!-- Step 01 -->
+        <div class="fm-custom-step-card">
+          <span class="fm-custom-step-num">01</span>
+          <h3 class="fm-custom-step-title">Share Your Idea</h3>
+          <p class="fm-custom-step-desc">Send sketches, inspiration, or floor plans.</p>
+          <div class="fm-custom-step-divider"></div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="fm-custom-step-card">
+          <span class="fm-custom-step-num">02</span>
+          <h3 class="fm-custom-step-title">Design Development</h3>
+          <p class="fm-custom-step-desc">Our team refines your vision into a production-ready design.</p>
+          <div class="fm-custom-step-divider"></div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="fm-custom-step-card">
+          <span class="fm-custom-step-num">03</span>
+          <h3 class="fm-custom-step-title">Sampling</h3>
+          <p class="fm-custom-step-desc">Review colors, textures, and materials.</p>
+          <div class="fm-custom-step-divider"></div>
+        </div>
+
+        <!-- Step 04 -->
+        <div class="fm-custom-step-card">
+          <span class="fm-custom-step-num">04</span>
+          <h3 class="fm-custom-step-title">Handcrafted Production</h3>
+          <p class="fm-custom-step-desc">Your rug is carefully hand-tufted by skilled artisans.</p>
+          <div class="fm-custom-step-divider"></div>
+        </div>
+
+        <!-- Step 05 -->
+        <div class="fm-custom-step-card">
+          <span class="fm-custom-step-num">05</span>
+          <h3 class="fm-custom-step-title">Delivery</h3>
+          <p class="fm-custom-step-desc">Made specifically for your space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Customize Form -->
+  <section class="fm-custom-form-sec" id="start">
+    <div class="fm-custom-sec-header">
+      <span class="fm-custom-eyebrow">{{ section.settings.form_eyebrow | default: 'CUSTOMIZE' }}</span>
+      <h2 class="fm-custom-sec-title">
+        {{ section.settings.form_title | default: 'Tell us about your ' }}
+        <span class="fm-custom-sec-title-italic">{{ section.settings.form_title_italic | default: 'project.' }}</span>
+      </h2>
+    </div>
+
+    {%- form 'contact', id: 'FarshCustomRugForm' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="fm-custom-success-box">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#C9A24D" stroke-width="1.4" style="margin:0 auto; display:block;">
+            <path d="M20 6 9 17l-5-5"></path>
+          </svg>
+          <h3 class="fm-custom-success-title">Thank you</h3>
+          <p class="fm-custom-success-sub">Our design team will be in touch within 2 business days to discuss your custom project.</p>
+        </div>
+      {%- else -%}
+        {%- if form.errors -%}
+          <div style="padding:16px; background:#FDE8E8; color:#9B1C1C; margin-bottom:24px; font-size:14px;">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <!-- Hidden input trackers for interactive pills -->
+        <input type="hidden" name="contact[Size]" id="field_custom_size" value="">
+        <input type="hidden" name="contact[Shape]" id="field_custom_shape" value="">
+        <input type="hidden" name="contact[Material]" id="field_custom_material" value="">
+        <input type="hidden" name="contact[Texture]" id="field_custom_texture" value="">
+        <input type="hidden" name="contact[Finish]" id="field_custom_finish" value="">
+
+        <div class="fm-custom-form-grid">
+          <!-- Row 1: Full Name & Email -->
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label" for="CustomFullName">FULL NAME *</label>
+            <input type="text" id="CustomFullName" name="contact[name]" class="fm-custom-input" required>
+          </div>
+
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label" for="CustomEmail">EMAIL *</label>
+            <input type="email" id="CustomEmail" name="contact[email]" class="fm-custom-input" required>
+          </div>
+
+          <!-- Row 2: Phone & Project Type -->
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label" for="CustomPhone">PHONE *</label>
+            <input type="tel" id="CustomPhone" name="contact[phone]" class="fm-custom-input" required>
+          </div>
+
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label" for="CustomProjectType">PROJECT TYPE</label>
+            <div class="fm-custom-select-wrap">
+              <select id="CustomProjectType" name="contact[Project_Type]" class="fm-custom-select">
+                <option value="Private Residence">Private Residence</option>
+                <option value="Interior Design Firm">Interior Design Firm</option>
+                <option value="Boutique Hotel">Boutique Hotel</option>
+                <option value="Commercial Space">Commercial Space</option>
+                <option value="Other">Other</option>
+              </select>
+              <svg class="fm-custom-select-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Row 3: Size & Shape -->
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label">SIZE</label>
+            <div class="fm-custom-chips-grid" data-chip-group="size">
+              <button type="button" class="fm-custom-chip-btn" data-val="2×3 ft">2×3 ft</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="3×5 ft">3×5 ft</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="4×6 ft">4×6 ft</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="5×8 ft">5×8 ft</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="6×9 ft">6×9 ft</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="8×10 ft">8×10 ft</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="9×12 ft">9×12 ft</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="10×14 ft">10×14 ft</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="12×15 ft">12×15 ft</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Runner">Runner</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Round">Round</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Custom Size">Custom Size</button>
+            </div>
+          </div>
+
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label">SHAPE</label>
+            <div class="fm-custom-chips-grid" data-chip-group="shape">
+              <button type="button" class="fm-custom-chip-btn" data-val="Rectangle">Rectangle</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Round">Round</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Oval">Oval</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Runner">Runner</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Free-form">Free-form</button>
+            </div>
+          </div>
+
+          <!-- Row 4: Material & Texture -->
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label">MATERIAL</label>
+            <div class="fm-custom-chips-grid" data-chip-group="material">
+              <button type="button" class="fm-custom-chip-btn" data-val="Wool">Wool</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Wool & Viscose">Wool & Viscose</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Bamboo Silk">Bamboo Silk</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Pure Silk">Pure Silk</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Wool & Silk">Wool & Silk</button>
+            </div>
+          </div>
+
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label">TEXTURE</label>
+            <div class="fm-custom-chips-grid" data-chip-group="texture">
+              <button type="button" class="fm-custom-chip-btn" data-val="Cut Pile">Cut Pile</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Loop Pile">Loop Pile</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Cut & Loop">Cut & Loop</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Hi-Lo">Hi-Lo</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Sculpted">Sculpted</button>
+            </div>
+          </div>
+
+          <!-- Row 5: Finish & Preferred Colors -->
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label">FINISH</label>
+            <div class="fm-custom-chips-grid" data-chip-group="finish">
+              <button type="button" class="fm-custom-chip-btn" data-val="Standard">Standard</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Serged Edge">Serged Edge</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Bound Edge">Bound Edge</button>
+              <button type="button" class="fm-custom-chip-btn" data-val="Fringed">Fringed</button>
+            </div>
+          </div>
+
+          <div class="fm-form-col-6">
+            <label class="fm-custom-label" for="CustomColors">PREFERRED COLORS</label>
+            <input type="text" id="CustomColors" name="contact[Preferred_Colors]" class="fm-custom-input" placeholder="e.g. warm cream, muted olive, gold accents">
+          </div>
+
+          <!-- Row 6: Project Notes -->
+          <div class="fm-form-col-12">
+            <label class="fm-custom-label" for="CustomNotes">PROJECT NOTES</label>
+            <textarea id="CustomNotes" name="contact[body]" rows="4" class="fm-custom-textarea" placeholder="Share inspiration, floor plans, or timing details."></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="fm-form-col-12" style="margin-top: 24px;">
+            <button type="submit" class="fm-custom-submit-btn">
+              <span>START YOUR CUSTOM PROJECT</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+  </section>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Interactive Chip Buttons Toggle
+    var chipGroups = document.querySelectorAll('.fm-custom-chips-grid');
+    chipGroups.forEach(function(group) {
+      var groupName = group.getAttribute('data-chip-group');
+      var hiddenInput = document.getElementById('field_custom_' + groupName);
+
+      group.addEventListener('click', function(e) {
+        var btn = e.target.closest('.fm-custom-chip-btn');
+        if (!btn) return;
+
+        var val = btn.getAttribute('data-val');
+        var wasActive = btn.classList.contains('active');
+
+        // Remove active from all buttons in this group
+        group.querySelectorAll('.fm-custom-chip-btn').forEach(function(b) {
+          b.classList.remove('active');
+        });
+
+        if (!wasActive) {
+          btn.classList.add('active');
+          if (hiddenInput) hiddenInput.value = val;
+        } else {
+          if (hiddenInput) hiddenInput.value = '';
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Rug Program",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Background Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Hero Eyebrow",
+      "default": "CUSTOM RUG PROGRAM"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Designed around"
+    },
+    {
+      "type": "text",
+      "id": "hero_title_italic",
+      "label": "Hero Title Italic",
+      "default": "your vision."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtext",
+      "label": "Hero Subtext",
+      "default": "Some spaces deserve something made just for them. From dimensions to colors, every detail can be thoughtfully customized."
+    },
+    {
+      "type": "textarea",
+      "id": "intro_statement",
+      "label": "Intro Statement",
+      "default": "Whether you're furnishing a private residence, a boutique hotel, or a commercial space, our custom rug program allows you to create a rug tailored to your project."
+    },
+    {
+      "type": "text",
+      "id": "steps_eyebrow",
+      "label": "Steps Eyebrow",
+      "default": "OUR PROCESS"
+    },
+    {
+      "type": "text",
+      "id": "steps_title",
+      "label": "Steps Title",
+      "default": "Five thoughtful "
+    },
+    {
+      "type": "text",
+      "id": "steps_title_italic",
+      "label": "Steps Title Italic",
+      "default": "steps."
+    },
+    {
+      "type": "text",
+      "id": "form_eyebrow",
+      "label": "Form Eyebrow",
+      "default": "CUSTOMIZE"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form Title",
+      "default": "Tell us about your "
+    },
+    {
+      "type": "text",
+      "id": "form_title_italic",
+      "label": "Form Title Italic",
+      "default": "project."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Rug Program Form"
+    }
+  ]
+}
+{% endschema %}

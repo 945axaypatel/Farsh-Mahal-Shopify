@@ -1,0 +1,549 @@
+<!-- Load exact Google Fonts for Footer -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-footer-section {
+    background-color: {{ section.settings.bg_color | default: '#1B4332' }};
+    color: {{ section.settings.text_color | default: '#F7F2ED' }};
+    padding-top: {{ section.settings.padding_top | default: 80 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 40 }}px;
+    border-top: 1px solid rgba(247, 242, 237, 0.08);
+  }
+
+  .fm-footer-container {
+    max-width: {{ section.settings.container_width | default: 1500 }}px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-footer-container {
+      padding: 0 48px;
+    }
+  }
+
+  /* Top Row Grid */
+  .fm-footer-top-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(247, 242, 237, 0.12);
+  }
+  @media screen and (min-width: 768px) {
+    .fm-footer-top-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+    }
+  }
+
+  /* Brand Column */
+  .fm-footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-footer-brand-col {
+      grid-column: span 4;
+    }
+  }
+
+  .fm-footer-logo-wrap {
+    display: inline-block;
+    text-decoration: none !important;
+  }
+
+  .fm-footer-logo-img {
+    height: {{ section.settings.logo_height | default: 32 }}px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .fm-footer-tagline {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    font-size: 19px !important;
+    color: rgba(247, 242, 237, 0.75) !important;
+    margin: 24px 0 0 0 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Footer Newsletter Input */
+  .fm-footer-newsletter-form {
+    margin-top: 32px;
+    max-width: 280px;
+    width: 100%;
+  }
+
+  .fm-footer-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(247, 242, 237, 0.25);
+    transition: border-color 0.3s ease;
+  }
+  .fm-footer-input-wrap:focus-within {
+    border-bottom-color: {{ section.settings.accent_gold | default: '#D9BB7A' }};
+  }
+
+  .fm-footer-input {
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 14px 40px 14px 0 !important;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 14px !important;
+    color: #FFFFFF !important;
+    box-shadow: none !important;
+  }
+  .fm-footer-input::placeholder {
+    color: rgba(247, 242, 237, 0.35) !important;
+  }
+
+  .fm-footer-submit-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
+  .fm-footer-submit-btn:hover {
+    color: {{ section.settings.accent_gold | default: '#D9BB7A' }} !important;
+  }
+  .fm-footer-submit-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Nav Columns: col-span-12 md:col-span-8 */
+  .fm-footer-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-footer-nav-grid {
+      grid-column: span 8;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+  }
+
+  .fm-footer-col-title {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    color: {{ section.settings.accent_gold | default: '#D9BB7A' }} !important;
+    margin-bottom: 24px !important;
+    display: block !important;
+    line-height: 1.4 !important;
+  }
+
+  .fm-footer-links-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+
+  .fm-footer-link {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: rgba(247, 242, 237, 0.70) !important;
+    text-decoration: none !important;
+    transition: color 0.25s ease !important;
+    line-height: 1.4 !important;
+  }
+  .fm-footer-link:hover {
+    color: {{ section.settings.accent_gold | default: '#D9BB7A' }} !important;
+  }
+
+  /* Bottom Row: Email, Socials & Legal */
+  .fm-footer-bottom-row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 36px;
+    align-items: flex-start;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-footer-bottom-row {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .fm-footer-bottom-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-footer-bottom-left {
+      flex-direction: row;
+      align-items: center;
+      gap: 36px;
+    }
+  }
+
+  .fm-footer-email-link {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 13px !important;
+    color: rgba(247, 242, 237, 0.75) !important;
+    text-decoration: none !important;
+    transition: color 0.25s ease !important;
+  }
+  .fm-footer-email-link:hover {
+    color: {{ section.settings.accent_gold | default: '#D9BB7A' }} !important;
+  }
+
+  .fm-footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .fm-footer-social-icon {
+    color: rgba(247, 242, 237, 0.60) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.25s ease !important;
+    text-decoration: none !important;
+  }
+  .fm-footer-social-icon:hover {
+    color: {{ section.settings.accent_gold | default: '#D9BB7A' }} !important;
+  }
+  .fm-footer-social-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .fm-footer-copyright {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 11px !important;
+    letter-spacing: 0.20em !important;
+    text-transform: uppercase !important;
+    color: rgba(247, 242, 237, 0.45) !important;
+    margin: 0;
+    line-height: 1.5;
+  }
+{%- endstyle -%}
+
+<footer class="fm-footer-section" role="contentinfo">
+  <div class="fm-footer-container">
+    <!-- Top Row Grid -->
+    <div class="fm-footer-top-grid">
+      <!-- Column 1: Brand Logo & Newsletter Form -->
+      <div class="fm-footer-brand-col">
+        <a href="/" class="fm-footer-logo-wrap">
+          {% if section.settings.logo != blank %}
+            <img src="{{ section.settings.logo | image_url: height: 64 }}" alt="Farsh Mahal" class="fm-footer-logo-img" height="32" width="auto">
+          {% else %}
+            <img src="{{ 'logo-white.png' | asset_url }}" alt="Farsh Mahal" class="fm-footer-logo-img" height="32" width="auto">
+          {% endif %}
+        </a>
+        <p class="fm-footer-tagline">{{ section.settings.tagline | default: 'Way You Live.' }}</p>
+
+        {%- if section.settings.show_newsletter -%}
+          {%- form 'customer', class: 'fm-footer-newsletter-form' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="fm-footer-input-wrap">
+              <input
+                type="email"
+                name="contact[email]"
+                id="FooterNewsletterEmail-{{ section.id }}"
+                class="fm-footer-input"
+                value="{{ form.email }}"
+                placeholder="{{ section.settings.newsletter_placeholder | default: 'Your email address' }}"
+                aria-label="Email Address"
+                required
+              >
+              <button type="submit" class="fm-footer-submit-btn" aria-label="Subscribe">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+            {%- if form.posted_successfully? -%}
+              <div style="font-size: 12px; color: #D9BB7A; margin-top: 8px;">Welcome — check your inbox for a warm hello.</div>
+            {%- endif -%}
+          {%- endform -%}
+        {%- endif -%}
+      </div>
+
+      <!-- Navigation Columns -->
+      <div class="fm-footer-nav-grid">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <div {{ block.shopify_attributes }}>
+              <span class="fm-footer-col-title">{{ block.settings.title }}</span>
+              {%- if block.settings.menu != blank -%}
+                <ul class="fm-footer-links-list">
+                  {%- for link in linklists[block.settings.menu].links -%}
+                    <li><a href="{{ link.url }}" class="fm-footer-link">{{ link.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <!-- Column 2: EXPLORE -->
+          <div>
+            <span class="fm-footer-col-title">{{ section.settings.col1_title | default: 'EXPLORE' }}</span>
+            <ul class="fm-footer-links-list">
+              <li><a href="/collections/all" class="fm-footer-link">Shop</a></li>
+              <li><a href="/collections" class="fm-footer-link">Collections</a></li>
+              <li><a href="/pages/custom-rugs" class="fm-footer-link">Custom Rugs</a></li>
+              <li><a href="/pages/story" class="fm-footer-link">Story</a></li>
+              <li><a href="/pages/trade" class="fm-footer-link">Trade</a></li>
+              <li><a href="/blogs/news" class="fm-footer-link">Journal</a></li>
+              <li><a href="/pages/contact" class="fm-footer-link">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: HELP & POLICIES -->
+          <div>
+            <span class="fm-footer-col-title">{{ section.settings.col2_title | default: 'HELP & POLICIES' }}</span>
+            <ul class="fm-footer-links-list">
+              <li><a href="/pages/faq" class="fm-footer-link">FAQ</a></li>
+              <li><a href="/pages/anti-slip-guide" class="fm-footer-link">Anti-Slip Guide</a></li>
+              <li><a href="/pages/rug-care-selection-guide" class="fm-footer-link">Rug Care & Selection Guide</a></li>
+              <li><a href="/pages/return-policy" class="fm-footer-link">Return Policy</a></li>
+              <li><a href="/pages/shipping-policy" class="fm-footer-link">Shipping Policy</a></li>
+              <li><a href="/pages/privacy-policy" class="fm-footer-link">Privacy Policy</a></li>
+              <li><a href="/pages/terms-conditions" class="fm-footer-link">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Bottom Row: Email, Socials & Legal -->
+    <div class="fm-footer-bottom-row">
+      <div class="fm-footer-bottom-left">
+        <a href="mailto:{{ section.settings.support_email | default: 'farshmahal@gmail.com' }}" class="fm-footer-email-link">
+          {{ section.settings.support_email | default: 'farshmahal@gmail.com' }}
+        </a>
+
+        <div class="fm-footer-socials">
+          {%- assign insta_url = section.settings.instagram_url | default: 'https://www.instagram.com/farshmahal/' -%}
+          {%- if insta_url != blank -%}
+            <a href="{{ insta_url }}" target="_blank" rel="noopener noreferrer" class="fm-footer-social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- assign fb_url = section.settings.facebook_url | default: 'https://www.facebook.com/people/Farsh-Mahal/61578670140462/' -%}
+          {%- if fb_url != blank -%}
+            <a href="{{ fb_url }}" target="_blank" rel="noopener noreferrer" class="fm-footer-social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+          {%- endif -%}
+          {%- assign tt_url = section.settings.tiktok_url | default: 'https://www.tiktok.com/@farshmahal' -%}
+          {%- if tt_url != blank -%}
+            <a href="{{ tt_url }}" target="_blank" rel="noopener noreferrer" class="fm-footer-social-icon" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.3 0 .6.04.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.5 6.3 6.3 0 0 0 1.96-4.5V8.5a8.28 8.28 0 0 0 4.81 1.54V6.69z"/>
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.pinterest_url != blank -%}
+            <a href="{{ section.settings.pinterest_url }}" target="_blank" rel="noopener noreferrer" class="fm-footer-social-icon" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line><circle cx="12" cy="12" r="10"></circle></svg>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div>
+        <p class="fm-footer-copyright">{{ section.settings.copyright_text | default: '© 2026 FARSH MAHAL. ALL RIGHTS RESERVED.' }}</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "FM Footer",
+  "tag": "section",
+  "class": "section-fm-footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Custom Footer Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo Height",
+      "default": 32
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Brand Tagline",
+      "default": "Way You Live."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show Newsletter Signup",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Newsletter Input Placeholder",
+      "default": "Your email address"
+    },
+    {
+      "type": "text",
+      "id": "support_email",
+      "label": "Support Email Address",
+      "default": "farshmahal@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "col1_title",
+      "label": "Default Column 1 Title",
+      "default": "EXPLORE"
+    },
+    {
+      "type": "text",
+      "id": "col2_title",
+      "label": "Default Column 2 Title",
+      "default": "HELP & POLICIES"
+    },
+    {
+      "type": "text",
+      "id": "instagram_url",
+      "label": "Instagram URL",
+      "default": "https://www.instagram.com/farshmahal/"
+    },
+    {
+      "type": "text",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "text",
+      "id": "tiktok_url",
+      "label": "TikTok URL",
+      "default": "https://www.tiktok.com/@farshmahal"
+    },
+    {
+      "type": "text",
+      "id": "pinterest_url",
+      "label": "Pinterest URL"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2026 FARSH MAHAL. ALL RIGHTS RESERVED."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#1B4332"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#F7F2ED"
+    },
+    {
+      "type": "color",
+      "id": "accent_gold",
+      "label": "Accent Gold Color",
+      "default": "#D9BB7A"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 50,
+      "unit": "px",
+      "label": "Container Max Width",
+      "default": 1500
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_column",
+      "name": "Navigation Menu Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column Title",
+          "default": "EXPLORE"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Select Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Footer"
+    }
+  ]
+}
+{% endschema %}

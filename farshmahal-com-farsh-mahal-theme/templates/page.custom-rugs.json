@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "farsh-custom-rug-form",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

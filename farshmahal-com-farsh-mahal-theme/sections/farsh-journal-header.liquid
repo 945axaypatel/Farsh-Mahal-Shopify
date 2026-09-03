@@ -1,0 +1,76 @@
+{%- style -%}
+  .fm-journal-header {
+    background-color: var(--fm-ivory);
+    padding: clamp(50px, 8vw, 80px) 0 32px 0;
+    text-align: center;
+  }
+  .fm-journal-title {
+    font-family: var(--fm-font-serif);
+    font-size: clamp(3rem, 5vw, 4.8rem);
+    color: var(--fm-forest);
+    line-height: 1.15;
+    max-width: 860px;
+    margin: 0 auto 36px auto;
+    font-weight: 400;
+  }
+  .fm-journal-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .fm-journal-pill {
+    padding: 8px 18px;
+    background: #FFFFFF;
+    border: 1px solid var(--fm-border);
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    color: var(--fm-charcoal);
+    text-decoration: none;
+    transition: var(--fm-transition);
+  }
+  .fm-journal-pill:hover, .fm-journal-pill.active {
+    background: var(--fm-forest);
+    border-color: var(--fm-forest);
+    color: var(--fm-ivory);
+  }
+{%- endstyle -%}
+
+<div class="fm-journal-header">
+  <div class="fm-container">
+    <span class="fm-value-tagline">JOURNAL & ESSAYS</span>
+    <h1 class="fm-journal-title">{{ section.settings.heading | default: 'Ideas, inspiration, and stories from the world of thoughtful interiors.' }}</h1>
+
+    <div class="fm-journal-pills">
+      <a href="/blogs/news" class="fm-journal-pill active">All</a>
+      <a href="/blogs/news" class="fm-journal-pill">Interior Styling</a>
+      <a href="/blogs/news" class="fm-journal-pill">Buying Guides</a>
+      <a href="/blogs/news" class="fm-journal-pill">Material Education</a>
+      <a href="/blogs/news" class="fm-journal-pill">Design Trends</a>
+      <a href="/blogs/news" class="fm-journal-pill">Behind The Craft</a>
+      <a href="/blogs/news" class="fm-journal-pill">Designer Stories</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FM Journal Header",
+  "tag": "section",
+  "class": "section-fm-journal-header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ideas, inspiration, and stories from the world of thoughtful interiors."
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Journal Header"
+    }
+  ]
+}
+{% endschema %}

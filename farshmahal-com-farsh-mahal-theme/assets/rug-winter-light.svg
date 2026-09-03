@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-winter" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.12" flood-color="#1B4332" />
+    </filter>
+    <linearGradient id="marble-base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2F3F2"/>
+      <stop offset="50%" stop-color="#E5E7E5"/>
+      <stop offset="100%" stop-color="#D8DAD8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="750" fill="#F8F6F2"/>
+  <rect x="70" y="60" width="460" height="630" rx="8" fill="url(#marble-base)" filter="url(#shadow-winter)"/>
+  <!-- Soft Organic Cloud / Marble Veins -->
+  <path d="M 70 180 C 180 120, 240 240, 360 170 C 440 120, 480 200, 530 160 L 530 260 C 460 300, 390 220, 290 280 C 190 340, 140 260, 70 300 Z" fill="#C2C6C3" opacity="0.6"/>
+  <path d="M 70 340 C 160 280, 280 400, 410 330 C 470 300, 500 370, 530 340 L 530 450 C 450 490, 370 410, 260 480 C 170 540, 120 460, 70 500 Z" fill="#ADB2AF" opacity="0.65"/>
+  <path d="M 70 520 C 190 460, 270 580, 380 520 C 460 480, 490 550, 530 520 L 530 630 C 450 670, 360 600, 250 660 C 160 700, 110 640, 70 670 Z" fill="#9BA19D" opacity="0.6"/>
+  <!-- Delicate Silver Veins -->
+  <path d="M 90 140 C 220 80, 310 260, 450 180 C 500 150, 520 180, 530 210" stroke="#FFFFFF" stroke-width="4" fill="none" opacity="0.8"/>
+  <path d="M 80 320 C 200 260, 300 440, 470 360 C 510 340, 520 370, 530 400" stroke="#FFFFFF" stroke-width="4" fill="none" opacity="0.8"/>
+  <path d="M 80 490 C 210 430, 320 600, 460 540 C 500 520, 520 550, 530 580" stroke="#FFFFFF" stroke-width="4" fill="none" opacity="0.8"/>
+</svg>

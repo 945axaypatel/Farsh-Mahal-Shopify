@@ -1,0 +1,353 @@
+<!-- Load exact Google Fonts for Dual Feature Cards -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+{%- style -%}
+  .fm-dual-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile | default: 48 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile | default: 48 }}px;
+    background-color: {{ section.settings.bg_color | default: '#FAF7F2' }};
+  }
+  @media screen and (min-width: 768px) {
+    .fm-dual-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | default: 80 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | default: 80 }}px;
+    }
+  }
+
+  .fm-dual-container-{{ section.id }} {
+    max-width: {{ section.settings.container_width | default: 1500 }}px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-dual-container-{{ section.id }} {
+      padding: 0 48px;
+      grid-template-columns: repeat({{ section.settings.columns_desktop | default: 2 }}, 1fr);
+      gap: 32px;
+    }
+  }
+
+  .fm-dual-card-{{ section.id }} {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    display: block;
+    text-decoration: none !important;
+    background-color: #1B4332;
+    box-sizing: border-box;
+  }
+
+  .fm-dual-card-img-{{ section.id }} {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1400ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .fm-dual-card-{{ section.id }}:hover .fm-dual-card-img-{{ section.id }} {
+    transform: scale(1.05);
+  }
+
+  .fm-dual-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .fm-dual-card-content {
+    position: absolute;
+    inset: 0;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    z-index: 5;
+    color: #F7F2ED;
+  }
+  @media screen and (min-width: 768px) {
+    .fm-dual-card-content {
+      padding: 48px 40px;
+    }
+  }
+
+  .fm-dual-badge {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.32em !important;
+    text-transform: uppercase !important;
+    color: #D9BB7A !important;
+    margin: 0 0 16px 0 !important;
+    line-height: 1.4 !important;
+  }
+
+  .fm-dual-title {
+    font-family: 'Playfair Display', ui-serif, Georgia, Cambria, serif !important;
+    font-size: clamp(2.4rem, 3.2vw, 3.8rem) !important;
+    font-weight: 400 !important;
+    color: #F7F2ED !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.01em !important;
+    margin: 0 0 14px 0 !important;
+    max-width: 480px;
+  }
+
+  .fm-dual-desc {
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: rgba(247, 242, 237, 0.85) !important;
+    line-height: 1.6 !important;
+    margin: 0 0 28px 0 !important;
+    max-width: 420px;
+  }
+
+  .fm-dual-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #1B4332 !important;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(247, 242, 237, 0.45);
+    transition: all 0.3s ease;
+  }
+  .fm-dual-card-{{ section.id }}:hover .fm-dual-btn {
+    border-bottom-color: #D9BB7A;
+    color: #D9BB7A !important;
+    gap: 16px;
+  }
+{%- endstyle -%}
+
+<section class="fm-dual-section-{{ section.id }}" aria-label="Featured Story and Trade">
+  <div class="fm-dual-container-{{ section.id }}">
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign card_link = block.settings.link | default: block.settings.button_link | default: '/collections/all' -%}
+        {%- assign card_badge = block.settings.tag | default: block.settings.badge -%}
+        {%- assign card_title = block.settings.heading | default: block.settings.title -%}
+        {%- assign card_title_italic = block.settings.heading_italic -%}
+        {%- assign card_btn = block.settings.link_label | default: block.settings.button_label | default: 'DISCOVER' -%}
+        {%- assign card_img_fallback = block.settings.fallback_image_url -%}
+
+        <a href="{{ card_link }}" class="fm-dual-card-{{ section.id }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 1400 }}"
+              alt="{{ card_title | escape }}"
+              class="fm-dual-card-img-{{ section.id }}"
+              loading="lazy"
+              width="700"
+              height="875"
+            >
+          {%- elsif card_img_fallback != blank -%}
+            <img
+              src="{{ card_img_fallback }}"
+              alt="{{ card_title | escape }}"
+              class="fm-dual-card-img-{{ section.id }}"
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{% if forloop.first %}https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80{% else %}https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80{% endif %}"
+              alt="{{ card_title | escape }}"
+              class="fm-dual-card-img-{{ section.id }}"
+              loading="lazy"
+            >
+          {%- endif -%}
+
+          <div class="fm-dual-overlay" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0) 25%, {{ block.settings.overlay_color | default: 'rgba(15, 26, 20, 0.50)' }} 60%, {{ block.settings.overlay_color | default: 'rgba(15, 26, 20, 0.88)' }} 100%);"></div>
+
+          <div class="fm-dual-card-content">
+            {%- if card_badge != blank -%}
+              <span class="fm-dual-badge">{{ card_badge }}</span>
+            {%- endif -%}
+            <h2 class="fm-dual-title">{{ card_title }}{% if card_title_italic != blank %} <em style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic;">{{ card_title_italic }}</em>{% endif %}</h2>
+            {%- if block.settings.description != blank -%}
+              <p class="fm-dual-desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+            <span class="fm-dual-btn">
+              <span>{{ card_btn }}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    {%- else -%}
+      <a href="/pages/our-story" class="fm-dual-card-{{ section.id }}">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="The Story" class="fm-dual-card-img-{{ section.id }}" loading="lazy">
+        <div class="fm-dual-overlay" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(15, 26, 20, 0.40) 65%, rgba(15, 26, 20, 0.85) 100%);"></div>
+        <div class="fm-dual-card-content">
+          <span class="fm-dual-badge">THE STORY</span>
+          <h2 class="fm-dual-title">Rooted in Indian Craft, Made for the Way You Live</h2>
+          <p class="fm-dual-desc">Four generations of weaving heritage meet contemporary architectural forms.</p>
+          <span class="fm-dual-btn">
+            <span>READ OUR STORY</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </div>
+      </a>
+      <a href="/pages/trade" class="fm-dual-card-{{ section.id }}">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80" alt="Trade Program" class="fm-dual-card-img-{{ section.id }}" loading="lazy">
+        <div class="fm-dual-overlay" style="background: linear-gradient(180deg, rgba(27, 67, 50, 0.35) 0%, rgba(15, 26, 20, 0.85) 100%);"></div>
+        <div class="fm-dual-card-content">
+          <span class="fm-dual-badge">TRADE PROGRAM</span>
+          <h2 class="fm-dual-title">For Interior Architects & Designers</h2>
+          <p class="fm-dual-desc">Tiered commercial pricing, complimentary memo samples, and dedicated bespoke production.</p>
+          <span class="fm-dual-btn">
+            <span>JOIN THE PROGRAM</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </div>
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FM Dual Feature",
+  "tag": "section",
+  "class": "section-fm-dual-feature",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF7F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Cards per row (Desktop)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "label": "Container Width",
+      "default": 1500
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image_url",
+          "label": "Or Image URL"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Eyebrow / Tag",
+          "default": "CUSTOM"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Designed around"
+        },
+        {
+          "type": "text",
+          "id": "heading_italic",
+          "label": "Heading Italic Word",
+          "default": "your vision."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Button Label",
+          "default": "START YOUR PROJECT"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button Link"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay Tint Color",
+          "default": "rgba(255, 255, 255, 0.85)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FM Dual Feature"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "farsh-guide-rug-care",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
